@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+
+<configuration>
+<!-- 1. 카멜케이스 셋팅-->
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+
+<!-- 2. 경로 별칭 지정-->
+	<typeAliases>
+		<typeAlias type="com.kh.toy.member.model.vo.Member" alias="MEMBER"/>
+	</typeAliases>
+
+<!-- 3. 작성쿼리 root등록을 위한 경로 설정. 맨아래에 있어야 한다.-->
+	
+
+</configuration>
