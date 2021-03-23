@@ -7,12 +7,21 @@
 	
 	<!-- * root에는 외부라이브러리 셋팅한다. -->
 	<!-- 1. DB연동, 마이바티스 -->
-	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
-		<property name="username" value="bm"/>
-		<property name="password" value="user11"/>
-	</bean>
+		<property name="url" value="jdbc:oracle:thin:@pclass_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_pclass"/>
+		<property name="username" value="admin"/>
+		<property name="password" value="CMHdatabase951!"/>
+	</bean> -->
+	<bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
+      <property name="URL" value="jdbc:oracle:thin:@pclass_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_pclass"/>
+      <property name="connectionCacheProperties">
+         <props>
+            <prop key="user">admin</prop>
+            <prop key="password">CMHdatabase951!</prop>
+         </props>
+      </property>
+   </bean>
 	
 	<!-- 마이바티스 설정은 main, test 다르게 설정해놓을 수 있다. resources에 셋팅. -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -21,7 +30,7 @@
 	</bean>
 	
 	<!-- @Mapper 어노테이션이 등록된 인터페이스 한해서만 스프링에 등록한다. -->
-	<mybatis:scan base-package="com.kh.toy" annotation="org.apache.ibatis.annotations.Mapper"/>
+	<mybatis:scan base-package="com.kh.toy, com.kh.aboo" annotation="org.apache.ibatis.annotations.Mapper"/>
 	
 	<!-- mail 보내기 -->
 	<bean id="mailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">

@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="../../../resources/css/generation/flaticon.css">
 <link rel="stylesheet" href="../../../resources/css/generation/icomoon.css">
 <link rel="stylesheet" href="../../../resources/css/generation/style.css">
+<link rel="stylesheet" href="../../../resources/css/all.css">
 
 <title>pclass</title>
 <%-- 

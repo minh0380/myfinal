@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.kh.toy, common" />
+	<context:component-scan base-package="com.kh.toy, common, com.kh.aboo" />
 	
 	<!-- SimpleClientHttpRequestFactory 빈 등록 후 restTemplate 등록한다.-->
 	<beans:bean id="SimpleClientHttpRequestFactory" class="org.springframework.http.client.SimpleClientHttpRequestFactory">
