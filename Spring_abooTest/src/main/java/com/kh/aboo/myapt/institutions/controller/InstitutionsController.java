@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.kh.aboo.user.admin.model.vo.Admin;
 import com.kh.aboo.user.apartment.model.service.ApartmentService;
 import com.kh.aboo.user.apartment.model.vo.Apartment;
 import com.kh.aboo.user.generation.model.vo.Generation;
@@ -35,7 +36,8 @@ public class InstitutionsController {
 			Generation generation = (Generation) session.getAttribute("generation");
 			apartment = apartmentService.selectApartmentByIdx(generation.getApartmentIdx());
 		}else if(session.getAttribute("admin") != null) {
-			
+			Admin admin = (Admin) session.getAttribute("admin");
+			apartment = apartmentService.selectApartmentByIdx(admin.getApartmentIdx());
 		}else {
 			apartment.setApartmentAddress("공릉동");
 			apartment.setApartmentLat("37.62613598143792");
