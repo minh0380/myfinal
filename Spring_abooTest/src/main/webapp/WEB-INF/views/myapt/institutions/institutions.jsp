@@ -47,7 +47,7 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="/index"><img class="col-md-3" src="../../../resources/images/logo_w.png"></a>
+	      <a class="navbar-brand" href="/index">ABOO</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
@@ -67,7 +67,7 @@
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
-      <div class="slider-item bread-item" style="background-image: url(../../../../resources/images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+      <div class="slider-item bread-item" style="background-image: url(../../../resources/abooimg/logo_w.png);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container-fluid">
           <div class="row slider-text align-items-center justify-content-center" data-scrollax-parent="true">
@@ -90,9 +90,7 @@
           <div class="w-100"></div>
         <div class="w-100 d-flex">
           <div class="col-md-6">
-            <div class="col-md-12" id="map">
-            	<div id="kakao-map" style="width: 100%; height: 100%;"></div>
-            </div>
+            <div class="col-md-12" id="map"></div>
           </div>
           <div class="col-md-6 d-flex justify-content-center">
             <div class="tab-pane fade show active" id="v-pills-whatwedo" role="tabpanel" aria-labelledby="v-pills-whatwedo-tab">
@@ -199,13 +197,13 @@
   <script src="../../../../resources/js/generation/main.js"></script>
   
   <script type="text/javascript">
-	//마커를 담을 배열입니다
+	  //마커를 담을 배열입니다
 	  var markers = [];
 	
-	  var mapContainer = document.getElementById('kakao-map'), // 지도를 표시할 div 
+	  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
 	      mapOption = {
-	          center: new kakao.maps.LatLng(37.566826, 126.9786567), // 지도의 중심좌표
-	          level: 3 // 지도의 확대 레벨
+	          center: new kakao.maps.LatLng(37.62846240740842, 127.08501126922955), // 지도의 중심좌표
+	          level: 1 // 지도의 확대 레벨
 	      };  
 	
 	  // 지도를 생성합니다    
@@ -223,7 +221,7 @@
 	  // 키워드 검색을 요청하는 함수입니다
 	  function searchPlaces() {
 	
-	      var keyword = "공공기관";
+	      var keyword = "공릉로 공공기관";
 	
 	      if (!keyword.replace(/^\s+|\s+$/g, '')) {
 	          alert('키워드를 입력해주세요!');

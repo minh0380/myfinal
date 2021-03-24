@@ -15,7 +15,7 @@
       <div class="sidebar-wrapper">
         <div class="logo">
           <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-            <img src="../../../resources/images/logo_w.png">
+            <img src="../../../resources/abooimg/logo_w.png">
           </a>
           <a href="http://www.creative-tim.com" class="simple-text logo-normal">
             ADMIN
@@ -207,18 +207,13 @@
           <nav>
             <ul>
               <li>
-                <a href="https://www.creative-tim.com">
-                  Creative Tim
-                </a>
-              </li>
-              <li>
-                <a href="http://presentation.creative-tim.com">
+                <a href="/aboutus">
                   About Us
                 </a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com">
-                  Blog
+                <a href="/index">
+                  to generation
                 </a>
               </li>
             </ul>
@@ -228,7 +223,7 @@
             <script>
               document.write(new Date().getFullYear())
             </script> made with <i class="tim-icons icon-heart-2"></i> by
-            <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            <a href="https://www.creative-tim.com" target="_blank">aboo</a> for a better apartment.
           </div>
       </footer>
       </div>

@@ -10,7 +10,7 @@
 
 <%-- generation! --%>
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="icon" type="image/png" href="../../../resources/abooimg/logo_b.png">
+<link rel="icon" type="image/png" href="../../../resources/img/favicon.png">
 <link href="https://fonts.googleapis.com/css?family=Work+Sans:300,400,,500,600,700" rel="stylesheet">
 <link rel="stylesheet" href="../../../resources/css/generation/open-iconic-bootstrap.min.css">
 <link rel="stylesheet" href="../../../resources/css/generation/animate.css">

@@ -9,7 +9,7 @@
 <meta charset="UTF-8">
 <%-- admin! --%>
 <link rel="apple-touch-icon" sizes="76x76" href="../../../resources/img/apple-icon.png">
-<link rel="icon" type="image/png" href="../../../resources/abooimg/logo_b.png">
+<link rel="icon" type="image/png" href="../../../resources/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 <!--     Fonts and icons     -->
