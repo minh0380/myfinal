@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/views/include/generationhead.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="/WEB-INF/views/include/generationhead.jsp"%>
 <!DOCTYPE html>
 <html>
-<head>
-	<script type="text/javascript" src="../../../../resources/ckeditor/ckeditor.js"></script>
-</head>
-  <body>
+<body>
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
@@ -19,8 +16,8 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="/myapt/schedule" class="nav-link">MyApt</a></li>
-	          <li class="nav-item active"><a class="nav-link" href="/board/info/listinfo">Board</a></li>
+	          <li class="nav-item "><a href="/myapt/schedule" class="nav-link">MyApt</a></li>
+	          <li class="nav-item"><a class="nav-link" href="/board/info/infolist">Board</a></li>
 	          <li class="nav-item"><a href="/mypage/modifyinfo" class="nav-link">MyPage</a></li>
 	          <c:choose>
 	          <c:when test="${sessionScope.generation == null}">
@@ -37,14 +34,13 @@
     <!-- END nav -->
 
     <section class="home-slider owl-carousel">
-      <div class="slider-item bread-item" style="background-image: url(../../../resources/abooimg/logo_w.png);" data-stellar-background-ratio="0.5">
+      <div class="slider-item bread-item" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
         <div class="overlay"></div>
         <div class="container-fluid">
           <div class="row slider-text align-items-center justify-content-center" data-scrollax-parent="true">
-
             <div class="col-md-8 mt-5 text-center col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-              <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Info</a></span> <span>Bullentin</span></p>
-	            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Interior</h1>
+              <!-- <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Home</a></span> <span>Contact</span></p> -->
+	           <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Home</h1>
             </div>
           </div>
         </div>
@@ -53,47 +49,25 @@
   
     <section class="ftco-section contact-section ftco-degree-bg">
       <div class="container">
-        <div class="row d-flex mb-4 contact-info">
-          <div class="col-md-12 mb-4">
-            <h2 class="h4">인테리어 게시판</h2>
-          </div>
-          <div class="w-100"></div>
-          <div class="col-md-12 w-100">
-            <p>게시글 수정</p>
+        <div class="row block-9 justify-content-center">
+          <div class="col-md-6 pr-md-5 ">
+          	<h4 class = "text-center">로그인</h4>
+              <div class="form-group">
+                <input type="text" id = "id" name = "id" class="form-control" placeholder="아이디를 입력해주세요.">
+              </div>
+              <div class="form-group">
+                <input type="text" id ="password" name = "password" class="form-control" placeholder="비밀번호를 입력해주세요.">
+              </div>
+              <div class="form-group">
+                <input type="submit" value="로그인" class="btn btn-primary py-3 px-5 col-sm-12" onclick="login()" >
+              </div>
+      		<div class = "col-sm-12 d-flex justify-content-center"><div><a href="#">아이디 찾기</a> | <a href="#">비밀번호 찾기</a></div></div>    
           </div>
         </div>
-        <form action="#">
-        	<div class="p-2 bg-light mt-1">
-	        	<div class="row block-9 d-flex justify-content-center text-center">
-		          <div class="col-md-11">
-		              <div class="form-group mb-0 d-flex w-80">
-		                <span class="col-md-3 align-self-center text-left">제목</span><input type="text" class="form-control" placeholder="제목을 입력해주세요.">
-		              </div>
-		          </div>
-		        </div>
-	        </div>
-	        <div class="p-3 bg-light mt-3">
-	        	<div class="row block-9 d-flex justify-content-center text-center">
-		          <div class="col-md-11">
-		              <div class="form-group m-0">
-		              	<textarea class="form-control" id="p_content"></textarea>
-		              	<script type="text/javascript">
-							CKEDITOR.replace('p_content', {height: 500, editorplaceholder: '인테리어에 관한 내용을 입력해주세요.'});
-							CKEDITOR.config.resize_enabled = false;
-						</script>
-		              </div>
-		          </div>
-				
-		        </div>
-	        </div>
-	        <div class="form-group mt-3 text-center">
-              <input type="submit" value="등록하기" class="btn btn-primary py-3 px-5">
-            </div>
-        </form>
       </div>
     </section>
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+<footer class="ftco-footer ftco-bg-dark ftco-section">
       <div class="container">
         <div class="row mb-5">
           <div class="col-md">
@@ -167,23 +141,60 @@
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
 
-  <script src="../../../../resources/js/generation/jquery.min.js"></script>
-  <script src="../../../../resources/js/generation/jquery-migrate-3.0.1.min.js"></script>
-  <script src="../../../../resources/js/generation/popper.min.js"></script>
-  <script src="../../../../resources/js/generation/bootstrap.min.js"></script>
-  <script src="../../../../resources/js/generation/jquery.easing.1.3.js"></script>
-  <script src="../../../../resources/js/generation/jquery.waypoints.min.js"></script>
-  <script src="../../../../resources/js/generation/jquery.stellar.min.js"></script>
-  <script src="../../../../resources/js/generation/owl.carousel.min.js"></script>
-  <script src="../../../../resources/js/generation/jquery.magnific-popup.min.js"></script>
-  <script src="../../../../resources/js/generation/aos.js"></script>
-  <script src="../../../../resources/js/generation/jquery.animateNumber.min.js"></script>
-  <script src="../../../../resources/js/generation/bootstrap-datepicker.js"></script>
-  <script src="../../../../resources/js/generation/jquery.timepicker.min.js"></script>
-  <script src="../../../../resources/js/generation/scrollax.min.js"></script>
+   <script type="text/javascript">
+      let login = () => {
+         const url = '/loginimpl';
+         let paramObj = new Object();
+         paramObj.id = id.value;
+         paramObj.password = password.value;
+         
+         let headerObj = new Headers();
+         headerObj.append("content-type","application/json");
+         fetch(url,{
+            method:"post",
+            headers:headerObj,
+            //body:urlEncodeForm(paramObj)
+            body:JSON.stringify(paramObj)
+         }).then(response => {
+            //response.ok : 상태코드 200~299사이라면 ok = true            
+            if(response.ok){
+               return response.text();   
+            }
+            //200번대 코드가 아니라면 에러를 발생시켜서 catch블록으로 이동
+            throw new AsyncPageError(response.text());
+         }).then((text) => {
+            if(text == 'fail'){
+          		alert("아이디와 비밀번호를 확인하세요")
+            }else{
+               <%-- 로그인에 성공하면 index페이지로 브라우저가 재요청 --%>
+               location.href="/index";
+            }
+         }).catch(error => {
+            error.alertMessage();
+         });
+      }
+      
+      
+      
+   </script>
+
+  <script src="../../../resources/js/generation/jquery.min.js"></script>
+  <script src="../../../resources/js/generation/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../../../resources/js/generation/popper.min.js"></script>
+  <script src="../../../resources/js/generation/bootstrap.min.js"></script>
+  <script src="../../../resources/js/generation/jquery.easing.1.3.js"></script>
+  <script src="../../../resources/js/generation/jquery.waypoints.min.js"></script>
+  <script src="../../../resources/js/generation/jquery.stellar.min.js"></script>
+  <script src="../../../resources/js/generation/owl.carousel.min.js"></script>
+  <script src="../../../resources/js/generation/jquery.magnific-popup.min.js"></script>
+  <script src="../../../resources/js/generation/aos.js"></script>
+  <script src="../../../resources/js/generation/jquery.animateNumber.min.js"></script>
+  <script src="../../../resources/js/generation/bootstrap-datepicker.js"></script>
+  <script src="../../../resources/js/generation/jquery.timepicker.min.js"></script>
+  <script src="../../../resources/js/generation/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../../../../resources/js/generation/google-map.js"></script>
-  <script src="../../../../resources/js/generation/main.js"></script>
+  <script src="../../../resources/js/generation/google-map.js"></script>
+  <script src="../../../resources/js/generation/main.js"></script>
     
   </body>
 </html>
