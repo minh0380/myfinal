@@ -70,7 +70,7 @@
 	<aop:config>
 		<!-- .. : 하위의 모든 패키지를 포함(모든 depth)
 			com.kh.toy.*로 하면 그 바로 아래 패키지만 포함. -->
-		<aop:pointcut expression="execution(* com.kh.toy..*.*ServiceImpl.*(..))" id="txPointCut"/>
+		<aop:pointcut expression="execution(* com.kh.aboo..*.*ServiceImpl.*(..))" id="txPointCut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 	</aop:config>
 	

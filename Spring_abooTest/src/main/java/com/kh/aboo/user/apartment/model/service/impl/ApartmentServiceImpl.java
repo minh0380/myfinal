@@ -1,4 +1,4 @@
-package com.kh.aboo.user.generation.model.service.impl;
+package com.kh.aboo.user.apartment.model.service.impl;
 
 import org.springframework.stereotype.Service;
 
@@ -14,7 +14,12 @@ public class ApartmentServiceImpl implements ApartmentService {
 	public ApartmentServiceImpl(ApartmentRepository apartmentRepository) {
 		this.apartmentRepository = apartmentRepository;
 	}
-
+	
+	/**
+	 * @author: MinHee
+	 * @Date: 2021. 3. 24.
+	 * @work:
+	 */
 	@Override
 	public Apartment selectApartmentByIdx(String apartmentIdx) {
 		return apartmentRepository.selectApartmentByIdx(apartmentIdx);
