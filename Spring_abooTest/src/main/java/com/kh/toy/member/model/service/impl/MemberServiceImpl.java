@@ -10,12 +10,11 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import com.kh.aboo.common.code.Configcode;
+import com.kh.aboo.common.mail.MailSender;
 import com.kh.toy.member.model.repository.MemberRepository;
 import com.kh.toy.member.model.service.MemberService;
 import com.kh.toy.member.model.vo.Member;
-
-import common.code.Configcode;
-import common.mail.MailSender;
 
 @Service
 public class MemberServiceImpl implements MemberService{

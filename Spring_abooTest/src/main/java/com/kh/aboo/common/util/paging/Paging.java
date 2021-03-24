@@ -1,4 +1,4 @@
-package common.util.paging;
+package com.kh.aboo.common.util.paging;
 
 public class Paging {
 	

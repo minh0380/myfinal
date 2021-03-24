@@ -47,7 +47,7 @@
 		<interceptor>
 			<!-- url 패턴 -->
 			<mapping path="/**"/>
-			<beans:bean class="common.interceptor.AuthInterceptor"/>
+			<beans:bean class="com.kh.aboo.common.interceptor.AuthInterceptor"/>
 		</interceptor>
 	</interceptors>
 	
@@ -74,5 +74,5 @@
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="txPointCut"/>
 	</aop:config>
 	
-	<context:component-scan base-package="com.kh.toy, common, com.kh.aboo" />
+	<context:component-scan base-package="com.kh.toy, com.kh.aboo" />
 </beans:beans>

@@ -1,4 +1,4 @@
-package common.code;
+package com.kh.aboo.common.code;
 
 //enum(enumerated type) : 열거형, 서로 연관된 상수들의 집합
 //	서로 연관된 상수들을 편하게 다루기 위해 enum만의 문법적인 형식과 method를 제공

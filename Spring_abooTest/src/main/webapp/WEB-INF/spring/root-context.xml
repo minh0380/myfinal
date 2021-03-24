@@ -11,9 +11,9 @@
 	<!-- db관련한 외부 라이브러리라서 서블릿과 관련이 없기 때문에 root-context에 빈을 등록한다. -->
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@pclass_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_pclass"/>
+		<property name="url" value="jdbc:oracle:thin:@pclass_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_abooDB"/>
 		<property name="username" value="admin"/>
-		<property name="password" value="CMHdatabase951!"/>
+		<property name="password" value="Aboo91939699"/>
 		<!-- <property name="maxWait" value="10000"/> -->
 	</bean>
 	
@@ -39,7 +39,7 @@
 	
 	<!-- @Mapper 어노테이션이 등록된 인터페이스 매퍼를 찾아 스프링에 등록 -->
 	<!-- @annotation : 모든 인터페이스가 아닌 특정한 어노테이션만 mybatis가 스캔할 수 있도록 함. 이걸 안하면 proxy랑 꼬일 수도 있음. -->
-	<mybatis:scan base-package="com.kh.toy, common, com.kh.aboo" annotation="org.apache.ibatis.annotations.Mapper"/>
+	<mybatis:scan base-package="com.kh.toy, com.kh.aboo" annotation="org.apache.ibatis.annotations.Mapper"/>
 	
 	<bean id="mailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">
 		<property name="host" value="smtp.naver.com"/>

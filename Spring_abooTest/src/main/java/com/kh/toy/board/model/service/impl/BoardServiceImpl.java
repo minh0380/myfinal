@@ -9,16 +9,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.aboo.common.code.ErrorCode;
+import com.kh.aboo.common.exception.CustomException;
+import com.kh.aboo.common.exception.ToAlertException;
+import com.kh.aboo.common.util.file.FileUtil;
+import com.kh.aboo.common.util.file.FileVO;
+import com.kh.aboo.common.util.paging.Paging;
 import com.kh.toy.board.model.repository.BoardRepository;
 import com.kh.toy.board.model.service.BoardService;
 import com.kh.toy.board.model.vo.Board;
-
-import common.code.ErrorCode;
-import common.exception.CustomException;
-import common.exception.ToAlertException;
-import common.util.file.FileUtil;
-import common.util.file.FileVO;
-import common.util.paging.Paging;
 
 @Service
 public class BoardServiceImpl implements BoardService {

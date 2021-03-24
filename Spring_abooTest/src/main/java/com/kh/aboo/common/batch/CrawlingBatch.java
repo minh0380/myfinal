@@ -1,4 +1,4 @@
-package common.batch;
+package com.kh.aboo.common.batch;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;

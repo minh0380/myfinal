@@ -20,12 +20,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import com.kh.aboo.common.code.ErrorCode;
+import com.kh.aboo.common.exception.ToAlertException;
 import com.kh.toy.member.model.service.MemberService;
 import com.kh.toy.member.model.vo.Member;
 import com.kh.toy.member.validator.MemberValidator;
-
-import common.code.ErrorCode;
-import common.exception.ToAlertException;
 
 //Controller : 해당 클래스가 Controller 임을 스프링에 알려준다.
 //해당 클래스를 bean으로 등록

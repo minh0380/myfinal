@@ -1,4 +1,4 @@
-package common.mail;
+package com.kh.aboo.common.mail;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -9,7 +9,7 @@ import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 
-import common.code.Configcode;
+import com.kh.aboo.common.code.Configcode;
 
 //Spring을 통해서 사용하기 위해 @Component를 붙여준다.
 @Component

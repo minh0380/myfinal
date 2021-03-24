@@ -1,6 +1,6 @@
-package common.exception;
+package com.kh.aboo.common.exception;
 
-import common.code.ErrorCode;
+import com.kh.aboo.common.code.ErrorCode;
 
 public class ToAlertException extends CustomException{
 	/**

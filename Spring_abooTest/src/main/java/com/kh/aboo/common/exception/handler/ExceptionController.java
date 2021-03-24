@@ -1,4 +1,4 @@
-package common.exception.handler;
+package com.kh.aboo.common.exception.handler;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import common.exception.CustomException;
+import com.kh.aboo.common.exception.CustomException;
 
 @Controller
 //지정한 패키지 내의 모든 컨트롤러들의 공통관심사를 처리하는 클래스

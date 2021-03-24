@@ -1,4 +1,4 @@
-package common.mail.handler;
+package com.kh.aboo.common.mail.handler;
 
 import java.util.Map;
 

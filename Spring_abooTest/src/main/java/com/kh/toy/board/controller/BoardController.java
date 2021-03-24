@@ -21,12 +21,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.aboo.common.util.file.FileVO;
+import com.kh.aboo.common.util.paging.Paging;
 import com.kh.toy.board.model.service.BoardService;
 import com.kh.toy.board.model.vo.Board;
 import com.kh.toy.member.model.vo.Member;
-
-import common.util.file.FileVO;
-import common.util.paging.Paging;
 
 @Controller
 @RequestMapping("board")

@@ -1,8 +1,8 @@
-package common.util.file;
+package com.kh.aboo.common.util.file;
 
 import java.sql.Date;
 
-import common.code.Configcode;
+import com.kh.aboo.common.code.Configcode;
 
 public class FileVO {
 	

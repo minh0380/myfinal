@@ -5,9 +5,8 @@ import java.util.Map;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.kh.aboo.common.util.paging.Paging;
 import com.kh.toy.board.model.vo.Board;
-
-import common.util.paging.Paging;
 
 public interface BoardService {
 	

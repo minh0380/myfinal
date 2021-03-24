@@ -1,4 +1,4 @@
-package common.util.encoding;
+package com.kh.aboo.common.util.encoding;
 
 import java.io.UnsupportedEncodingException;
 

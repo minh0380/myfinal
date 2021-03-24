@@ -1,4 +1,4 @@
-package common.util.http;
+package com.kh.aboo.common.util.http;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -11,8 +11,8 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
-import common.code.ErrorCode;
-import common.exception.ToAlertException;
+import com.kh.aboo.common.code.ErrorCode;
+import com.kh.aboo.common.exception.ToAlertException;
 
 public class HttpUtils {
 

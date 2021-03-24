@@ -1,6 +1,6 @@
-package common.exception;
+package com.kh.aboo.common.exception;
 
-import common.code.ErrorCode;
+import com.kh.aboo.common.code.ErrorCode;
 
 public class CustomException extends RuntimeException {
 	// exception 들의 부모가 되어줄 클래스이다.

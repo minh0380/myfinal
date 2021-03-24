@@ -1,4 +1,4 @@
-package common.interceptor;
+package com.kh.aboo.common.interceptor;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import common.code.ErrorCode;
-import common.exception.ToAlertException;
+import com.kh.aboo.common.code.ErrorCode;
+import com.kh.aboo.common.exception.ToAlertException;
 
 //HandlerInterceptor
 public class AuthInterceptor implements HandlerInterceptor {

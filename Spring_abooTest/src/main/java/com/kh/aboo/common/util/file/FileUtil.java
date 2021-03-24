@@ -1,4 +1,4 @@
-package common.util.file;
+package com.kh.aboo.common.util.file;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +9,7 @@ import java.util.UUID;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import common.code.Configcode;
+import com.kh.aboo.common.code.Configcode;
 
 public class FileUtil {
 	

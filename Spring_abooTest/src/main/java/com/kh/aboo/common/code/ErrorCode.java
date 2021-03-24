@@ -1,4 +1,4 @@
-package common.code;
+package com.kh.aboo.common.code;
 
 public enum ErrorCode {
 	
