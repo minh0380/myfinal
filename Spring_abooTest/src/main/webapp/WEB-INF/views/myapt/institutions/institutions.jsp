@@ -7,19 +7,19 @@
     
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">WebHost</a>
+	      <a class="navbar-brand" href="/index"><img class="col-md-3" src="../../../resources/images/logo_w.png"></a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 	      </button>
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item active"><a href="domain.html" class="nav-link">MyApt</a></li>
-	          <li class="nav-item"><a class="nav-link" href="hosting.html">Board</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">MyPage</a></li>
-	          <li class="nav-item cta"><a href="contact.html" class="nav-link"><span>Login</span></a></li>
+	          <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
+	          <li class="nav-item active"><a href="/myapt/schedule" class="nav-link">MyApt</a></li>
+	          <li class="nav-item"><a class="nav-link" href="/board/info/infolist">Board</a></li>
+	          <li class="nav-item"><a href="/mypage/modifyinfo" class="nav-link">MyPage</a></li>
+	          <li class="nav-item cta"><a href="/login" class="nav-link"><span>Login</span></a></li>
 	        </ul>
 	      </div>
 	    </div>
@@ -50,7 +50,9 @@
           <div class="w-100"></div>
         <div class="w-100 d-flex">
           <div class="col-md-6">
-            <div class="col-md-12" id="map"></div>
+            <div class="col-md-12" id="map">
+            	<div id="kakao-map" style="width: 100%; height: 100%;"></div>
+            </div>
           </div>
           <div class="col-md-6 d-flex justify-content-center">
             <div class="tab-pane fade show active" id="v-pills-whatwedo" role="tabpanel" aria-labelledby="v-pills-whatwedo-tab">
@@ -94,8 +96,10 @@
         <div class="row mb-5">
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">WebHost</h2>
-              <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts.</p>
+              <h2 class="ftco-heading-2">ABOO</h2>
+              <p>아파트를 부탁해!<br>
+              아파트 주변 공공기관부터 투표, 관리비납부, 차량등록, 층간소음 문의 등 관리하기 편한 기능을 제공합니다.
+              </p>
               <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-5">
                 <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
                 <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
@@ -107,12 +111,12 @@
             <div class="ftco-footer-widget mb-4 ml-md-5">
               <h2 class="ftco-heading-2">Unseful Links</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Servers</a></li>
-                <li><a href="#" class="py-2 d-block">Windos Hosting</a></li>
-                <li><a href="#" class="py-2 d-block">Cloud Hosting</a></li>
-                <li><a href="#" class="py-2 d-block">OS Servers</a></li>
-                <li><a href="#" class="py-2 d-block">Linux Servers</a></li>
-                <li><a href="#" class="py-2 d-block">Policy</a></li>
+                <li><a href="/myapt/parking" class="py-2 d-block">Parking</a></li>
+                <li><a href="/board/info/listinfo" class="py-2 d-block">Info Board</a></li>
+                <li><a href="/board/interior/intlist" class="py-2 d-block">Interior Board</a></li>
+                <li><a href="/board/used/usedlist" class="py-2 d-block">Used Board</a></li>
+                <li><a href="/myapt/schedule" class="py-2 d-block">Apt Schedule</a></li>
+                <li><a href="/myapt/institutions" class="py-2 d-block">Institutions</a></li>
               </ul>
             </div>
           </div>
@@ -120,12 +124,11 @@
              <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">Navigational</h2>
               <ul class="list-unstyled">
-                <li><a href="#" class="py-2 d-block">Home</a></li>
-                <li><a href="#" class="py-2 d-block">Domain</a></li>
-                <li><a href="#" class="py-2 d-block">Hosting</a></li>
-                <li><a href="#" class="py-2 d-block">About</a></li>
-                <li><a href="#" class="py-2 d-block">Blog</a></li>
-                <li><a href="#" class="py-2 d-block">Contact</a></li>
+                <li><a href="/index" class="py-2 d-block">Home</a></li>
+                <li><a href="/about" class="py-2 d-block">About</a></li>
+                <li><a href="/myapt/schedule" class="py-2 d-block">MyApt</a></li>
+                <li><a href="/baord/info/listinfo" class="py-2 d-block">Board</a></li>
+                <li><a href="/mypage/modifyinfo" class="py-2 d-block">MyPage</a></li>
               </ul>
             </div>
           </div>
@@ -134,9 +137,12 @@
             	<h2 class="ftco-heading-2">Office</h2>
             	<div class="block-23 mb-3">
 	              <ul>
-	                <li><span class="icon icon-map-marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@yourdomain.com</span></a></li>
+	                <li><span class="icon icon-map-marker"></span><span class="text">6, Teheran-ro 14-gil, Gangnam-gu, Seoul, Republic of Korea</span></li>
+	                <li><a href="#"><span class="icon icon-phone"></span><span class="text">+82 123 4567 8910</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">choayoung91@naver.com</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">gmldnjs74@gmail.com</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">minh0380@naver.com</span></a></li>
+	                <li><a href="#"><span class="icon icon-envelope"></span><span class="text">psuny1031@naver.com</span></a></li>
 	              </ul>
 	            </div>
             </div>
@@ -146,7 +152,7 @@
           <div class="col-md-12 text-center">
 
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> <i class="icon-heart" aria-hidden="true"></i> by aboo for a better apartment.
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
           </div>
         </div>
@@ -173,9 +179,19 @@
   <script src="../../../../resources/js/generation/bootstrap-datepicker.js"></script>
   <script src="../../../../resources/js/generation/jquery.timepicker.min.js"></script>
   <script src="../../../../resources/js/generation/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="../../../../resources/js/generation/google-map.js"></script>
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
+  <!-- <script src="../../../../resources/js/generation/google-map.js"></script> -->
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d4b060ce6efffd8047e3830ad6fad0e8"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
-    
+  
+  <script type="text/javascript">
+	  var container = document.getElementById('kakao-map'); //지도를 담을 영역의 DOM 레퍼런스
+	  var options = { //지도를 생성할 때 필요한 기본 옵션
+	  	center: new kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+	  	level: 3 //지도의 레벨(확대, 축소 정도)
+	  };
+	
+	  var map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
+  </script>
   </body>
 </html>

@@ -2,51 +2,63 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mybatis="http://mybatis.org/schema/mybatis-spring"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 	http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring.xsd">
 	
-	<!-- * root에는 외부라이브러리 셋팅한다. -->
-	<!-- 1. DB연동, 마이바티스 -->
-	<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	<!-- 외부 라이브러리는 root-context에 등록한다. -->
+	
+	<!-- db관련한 외부 라이브러리라서 서블릿과 관련이 없기 때문에 root-context에 빈을 등록한다. -->
+	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource">
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@pclass_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_pclass"/>
 		<property name="username" value="admin"/>
 		<property name="password" value="CMHdatabase951!"/>
-	</bean> -->
-	<bean id="dataSource" class="oracle.jdbc.pool.OracleDataSource">
-      <property name="URL" value="jdbc:oracle:thin:@pclass_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_pclass"/>
-      <property name="connectionCacheProperties">
-         <props>
-            <prop key="user">admin</prop>
-            <prop key="password">CMHdatabase951!</prop>
-         </props>
-      </property>
-   </bean>
-	
-	<!-- 마이바티스 설정은 main, test 다르게 설정해놓을 수 있다. resources에 셋팅. -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-	  <property name="dataSource" ref="dataSource" />
-	  <property name="configLocation" value="classpath:mybatis/config.xml" /> 
+		<!-- <property name="maxWait" value="10000"/> -->
 	</bean>
 	
-	<!-- @Mapper 어노테이션이 등록된 인터페이스 한해서만 스프링에 등록한다. -->
-	<mybatis:scan base-package="com.kh.toy, com.kh.aboo" annotation="org.apache.ibatis.annotations.Mapper"/>
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	  <property name="dataSource" ref="dataSource" />
+	  <!-- <property name="configuration">
+	    <bean class="org.apache.ibatis.session.Configuration">
+	      <property name="mapUnderscoreToCamelCase" value="true"/>
+	    </bean>
+	  </property> -->
+	  <property name="configLocation" value="classpath:mybatis/config.xml"></property>
+	</bean>
 	
-	<!-- mail 보내기 -->
+	<!-- mybatis:scan이 있으므로 SqlSessionTemplate은 없어도 됨.
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+	  <constructor-arg index="0" ref="sqlSessionFactory" />
+	</bean> -->
+	
+	<!-- <bean id="memberMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+	  <property name="mapperInterface" value="com.spring.mybatis.member.model.dao.MemberMapper" />
+	  <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean> -->
+	
+	<!-- @Mapper 어노테이션이 등록된 인터페이스 매퍼를 찾아 스프링에 등록 -->
+	<!-- @annotation : 모든 인터페이스가 아닌 특정한 어노테이션만 mybatis가 스캔할 수 있도록 함. 이걸 안하면 proxy랑 꼬일 수도 있음. -->
+	<mybatis:scan base-package="com.kh.toy, common, com.kh.aboo" annotation="org.apache.ibatis.annotations.Mapper"/>
+	
 	<bean id="mailSenderImpl" class="org.springframework.mail.javamail.JavaMailSenderImpl">
-		<property name="host" value="smtp.naver.com"></property>
-		<property name="username" value="choayoung91@naver.com"></property>
-		<property name="password" value="ehrrowk91@"></property>
-		<property name="port" value="465"></property>
+		<property name="host" value="smtp.naver.com"/>
+		<property name="username" value="minh0380@naver.com"/>
+		<property name="password" value="dltgld951!"/>
+		<property name="port" value="465"/>
 		<property name="javaMailProperties">
 			<props>
 				<prop key="mail.smtp.auth">true</prop>
 				<prop key="mail.smtp.starttls.enable">true</prop>
 				<prop key="mail.smtp.ssl.enable">true</prop>
-				<prop key="mail.debug">true</prop>
+				<prop key="mail.debug">true</prop> <!-- 메일이 잘 보내졌나 확인 -->
 			</props>
-			
 		</property>
-		
 	</bean>
+	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxInMemorySize" value="10485760"/>
+		<property name="maxUploadSize" value="10485760"/>
+	</bean>
+	
 </beans>
