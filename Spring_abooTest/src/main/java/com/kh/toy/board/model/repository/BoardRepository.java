@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.kh.aboo.common.util.file.FileVO;
+import com.kh.aboo.common.util.file.FileVo;
 import com.kh.aboo.common.util.paging.Paging;
 import com.kh.toy.board.model.vo.Board;
 
@@ -17,7 +17,7 @@ public interface BoardRepository {
 	@Insert("insert into tb_board(bd_idx, user_id, title, content) "
 			+ "values('b'||sc_board_idx.nextval, #{userId}, #{title}, #{content})")
 	int insertBoard(Board board);
-	int insertFile(FileVO file);
+	int insertFile(FileVo file);
 	List<Board> selectBoardList(Paging paging);
 	
 	@Select("select count(*) from tb_board")
@@ -27,6 +27,6 @@ public interface BoardRepository {
 	Board selectBoardDetail(String bdIdx);
 	
 	@Select("select * from tb_file where type_idx = #{bdIdx}")
-	List<FileVO> selectFileWithBdIdx(String bdIdx);
+	List<FileVo> selectFileWithBdIdx(String bdIdx);
 	
 }

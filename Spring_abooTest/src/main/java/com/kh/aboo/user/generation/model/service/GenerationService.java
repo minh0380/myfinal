@@ -7,6 +7,6 @@ public interface GenerationService {
 	
 	Generation selectGenerationForAuth(Generation generation);
 	
-	
+	void insertGeneration(Generation generation);
 	
 }

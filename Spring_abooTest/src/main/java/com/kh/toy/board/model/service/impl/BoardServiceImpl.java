@@ -13,7 +13,7 @@ import com.kh.aboo.common.code.ErrorCode;
 import com.kh.aboo.common.exception.CustomException;
 import com.kh.aboo.common.exception.ToAlertException;
 import com.kh.aboo.common.util.file.FileUtil;
-import com.kh.aboo.common.util.file.FileVO;
+import com.kh.aboo.common.util.file.FileVo;
 import com.kh.aboo.common.util.paging.Paging;
 import com.kh.toy.board.model.repository.BoardRepository;
 import com.kh.toy.board.model.service.BoardService;
@@ -36,9 +36,9 @@ public class BoardServiceImpl implements BoardService {
 		boardRepository.insertBoard(board);
 		
 		try {
-			List<FileVO> fileList = fileUtil.fileUpload(files);
-			for (FileVO fileVO : fileList) {
-				boardRepository.insertFile(fileVO);
+			List<FileVo> fileList = fileUtil.fileUpload(files);
+			for (FileVo fileVo : fileList) {
+				boardRepository.insertFile(fileVo);
 			}
 		} catch (Exception e) {
 			throw new ToAlertException(ErrorCode.IB01, e);
@@ -66,7 +66,7 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public Map<String, Object> selectBoardDetail(String bdIdx) {
 		Board board = boardRepository.selectBoardDetail(bdIdx);
-		List<FileVO> files = boardRepository.selectFileWithBdIdx(bdIdx);
+		List<FileVo> files = boardRepository.selectFileWithBdIdx(bdIdx);
 		
 		Map<String, Object> commandMap = new HashMap<>();
 		commandMap.put("board", board);

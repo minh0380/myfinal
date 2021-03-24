@@ -23,12 +23,17 @@ public class GenerationServiceImpl implements GenerationService {
 	@Override
 	public Generation selectGenerationForAuth(Generation generation) {
 
-		Generation authInfo = generationRepository.selectGenerationForAuth(generation.getId(), generation.getPassword());
-		if (authInfo == null) {
+		Generation authInfo = generationRepository.selectGenerationForAuth(generation.getId());
+		if (authInfo == null || !encoder.matches(generation.getPassword(), authInfo.getPassword())) {
 			return null;
 		}
 
 		return authInfo;
+	}
+
+	@Override
+	public void insertGeneration(Generation generation) {
+		generationRepository.insertGeneration(generation);
 	}
 
 }
