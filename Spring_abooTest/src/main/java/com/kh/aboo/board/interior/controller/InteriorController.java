@@ -1,17 +1,20 @@
 package com.kh.aboo.board.interior.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.aboo.board.interior.model.service.InteriorService;
 import com.kh.aboo.board.interior.model.vo.InteriorBrd;
-import com.kh.aboo.user.generation.model.vo.Generation;
 
 @RequestMapping("board/interior")
 @Controller
@@ -25,13 +28,16 @@ public class InteriorController {
 	
 	@GetMapping("intlist")
 	public String intList() {
+		InteriorBrd interiorBrd = interiorService.selectInteriorBrdByIdx("100022");
+		Document doc = Jsoup.parse(interiorBrd.getIntContent());
+		Elements img = doc.select("img");
+		System.out.println(img);
 		return "board/interior/intlist";
 	}
 	
 	@GetMapping("intdetail")
 	public String intDetail(String intPostNo, Model model) {
 		InteriorBrd interiorBrd = interiorService.selectInteriorBrdByIdx(intPostNo);
-		System.out.println(interiorBrd);
 		model.addAttribute("interiorBrd", interiorBrd);
 		return "board/interior/intdetail";
 	}
@@ -42,7 +48,9 @@ public class InteriorController {
 	}
 	
 	@PostMapping("intuploadimpl")
-	public String intUploadImpl(InteriorBrd interiorBrd, Model model, HttpSession session) {
+	public String intUploadImpl(InteriorBrd interiorBrd
+			, Model model
+			, HttpSession session) {
 		/*Generation generation = (Generation) session.getAttribute("generation");
 		if(generation == null) {
 			model.addAttribute("alertMsg", "회원 로그인을 하셔야 글을 작성하실 수 있습니다.");

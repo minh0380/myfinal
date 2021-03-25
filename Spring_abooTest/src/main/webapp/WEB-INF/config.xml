@@ -18,7 +18,8 @@
 	http://docs.cksource.com/CKFinder_2.x/Developers_Guide/Java/Configuration/baseURL_and_baseDir
 	-->
 	<baseDir>E:\CODE\99_myfinal\myfinal\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\Spring_abooTest\resources\ckstorage</baseDir>
-	<baseURL>/ckstorage</baseURL>
+	<baseDir>E:\CODE\99_myfinal\myfinal\Spring_abooTest\src\main\webapp\resources\ckstorage</baseDir>
+	<baseURL>/resources/ckstorage</baseURL>
 	<licenseKey></licenseKey>
 	<licenseName></licenseName>
 	<!--

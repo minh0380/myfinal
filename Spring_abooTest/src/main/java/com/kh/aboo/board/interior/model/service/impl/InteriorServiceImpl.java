@@ -1,5 +1,7 @@
 package com.kh.aboo.board.interior.model.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.kh.aboo.board.interior.model.repository.InteriorBrdRepository;
@@ -23,6 +25,11 @@ public class InteriorServiceImpl implements InteriorService {
 	@Override
 	public InteriorBrd selectInteriorBrdByIdx(String intPostNo) {
 		return interiorBrdRepository.selectInteriorBrdByIdx(intPostNo);
+	}
+
+	@Override
+	public List<InteriorBrd> selectAllInteriorBrd() {
+		return interiorBrdRepository.selectAllInteriorBrd();
 	}
 	
 }
