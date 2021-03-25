@@ -28,7 +28,7 @@
               <p>Mypage</p>
             </a>
           </li>
-          <li>
+          <li class="active">
             <a href="./dashboard.html">
               <i class="tim-icons icon-tap-02"></i>
               <p>Vote</p>
@@ -46,7 +46,7 @@
               <p>Mgmtfee</p>
             </a>
           </li>
-          <li class="active ">
+          <li>
             <a href="./notifications.html">
               <i class="tim-icons icon-bus-front-12"></i>
               <p>Vehicle</p>

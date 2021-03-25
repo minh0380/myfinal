@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
-import com.kh.aboo.user.admin.model.vo.Admin;
 import com.kh.aboo.user.apartment.model.service.ApartmentService;
 import com.kh.aboo.user.apartment.model.vo.Apartment;
 import com.kh.aboo.user.generation.model.vo.Generation;
+import com.kh.aboo.user.manager.model.vo.Admin;
 
 @RequestMapping("myapt")
 @Controller

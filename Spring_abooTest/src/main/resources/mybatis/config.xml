@@ -11,9 +11,9 @@
 	</settings>
 
 <!-- 2. 경로 별칭 지정-->
-	<typeAliases>
+	<!-- <typeAliases>
 		<typeAlias type="com.kh.toy.member.model.vo.Member" alias="MEMBER"/>
-	</typeAliases>
+	</typeAliases> -->
 
 <!-- 3. 작성쿼리 root등록을 위한 경로 설정. 맨아래에 있어야 한다.-->
 	
