@@ -145,5 +145,13 @@ public class Paging {
 	public int getQueryEnd() {
 		return queryEnd;
 	}
+
+	@Override
+	public String toString() {
+		return "Paging [type=" + type + ", currentPage=" + currentPage + ", total=" + total + ", cntPerPage="
+				+ cntPerPage + ", blockCnt=" + blockCnt + ", lastPage=" + lastPage + ", blockStart=" + blockStart
+				+ ", blockEnd=" + blockEnd + ", prev=" + prev + ", next=" + next + ", queryStart=" + queryStart
+				+ ", queryEnd=" + queryEnd + "]";
+	}
 	
 }

@@ -7,7 +7,7 @@ public class InteriorBrd {
 	private String intPostNo;
 	private String apartmentIdx;
 	private String intTitle;
-	private String intFile;
+	private String intThumbnail;
 	private String intContent;
 	private String intWriter;
 	private Date intRegDate;
@@ -38,12 +38,12 @@ public class InteriorBrd {
 		this.intTitle = intTitle;
 	}
 	
-	public String getIntFile() {
-		return intFile;
+	public String getIntThumbnail() {
+		return intThumbnail;
 	}
 	
-	public void setIntFile(String intFile) {
-		this.intFile = intFile;
+	public void setIntThumbnail(String intThumbnail) {
+		this.intThumbnail = intThumbnail;
 	}
 	
 	public String getIntContent() {
@@ -89,7 +89,7 @@ public class InteriorBrd {
 	@Override
 	public String toString() {
 		return "InteriorBrd [intPostNo=" + intPostNo + ", apartmentIdx=" + apartmentIdx + ", intTitle=" + intTitle
-				+ ", intFile=" + intFile + ", intContent=" + intContent + ", intWriter=" + intWriter + ", intRegDate="
+				+ ", intThumbnail=" + intThumbnail + ", intContent=" + intContent + ", intWriter=" + intWriter + ", intRegDate="
 				+ intRegDate + ", intIsDel=" + intIsDel + ", intIsPrivate=" + intIsPrivate + "]";
 	}
 	

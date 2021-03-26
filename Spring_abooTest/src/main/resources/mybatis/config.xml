@@ -11,11 +11,13 @@
 	</settings>
 
 <!-- 2. 경로 별칭 지정-->
-	<!-- <typeAliases>
-		<typeAlias type="com.kh.toy.member.model.vo.Member" alias="MEMBER"/>
-	</typeAliases> -->
+	<typeAliases>
+		<typeAlias type="com.kh.aboo.board.interior.model.vo.InteriorBrd" alias="interiorBrd"/>
+	</typeAliases>
 
 <!-- 3. 작성쿼리 root등록을 위한 경로 설정. 맨아래에 있어야 한다.-->
-	
+	<mappers>
+		<mapper resource="mybatis/mapper/board/interiorBrdMapper.xml"/>
+	</mappers>
 
 </configuration>
