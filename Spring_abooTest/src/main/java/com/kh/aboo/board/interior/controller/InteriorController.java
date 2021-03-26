@@ -83,7 +83,7 @@ public class InteriorController {
 		if(imgs.isEmpty()) {
 			interiorBrd.setIntThumbnail("../../../resources/abooimg/nopreviewimg.jpg");
 		}else {
-			interiorBrd.setIntThumbnail("../../.." + imgs.get(0));
+			interiorBrd.setIntThumbnail(imgs.get(0));
 		}
 		
 		int res = interiorService.insertInteriorBrd(interiorBrd);
@@ -124,7 +124,7 @@ public class InteriorController {
 		if(imgs.isEmpty()) {
 			interiorBrd.setIntThumbnail("../../../resources/abooimg/nopreviewimg.jpg");
 		}else {
-			interiorBrd.setIntThumbnail("../../.." + imgs.get(0));
+			interiorBrd.setIntThumbnail(imgs.get(0));
 		}
 		
 		int res = interiorService.updateInteriorBrd(interiorBrd);
