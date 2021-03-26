@@ -31,19 +31,18 @@ public class InteriorServiceImpl implements InteriorService {
 	}
 
 	@Override
-	public Map<String, Object> selectInteriorBrdList(int currentPage) {
+	public Map<String, Object> selectInteriorBrdList(int currentPage, String apartmentIdx) {
 		Paging paging = Paging.builder()
 				.currentPage(currentPage)
 				.blockCnt(5)
 				.cntPerPage(6)
 				.type("interior")
-				.total(interiorBrdRepository.selectInteriorBrdCnt())
+				.total(interiorBrdRepository.selectInteriorBrdCnt(apartmentIdx))
 				.build();
-		System.out.println(paging.toString());
 		
 		Map<String, Object> commandMap = new HashMap<>();
-		commandMap.put("paing", paging);
-		commandMap.put("interiorBrd", interiorBrdRepository.selectInteriorBrdList(paging));
+		commandMap.put("paging", paging);
+		commandMap.put("interiorBrd", interiorBrdRepository.selectInteriorBrdList(paging.getQueryStart(), paging.getQueryEnd(), apartmentIdx));
 		
 		return commandMap;
 	}

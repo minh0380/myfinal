@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.kh.aboo.board.interior.model.service.InteriorService;
 import com.kh.aboo.board.interior.model.vo.InteriorBrd;
+import com.kh.aboo.user.generation.model.vo.Generation;
 
 @RequestMapping("board/interior")
 @Controller
@@ -33,8 +34,10 @@ public class InteriorController {
 	
 	@GetMapping("intlist")
 	public String intList(@RequestParam(defaultValue = "1") int page
-			, Model model) {
-		model.addAllAttributes(interiorService.selectInteriorBrdList(page));
+			, Model model
+			, HttpSession session) {
+		Generation generation = (Generation) session.getAttribute("generation");
+		model.addAllAttributes(interiorService.selectInteriorBrdList(page, generation.getApartmentIdx()));
 		return "board/interior/intlist";
 	}
 	
@@ -54,21 +57,21 @@ public class InteriorController {
 	public String intUploadImpl(InteriorBrd interiorBrd
 			, Model model
 			, HttpSession session) {
-		/*Generation generation = (Generation) session.getAttribute("generation");
+		Generation generation = (Generation) session.getAttribute("generation");
 		if(generation == null) {
 			model.addAttribute("alertMsg", "회원 로그인을 하셔야 글을 작성하실 수 있습니다.");
 			model.addAttribute("url", "/board/interior/intlist");
 			
 			return "common/result";
-		}*/
+		}
 		
-		//interiorBrd.setApartmentIdx(generation.getApartmentIdx());
-		//interiorBrd.setIntWriter(generation.getBuilding() + "동 " + generation.getNum() + "호");
-		interiorBrd.setApartmentIdx("100000");
-		interiorBrd.setIntWriter("101동 102호");
+		interiorBrd.setApartmentIdx(generation.getApartmentIdx());
+		interiorBrd.setIntWriter(generation.getBuilding() + "동 " + generation.getNum() + "호");
+		interiorBrd.setGenerationIdx(generation.getGenerationIdx());
 		
 		Document doc = Jsoup.parse(interiorBrd.getIntContent());
 		Elements img = doc.select("img");
+		
 		List<String> imgs = new ArrayList<>();
 		for (Element element : img) {
 			Node node = element;
@@ -76,7 +79,11 @@ public class InteriorController {
 			imgs.add(imgUrl);
 		}
 		
-		interiorBrd.setIntThumbnail("../../.." + imgs.get(0));
+		if(imgs.isEmpty()) {
+			interiorBrd.setIntThumbnail("../../../resources/abooimg/nopreviewimg.jpg");
+		}else {
+			interiorBrd.setIntThumbnail("../../.." + imgs.get(0));
+		}
 		
 		int res = interiorService.insertInteriorBrd(interiorBrd);
 		if(res > 0) {

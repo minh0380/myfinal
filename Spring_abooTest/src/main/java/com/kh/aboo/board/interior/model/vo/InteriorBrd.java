@@ -13,6 +13,7 @@ public class InteriorBrd {
 	private Date intRegDate;
 	private int intIsDel;
 	private int intIsPrivate;
+	private String generationIdx;
 	
 	public String getIntPostNo() {
 		return intPostNo;
@@ -86,11 +87,20 @@ public class InteriorBrd {
 		this.intIsPrivate = intIsPrivate;
 	}
 
+	public String getGenerationIdx() {
+		return generationIdx;
+	}
+
+	public void setGenerationIdx(String generationIdx) {
+		this.generationIdx = generationIdx;
+	}
+
 	@Override
 	public String toString() {
 		return "InteriorBrd [intPostNo=" + intPostNo + ", apartmentIdx=" + apartmentIdx + ", intTitle=" + intTitle
-				+ ", intThumbnail=" + intThumbnail + ", intContent=" + intContent + ", intWriter=" + intWriter + ", intRegDate="
-				+ intRegDate + ", intIsDel=" + intIsDel + ", intIsPrivate=" + intIsPrivate + "]";
+				+ ", intThumbnail=" + intThumbnail + ", intContent=" + intContent + ", intWriter=" + intWriter
+				+ ", intRegDate=" + intRegDate + ", intIsDel=" + intIsDel + ", intIsPrivate=" + intIsPrivate
+				+ ", generationIdx=" + generationIdx + "]";
 	}
 	
 }

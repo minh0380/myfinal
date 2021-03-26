@@ -11,6 +11,7 @@ public class IntCmt {
 	private Date intCmtRegDate;
 	private int intCmtIsDel;
 	private int intCmtIsPrivate;
+	private String generationIdx;
 	
 	public String getIntCmtNo() {
 		return intCmtNo;
@@ -68,11 +69,19 @@ public class IntCmt {
 		this.intCmtIsPrivate = intCmtIsPrivate;
 	}
 
+	public String getGenerationIdx() {
+		return generationIdx;
+	}
+
+	public void setGenerationIdx(String generationIdx) {
+		this.generationIdx = generationIdx;
+	}
+
 	@Override
 	public String toString() {
 		return "IntCmt [intCmtNo=" + intCmtNo + ", intPostNo=" + intPostNo + ", intCmtContent=" + intCmtContent
 				+ ", intCmtWriter=" + intCmtWriter + ", intCmtRegDate=" + intCmtRegDate + ", intCmtIsDel=" + intCmtIsDel
-				+ ", intCmtIsPrivate=" + intCmtIsPrivate + "]";
+				+ ", intCmtIsPrivate=" + intCmtIsPrivate + ", generationIdx=" + generationIdx + "]";
 	}
 	
 }
