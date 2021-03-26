@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.aboo.board.interior.model.service.InteriorService;
 import com.kh.aboo.board.interior.model.vo.InteriorBrd;
@@ -100,6 +101,19 @@ public class InteriorController {
 	@GetMapping("intmodify")
 	public String intModify() {
 		return "board/interior/intmodify";
+	}
+	
+	@GetMapping("intdelete")
+	@ResponseBody
+	public String intDelete(String intPostNo, HttpSession session) {
+		Generation generation = (Generation) session.getAttribute("generation");
+		int res = interiorService.deleteInteriorBrd(intPostNo, generation.getApartmentIdx());
+		
+		if(res > 0) {
+			return "success";
+		}
+		
+		return "fail";
 	}
 	
 }

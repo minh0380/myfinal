@@ -54,16 +54,16 @@
         	<c:forEach items="${interiorBrd}" var="interiorBrd">
                 <div class="col-md-4 ftco-animate">
 					<div class="blog-entry">
-					  <a href="blog-single.html" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');">
+					  <a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');">
 					  </a>
 					  <div class="text d-flex py-4">
 					    <div class="meta mb-3">
-					      <div><a href="#">${interiorBrd.intRegDate}</a></div>
-					      <div><a href="#">${interiorBrd.intWriter}</a></div>
-					      <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
 					    </div>
 					    <div class="desc pl-3">
-					      <h3 class="heading"><a href="#">${interiorBrd.intTitle}</a></h3>
+					      <h3 class="heading"><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>
 					    </div>
 					  </div>
 					</div>
@@ -99,7 +99,7 @@
 		</div>
         
         <div class="container text-center d-flex justify-content-end mt-0">
-	      <a href="#" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">글쓰기</a>
+	      <a href="${context}/board/interior/intupload" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">글쓰기</a>
 	    </div>
         
         <div class="row mt-5">

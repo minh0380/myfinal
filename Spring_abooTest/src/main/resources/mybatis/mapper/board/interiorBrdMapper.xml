@@ -12,7 +12,7 @@
 			from(
 				select *
 				from tb_interior_brd
-				where apartment_idx = #{apartmentIdx}
+				where apartment_idx = #{apartmentIdx} and int_is_del = 0
 				order by int_post_no desc
 			) b
 		) where rnum between #{queryStart} and #{queryEnd}

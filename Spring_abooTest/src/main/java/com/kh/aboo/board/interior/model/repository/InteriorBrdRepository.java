@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.kh.aboo.board.interior.model.vo.InteriorBrd;
 import com.kh.aboo.common.util.paging.Paging;
@@ -22,7 +23,11 @@ public interface InteriorBrdRepository {
 	
 	List<InteriorBrd> selectInteriorBrdList(@Param(value = "queryStart") int queryStart, @Param(value = "queryEnd") int queryEnd, @Param(value = "apartmentIdx") String apartmentIdx);
 	
-	@Select("select count(*) from tb_interior_brd where apartment_idx = ${apartmentIdx}")
+	@Select("select count(*) from tb_interior_brd where apartment_idx = #{apartmentIdx}")
 	int selectInteriorBrdCnt(@Param(value = "apartmentIdx") String apartmentIdx);
+	
+	@Update("update tb_interior_brd set int_is_del = 1 where int_post_no = #{intPostNo} "
+			+ "and apartment_idx = #{apartmentIdx}")
+	int deleteInteriorBrd(@Param(value = "intPostNo") String intPostNo, @Param(value = "apartmentIdx") String apartmentIdx);
 	
 }

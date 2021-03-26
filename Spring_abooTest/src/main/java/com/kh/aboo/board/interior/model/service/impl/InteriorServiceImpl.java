@@ -46,5 +46,10 @@ public class InteriorServiceImpl implements InteriorService {
 		
 		return commandMap;
 	}
+
+	@Override
+	public int deleteInteriorBrd(String intPostNo, String apartmentIdx) {
+		return interiorBrdRepository.deleteInteriorBrd(intPostNo, apartmentIdx);
+	}
 	
 }

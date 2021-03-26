@@ -61,8 +61,8 @@
           			<div class="d-flex justify-content-end ml-4">
           				<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
 		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+		            	<a onclick="intDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
+		            	<a href="/board/interior/intlist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
 		            </div>
           		</div>
           	</div>
@@ -294,6 +294,30 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../../resources/js/generation/google-map.js"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
+  
+  <script type="text/javascript">
+  	let intDelete = () => {
+  		let intPostNo = ${interiorBrd.intPostNo};
+  		if(confirm("게시물을 삭제하시겠습니까?")){
+  			fetch("/board/interior/intdelete?intPostNo=" + intPostNo,{
+  	  			method:"GET"
+  	  		})
+  	  		.then(response => response.text())
+  	  		.then(text => {
+  	  			if(text == 'success'){
+  	  				alert("게시물이 삭제되었습니다.");
+					location.href = "/board/interior/intlist";
+  	  			}else{
+  	  				alert("게시물 삭제 중 에러가 발생했습니다.");
+  	  				location.href = "/board/interior/intlist";
+  	  			}
+  	  		})
+  		}else{
+  			alert("취소되었습니다.");
+  			location.href = "/board/interior/intlist";
+  		}
+  	}
+  </script>
     
   </body>
 </html>
