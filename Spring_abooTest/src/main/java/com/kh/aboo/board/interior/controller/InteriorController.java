@@ -99,8 +99,45 @@ public class InteriorController {
 	}
 	
 	@GetMapping("intmodify")
-	public String intModify() {
+	public String intModify(String intPostNo, Model model) {
+		InteriorBrd interiorBrd = interiorService.selectInteriorBrdByIdx(intPostNo);
+		String ctnt = interiorBrd.getIntContent().replace(System.getProperty("line.separator").toString(),"");
+		model.addAttribute("interiorBrd", interiorBrd);
+		model.addAttribute("intContent", ctnt);
 		return "board/interior/intmodify";
+	}
+	
+	@PostMapping("intmodifyimpl")
+	public String intModifyImpl(InteriorBrd interiorBrd, String intPostNo, Model model) {
+		interiorBrd.setIntPostNo(intPostNo);
+		
+		Document doc = Jsoup.parse(interiorBrd.getIntContent());
+		Elements img = doc.select("img");
+		
+		List<String> imgs = new ArrayList<>();
+		for (Element element : img) {
+			Node node = element;
+			String imgUrl = node.attr("src");
+			imgs.add(imgUrl);
+		}
+		
+		if(imgs.isEmpty()) {
+			interiorBrd.setIntThumbnail("../../../resources/abooimg/nopreviewimg.jpg");
+		}else {
+			interiorBrd.setIntThumbnail("../../.." + imgs.get(0));
+		}
+		
+		int res = interiorService.updateInteriorBrd(interiorBrd);
+		
+		if(res > 0) {
+			model.addAttribute("alertMsg", "게시물이 수정되었습니다.");
+			model.addAttribute("url", "/board/interior/intlist");
+		}else {
+			model.addAttribute("alertMsg", "게시물이 수정 도중 에러가 발생했습니다.");
+			model.addAttribute("url", "/board/interior/intlist");
+		}
+		
+		return "common/result";
 	}
 	
 	@GetMapping("intdelete")

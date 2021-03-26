@@ -62,12 +62,12 @@
             <p>게시글 수정</p>
           </div>
         </div>
-        <form action="#">
+        <form action="/board/interior/intmodifyimpl?intPostNo=${interiorBrd.intPostNo}" method="post" enctype="multipart/form-data">
         	<div class="p-2 bg-light mt-1">
 	        	<div class="row block-9 d-flex justify-content-center text-center">
 		          <div class="col-md-11">
 		              <div class="form-group mb-0 d-flex w-80">
-		                <span class="col-md-3 align-self-center text-left">제목</span><input type="text" class="form-control" placeholder="제목을 입력해주세요.">
+		                <span class="col-md-3 align-self-center text-left">제목</span><input type="text" class="form-control" name="intTitle" required="required" placeholder="제목을 입력해주세요." value="${interiorBrd.intTitle}">
 		              </div>
 		          </div>
 		        </div>
@@ -76,10 +76,11 @@
 	        	<div class="row block-9 d-flex justify-content-center text-center">
 		          <div class="col-md-11">
 		              <div class="form-group m-0">
-		              	<textarea class="form-control" id="p_content"></textarea>
+		              	<textarea class="form-control" id="p_content" name="intContent" required="required"></textarea>
 		              	<script type="text/javascript">
 							CKEDITOR.replace('p_content', {height: 500, editorplaceholder: '인테리어에 관한 내용을 입력해주세요.'});
 							CKEDITOR.config.resize_enabled = false;
+							CKEDITOR.instances.p_content.setData('${intContent}');
 						</script>
 		              </div>
 		          </div>
@@ -87,7 +88,7 @@
 		        </div>
 	        </div>
 	        <div class="form-group mt-3 text-center">
-              <input type="submit" value="등록하기" class="btn btn-primary py-3 px-5">
+              <input type="submit" value="수정하기" class="btn btn-primary py-3 px-5">
             </div>
         </form>
       </div>

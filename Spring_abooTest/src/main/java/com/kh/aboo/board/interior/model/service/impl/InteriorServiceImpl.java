@@ -51,5 +51,10 @@ public class InteriorServiceImpl implements InteriorService {
 	public int deleteInteriorBrd(String intPostNo, String apartmentIdx) {
 		return interiorBrdRepository.deleteInteriorBrd(intPostNo, apartmentIdx);
 	}
+
+	@Override
+	public int updateInteriorBrd(InteriorBrd interiorBrd) {
+		return interiorBrdRepository.updateInteriorBrd(interiorBrd);
+	}
 	
 }

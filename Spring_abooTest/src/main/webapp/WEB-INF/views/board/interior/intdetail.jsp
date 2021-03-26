@@ -60,7 +60,7 @@
           			<span>${interiorBrd.intRegDate}</span>
           			<div class="d-flex justify-content-end ml-4">
           				<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
+		            	<a href="/board/interior/intmodify?intPostNo=${interiorBrd.intPostNo}" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
 		            	<a onclick="intDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 		            	<a href="/board/interior/intlist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
 		            </div>
