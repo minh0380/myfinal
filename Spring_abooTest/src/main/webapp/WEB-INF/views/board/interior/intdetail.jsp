@@ -58,136 +58,87 @@
           			<span class="mr-4">${interiorBrd.intWriter}</span>
           			<i class="fas fa-clock align-self-center mr-2"></i>
           			<span>${interiorBrd.intRegDate}</span>
-          			<div class="d-flex justify-content-end ml-4">
+          			<c:choose>
+          				<c:when test="${sessionScope.generation.generationIdx == interiorBrd.generationIdx}">
+          					<div class="d-flex justify-content-end ml-4">
+	          					<a href="/board/interior/intmodify?intPostNo=${interiorBrd.intPostNo}" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
+				            	<a onclick="intDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a href="/board/interior/intlist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+			            	</div>
+          				</c:when>
+          				<c:when test="${sessionScope.admin != null}">
+          					<div class="d-flex justify-content-end ml-4">
+	          					<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
+	          					<a href="/board/interior/intlist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+          					</div>
+          				</c:when>
+          				<c:otherwise>
+          					<div class="d-flex justify-content-end ml-4">
+          						<a href="/board/interior/intlist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+          					</div>
+          				</c:otherwise>
+          			</c:choose>
+          			<%-- <div class="d-flex justify-content-end ml-4">
           				<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
 		            	<a href="/board/interior/intmodify?intPostNo=${interiorBrd.intPostNo}" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
 		            	<a onclick="intDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 		            	<a href="/board/interior/intlist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
-		            </div>
+		            </div> --%>
           		</div>
           	</div>
           	<hr>
              ${interiorBrd.intContent}
             <div class="pt-5 mt-5">
-              <h3 class="mb-5">6 Comments</h3>
+              <h3 class="mb-5">${intCmtCnt} Comments</h3>
               <ul class="comment-list">
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>101동 901호</h3>
-                    <div class="meta">Sept. 24, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p>
-                    	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-                    </p>
-                  </div>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>101동 901호</h3>
-                    <div class="meta">Sept. 24, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p>
-                    	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-                    </p>
-                  </div>
-                </li>
-                
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>101동 901호</h3>
-                    <div class="meta">Sept. 24, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p>
-                    	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-                    </p>
-                  </div>
-                </li>
-                
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>101동 901호</h3>
-                    <div class="meta">Sept. 24, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p>
-                    	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-                    </p>
-                  </div>
-                </li>
-                
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>101동 901호</h3>
-                    <div class="meta">Sept. 24, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p>
-                    	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-                    </p>
-                  </div>
-                </li>
-
-                <li class="comment">
-                  <div class="vcard bio">
-                    <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
-                  </div>
-                  <div class="comment-body">
-                    <h3>101동 901호</h3>
-                    <div class="meta">Sept. 24, 2018 at 2:21pm</div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur quidem laborum necessitatibus, ipsam impedit vitae autem, eum officia, fugiat saepe enim sapiente iste iure! Quam voluptas earum impedit necessitatibus, nihil?</p>
-                    <p>
-                    	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-		            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-                    </p>
-                  </div>
-                </li>
+                <c:choose>
+                	<c:when test="${intCmtCnt == 0}">
+                		<li class="comment">작성된 댓글이 없습니다.</li>
+                	</c:when>
+                	<c:otherwise>
+              			<c:forEach items="${intCmtList}" var="intCmt">
+			                <li class="comment">
+			                  	<div class="vcard bio">
+			                      <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
+			                    </div>
+			                    <div class="comment-body">
+			                      <h3>${intCmt.intCmtWriter}</h3>
+			                      <div class="meta">${intCmt.intCmtRegDate}</div>
+			                      <p>${intCmt.intCmtContent}</p>
+			                      <c:choose>
+			                      	<c:when test="${sessionScope.generation.generationIdx == intCmt.generationIdx}">
+			                      		<p>
+			                      		  <a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
+					              		  <a href="intCmtDelete(${intCmt.intCmtNo})" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
+			                      		</p>
+			                      	</c:when>
+			                      	<c:when test="${sessionScope.admin != null}">
+			                      		<p>
+			                      		  <a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
+			                      		</p>
+			                      	</c:when>
+			                      </c:choose>
+			                      <!-- <p>
+			                      	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
+					              	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
+					              	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
+			                      </p> -->
+			                    </div>
+			                </li>
+		                </c:forEach>
+                	</c:otherwise>
+                </c:choose>
               </ul>
               <!-- END comment-list -->
               
               <div class="comment-form-wrap pt-5">
                 <h3 class="mb-5">Leave a comment</h3>
-                <form action="#" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" id="name">
-                  </div>
-                  <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" class="form-control" id="email">
-                  </div>
-                  <div class="form-group">
-                    <label for="website">Website</label>
-                    <input type="url" class="form-control" id="website">
-                  </div>
-
+                <form action="/board/interior/intcmtupload" method="post" enctype="multipart/form-data" class="p-5 bg-light">
                   <div class="form-group">
                     <label for="message">Message</label>
-                    <textarea name="" id="message" cols="30" rows="10" class="form-control"></textarea>
+                    <input style="display: none;" name="generationIdx" value="${sessionScope.generation.generationIdx}">
+                    <input style="display: none;" name="intPostNo" value="${interiorBrd.intPostNo}">
+                    <textarea name="intCmtContent" id="intCmtContent" cols="30" rows="10" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                     <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
@@ -314,7 +265,27 @@
   	  		})
   		}else{
   			alert("취소되었습니다.");
-  			location.href = "/board/interior/intlist";
+  		}
+  	}
+  	
+  	let intCmtDelete = (intCmtNo) => {
+  		let intPostNo = ${interiorBrd.intPostNo};
+  		if(confirm("댓글을 삭제하시겠습니까?")){
+  			fetch("/board/interior/intcmtdelete?intCmtNo=" + intCmtNo,{
+  				method:"GET"
+  			})
+  			.then(response => response.text())
+  	  		.then(text => {
+  	  			if(text == 'success'){
+  	  				alert("댓글이 삭제되었습니다.");
+					location.href = "/board/interior/intdetail?intPostNo=" + intPostNo;
+  	  			}else{
+  	  				alert("댓글 삭제 중 에러가 발생했습니다.");
+  	  				location.href = "/board/interior/intdetail?intPostNo=" + intPostNo;
+  	  			}
+  	  		})
+  		}else{
+  			alert("취소되었습니다.");
   		}
   	}
   </script>

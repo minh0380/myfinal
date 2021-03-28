@@ -6,8 +6,10 @@ import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
+import com.kh.aboo.board.interior.model.repository.IntCmtRepository;
 import com.kh.aboo.board.interior.model.repository.InteriorBrdRepository;
 import com.kh.aboo.board.interior.model.service.InteriorService;
+import com.kh.aboo.board.interior.model.vo.IntCmt;
 import com.kh.aboo.board.interior.model.vo.InteriorBrd;
 import com.kh.aboo.common.util.paging.Paging;
 
@@ -15,9 +17,11 @@ import com.kh.aboo.common.util.paging.Paging;
 public class InteriorServiceImpl implements InteriorService {
 	
 	private final InteriorBrdRepository interiorBrdRepository;
+	private final IntCmtRepository intCmtRepository;
 	
-	public InteriorServiceImpl(InteriorBrdRepository interiorBrdRepository) {
+	public InteriorServiceImpl(InteriorBrdRepository interiorBrdRepository, IntCmtRepository intCmtRepository) {
 		this.interiorBrdRepository = interiorBrdRepository;
+		this.intCmtRepository = intCmtRepository;
 	}
 
 	@Override
@@ -55,6 +59,26 @@ public class InteriorServiceImpl implements InteriorService {
 	@Override
 	public int updateInteriorBrd(InteriorBrd interiorBrd) {
 		return interiorBrdRepository.updateInteriorBrd(interiorBrd);
+	}
+
+	@Override
+	public int insertIntCmt(IntCmt intCmt) {
+		return intCmtRepository.insertIntCmt(intCmt);
+	}
+
+	@Override
+	public List<IntCmt> selectIntCmtByIntPostNo(String intPostNo) {
+		return intCmtRepository.selectIntCmtByIntPostNo(intPostNo);
+	}
+
+	@Override
+	public int selectIntCmtCnt(String intPostNo) {
+		return intCmtRepository.selectIntCmtCnt(intPostNo);
+	}
+
+	@Override
+	public int deleteIntCmt(String intCmtNo) {
+		return intCmtRepository.deleteIntCmt(intCmtNo);
 	}
 	
 }

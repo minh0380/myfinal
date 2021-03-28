@@ -51,7 +51,7 @@
     <section class="ftco-section bg-light">
       <div class="container">
         <div class="row">
-        	<c:forEach items="${interiorBrd}" var="interiorBrd">
+        	<c:forEach items="${interiorBrd}" var="interiorBrd" varStatus="status">
                 <div class="col-md-4 ftco-animate">
 					<div class="blog-entry">
 					  <a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');">
@@ -60,7 +60,7 @@
 					    <div class="meta mb-3">
 					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
 					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
-					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
+					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
 					    </div>
 					    <div class="desc pl-3">
 					      <h3 class="heading"><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>

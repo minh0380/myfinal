@@ -20,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.aboo.board.interior.model.service.InteriorService;
+import com.kh.aboo.board.interior.model.vo.IntCmt;
 import com.kh.aboo.board.interior.model.vo.InteriorBrd;
 import com.kh.aboo.user.generation.model.vo.Generation;
+import com.kh.aboo.user.manager.model.vo.Admin;
 
 @RequestMapping("board/interior")
 @Controller
@@ -38,7 +40,34 @@ public class InteriorController {
 			, Model model
 			, HttpSession session) {
 		Generation generation = (Generation) session.getAttribute("generation");
-		model.addAllAttributes(interiorService.selectInteriorBrdList(page, generation.getApartmentIdx()));
+		Admin admin = (Admin) session.getAttribute("admin");
+				
+		if(generation != null) {
+			Map<String, Object> commandMap = interiorService.selectInteriorBrdList(page, generation.getApartmentIdx());
+			List<InteriorBrd> interiorBrd = (List<InteriorBrd>) commandMap.get("interiorBrd");
+			List<Integer> intCmtCntList = new ArrayList<>();
+			
+			for (InteriorBrd intBrd : interiorBrd) {
+				int intCmt = interiorService.selectIntCmtCnt(intBrd.getIntPostNo());
+				intCmtCntList.add(intCmt);
+			}
+			
+			model.addAllAttributes(interiorService.selectInteriorBrdList(page, generation.getApartmentIdx()));
+			model.addAttribute("intCmtCntList", intCmtCntList);
+		}else {
+			Map<String, Object> commandMap = interiorService.selectInteriorBrdList(page, admin.getApartmentIdx());
+			List<InteriorBrd> interiorBrd = (List<InteriorBrd>) commandMap.get("interiorBrd");
+			List<Integer> intCmtCntList = new ArrayList<>();
+			
+			for (InteriorBrd intBrd : interiorBrd) {
+				int intCmt = interiorService.selectIntCmtCnt(intBrd.getIntPostNo());
+				intCmtCntList.add(intCmt);
+			}
+			
+			model.addAllAttributes(interiorService.selectInteriorBrdList(page, admin.getApartmentIdx()));
+			model.addAttribute("intCmtCntList", intCmtCntList);
+		}
+		
 		return "board/interior/intlist";
 	}
 	
@@ -46,6 +75,13 @@ public class InteriorController {
 	public String intDetail(String intPostNo, Model model) {
 		InteriorBrd interiorBrd = interiorService.selectInteriorBrdByIdx(intPostNo);
 		model.addAttribute("interiorBrd", interiorBrd);
+		
+		List<IntCmt> intCmtList = interiorService.selectIntCmtByIntPostNo(intPostNo);
+		model.addAttribute("intCmtList", intCmtList);
+		
+		int intCmtCnt = interiorService.selectIntCmtCnt(intPostNo);
+		model.addAttribute("intCmtCnt", intCmtCnt);
+		
 		return "board/interior/intdetail";
 	}
 	
@@ -91,7 +127,7 @@ public class InteriorController {
 			model.addAttribute("alertMsg", "게시물이 등록되었습니다.");
 			model.addAttribute("url", "/board/interior/intlist");
 		}else {
-			model.addAttribute("alertMsg", "게시물이 등록 도중 에러가 발생했습니다.");
+			model.addAttribute("alertMsg", "게시물 등록 도중 에러가 발생했습니다.");
 			model.addAttribute("url", "/board/interior/intlist");
 		}
 		
@@ -133,7 +169,7 @@ public class InteriorController {
 			model.addAttribute("alertMsg", "게시물이 수정되었습니다.");
 			model.addAttribute("url", "/board/interior/intlist");
 		}else {
-			model.addAttribute("alertMsg", "게시물이 수정 도중 에러가 발생했습니다.");
+			model.addAttribute("alertMsg", "게시물 수정 도중 에러가 발생했습니다.");
 			model.addAttribute("url", "/board/interior/intlist");
 		}
 		
@@ -151,6 +187,24 @@ public class InteriorController {
 		}
 		
 		return "fail";
+	}
+	
+	@PostMapping("intcmtupload")
+	public String intCmtUpload(IntCmt intCmt, Model model, HttpSession session) {
+		Generation generation = (Generation) session.getAttribute("generation");
+		intCmt.setIntCmtWriter(generation.getBuilding() + "동 " + generation.getNum() + "호");
+		System.out.println(intCmt);
+		int res = interiorService.insertIntCmt(intCmt);
+		
+		if(res > 0) {
+			model.addAttribute("alertMsg", "댓글이 등록되었습니다.");
+			model.addAttribute("url", "/board/interior/intdetail?intPostNo=" + intCmt.getIntPostNo());
+		}else {
+			model.addAttribute("alertMsg", "댓글 등록 도중 에러가 발생했습니다.");
+			model.addAttribute("url", "/board/interior/intlist");
+		}
+		
+		return "common/result";
 	}
 	
 }
