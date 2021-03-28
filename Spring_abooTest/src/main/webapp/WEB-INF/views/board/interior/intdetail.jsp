@@ -97,7 +97,7 @@
                 	</c:when>
                 	<c:otherwise>
               			<c:forEach items="${intCmtList}" var="intCmt">
-			                <li class="comment">
+			                <li class="comment" id="intCmtOriginal">
 			                  	<div class="vcard bio">
 			                      <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
 			                    </div>
@@ -108,7 +108,7 @@
 			                      <c:choose>
 			                      	<c:when test="${sessionScope.generation.generationIdx == intCmt.generationIdx}">
 			                      		<p>
-			                      		  <a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
+			                      		  <a onclick="intCmtModify()" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
 					              		  <a onclick="intCmtDelete(${intCmt.intCmtNo})" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 			                      		</p>
 			                      	</c:when>
@@ -123,6 +123,23 @@
 					              	<a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
 					              	<a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 			                      </p> -->
+			                    </div>
+			                </li>
+			                <li class="comment" id="intCmtModify" style="display: none;">
+			                  	<div class="vcard bio">
+			                      <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
+			                    </div>
+			                    <div class="comment-body">
+			                      <h3>${intCmt.intCmtWriter}</h3>
+			                      <div class="meta">${intCmt.intCmtRegDate}</div>
+			                      <form action="/board/interior/intcmtmodify" method="post" enctype="multipart/form-data">
+			                      	<input style="display: none;" name="intCmtNo" value="${intCmt.intCmtNo}">
+			                      	<input style="display: none;" name="intPostNo" value="${intCmt.intPostNo}">
+			                      	<textarea name="intCmtContent" class="w-100" rows="5" style="resize: none;">${intCmt.intCmtContent}</textarea>
+			                      	<p>
+			                      	  <input type="submit" value="수정하기" class="btn py-2 px-3 btn-primary">
+			                      	</p>
+			                      </form>
 			                    </div>
 			                </li>
 		                </c:forEach>
@@ -287,6 +304,11 @@
   		}else{
   			alert("취소되었습니다.");
   		}
+  	}
+  	
+  	let intCmtModify = () => {
+  		document.querySelector('#intCmtOriginal').style.display = "none";
+  		document.querySelector('#intCmtModify').style.display = "block";
   	}
   </script>
     

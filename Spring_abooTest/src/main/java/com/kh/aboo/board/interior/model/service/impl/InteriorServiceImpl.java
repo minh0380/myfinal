@@ -23,6 +23,8 @@ public class InteriorServiceImpl implements InteriorService {
 		this.interiorBrdRepository = interiorBrdRepository;
 		this.intCmtRepository = intCmtRepository;
 	}
+	
+	//InteriorBrd
 
 	@Override
 	public int insertInteriorBrd(InteriorBrd interiorBrd) {
@@ -60,6 +62,8 @@ public class InteriorServiceImpl implements InteriorService {
 	public int updateInteriorBrd(InteriorBrd interiorBrd) {
 		return interiorBrdRepository.updateInteriorBrd(interiorBrd);
 	}
+	
+	//IntCmt
 
 	@Override
 	public int insertIntCmt(IntCmt intCmt) {
@@ -79,6 +83,11 @@ public class InteriorServiceImpl implements InteriorService {
 	@Override
 	public int deleteIntCmt(String intCmtNo) {
 		return intCmtRepository.deleteIntCmt(intCmtNo);
+	}
+
+	@Override
+	public int updateIntCmt(IntCmt intCmt) {
+		return intCmtRepository.updateIntCmt(intCmt);
 	}
 	
 }

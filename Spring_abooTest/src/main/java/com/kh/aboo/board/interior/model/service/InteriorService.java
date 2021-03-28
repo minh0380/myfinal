@@ -20,5 +20,6 @@ public interface InteriorService {
 	List<IntCmt> selectIntCmtByIntPostNo(String intPostNo);
 	int selectIntCmtCnt(String intPostNo);
 	int deleteIntCmt(String intCmtNo);
+	int updateIntCmt(IntCmt intCmt);
 	
 }

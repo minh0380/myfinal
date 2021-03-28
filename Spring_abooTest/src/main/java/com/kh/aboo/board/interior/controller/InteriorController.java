@@ -200,7 +200,7 @@ public class InteriorController {
 			model.addAttribute("url", "/board/interior/intdetail?intPostNo=" + intCmt.getIntPostNo());
 		}else {
 			model.addAttribute("alertMsg", "댓글 등록 도중 에러가 발생했습니다.");
-			model.addAttribute("url", "/board/interior/intlist");
+			model.addAttribute("url", "/board/interior/intdetail?intPostNo=" + intCmt.getIntPostNo());
 		}
 		
 		return "common/result";
@@ -216,6 +216,21 @@ public class InteriorController {
 		}
 		
 		return "fail";
+	}
+	
+	@PostMapping("intcmtmodify")
+	public String intCmtModify(IntCmt intCmt, Model model) {
+		int res = interiorService.updateIntCmt(intCmt);
+		
+		if(res > 0) {
+			model.addAttribute("alertMsg", "댓글이 수정되었습니다.");
+			model.addAttribute("url", "/board/interior/intdetail?intPostNo=" + intCmt.getIntPostNo());
+		}else {
+			model.addAttribute("alertMsg", "댓글 수정 도중 에러가 발생했습니다.");
+			model.addAttribute("url", "/board/interior/intdetail?intPostNo=" + intCmt.getIntPostNo());
+		}
+		
+		return "common/result";
 	}
 	
 }
