@@ -108,20 +108,20 @@
 			                      <c:choose>
 			                      	<c:when test="${sessionScope.generation.generationIdx == intCmt.generationIdx}">
 			                      		<p>
-			                      		  <a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-					              		  <a href="intCmtDelete(${intCmt.intCmtNo})" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
+			                      		  <a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
+					              		  <a onclick="intCmtDelete(${intCmt.intCmtNo})" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 			                      		</p>
 			                      	</c:when>
 			                      	<c:when test="${sessionScope.admin != null}">
 			                      		<p>
-			                      		  <a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
+			                      		  <a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-ban" style="color: #666666;"></i></a>
 			                      		</p>
 			                      	</c:when>
 			                      </c:choose>
 			                      <!-- <p>
-			                      	<a href="#" class="mr-4"><i class="fas fa-ban" style="color: #666666;"></i></a>
-					              	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-					              	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
+			                      	<a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-ban" style="color: #666666;"></i></a>
+					              	<a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
+					              	<a href="#" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 			                      </p> -->
 			                    </div>
 			                </li>

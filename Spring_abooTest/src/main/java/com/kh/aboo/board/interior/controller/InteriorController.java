@@ -193,7 +193,6 @@ public class InteriorController {
 	public String intCmtUpload(IntCmt intCmt, Model model, HttpSession session) {
 		Generation generation = (Generation) session.getAttribute("generation");
 		intCmt.setIntCmtWriter(generation.getBuilding() + "동 " + generation.getNum() + "호");
-		System.out.println(intCmt);
 		int res = interiorService.insertIntCmt(intCmt);
 		
 		if(res > 0) {
@@ -205,6 +204,18 @@ public class InteriorController {
 		}
 		
 		return "common/result";
+	}
+	
+	@GetMapping("intcmtdelete")
+	@ResponseBody
+	public String intCmtDelete(String intCmtNo) {
+		int res = interiorService.deleteIntCmt(intCmtNo);
+		
+		if(res > 0) {
+			return "success";
+		}
+		
+		return "fail";
 	}
 	
 }
