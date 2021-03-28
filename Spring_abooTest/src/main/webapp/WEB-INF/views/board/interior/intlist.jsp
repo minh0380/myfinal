@@ -111,10 +111,10 @@
 	                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
 	                   <c:choose>
 	                      <c:when test="${paging.currentPage eq page}">
-	                         <li class="active"><a href="${context}/board/${paging.type}/intlist?page=${page}"><span>${page}</span></a></li>
+	                         <li class="active"><a href="${context}/board/${paging.type}/intlist?page=${page}">${page}</a></li>
 	                      </c:when>
 	                      <c:otherwise>
-	                         <li><a href="${context}/board/${paging.type}/intlist?page=${page}"><span>${page}</span></a></li>
+	                         <li><a href="${context}/board/${paging.type}/intlist?page=${page}">${page}</a></li>
 	                      </c:otherwise>
 	                   </c:choose>
 	              	 </c:forEach>
