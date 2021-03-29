@@ -10,9 +10,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.aboo.admin.vote.model.service.AdminVoteService;
 import com.kh.aboo.admin.vote.model.vo.VoteMng;
+import com.kh.aboo.myapt.vote.model.service.VoteService;
 import com.kh.aboo.user.generation.model.vo.Generation;
 import com.kh.aboo.user.manager.model.vo.Admin;
 
@@ -21,14 +23,11 @@ import com.kh.aboo.user.manager.model.vo.Admin;
 public class VoteController {
 	
 	private final AdminVoteService adminVoteService;
+	private final VoteService voteService;
 	
-	public VoteController(AdminVoteService adminVoteService) {
+	public VoteController(AdminVoteService adminVoteService, VoteService voteService) {
 		this.adminVoteService = adminVoteService;
-	}
-	
-	@GetMapping("authvote")
-	public String makeVote() {
-		return "myapt/vote/authvote";
+		this.voteService = voteService;
 	}
 	
 	@GetMapping("votelist")
@@ -64,6 +63,20 @@ public class VoteController {
 		model.addAttribute("itemList", itemList);
 		
 		return "myapt/vote/votedetail";
+	}
+	
+	@GetMapping("authvote")
+	public String makeVote(String voteNo, Model model) {
+		model.addAttribute("voteNo", voteNo);
+		
+		return "myapt/vote/authvote";
+	}
+	
+	@GetMapping("certsms")
+	@ResponseBody
+	public String certSms(String tell) {
+		voteService.authToVote(tell);
+		return "success";
 	}
 	
 }

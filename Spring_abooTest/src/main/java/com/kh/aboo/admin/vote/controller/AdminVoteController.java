@@ -89,4 +89,19 @@ public class AdminVoteController {
 		return "common/result";
 	}
 	
+	@GetMapping("votefinish")
+	public String voteFinish(String voteNo, Model model) {
+		int res = adminVoteService.updateVoteIsFinish(voteNo);
+		
+		if(res > 0) {
+			model.addAttribute("alertMsg", "투표가 종료되었습니다.");
+			model.addAttribute("url", "/myapt/vote/votelist");
+		}else {
+			model.addAttribute("alertMsg", "투표 종료 중 에러가 발생했습니다.");
+			model.addAttribute("url", "/myapt/vote/votelist");
+		}
+		
+		return "common/result";
+	}
+	
 }

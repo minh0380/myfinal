@@ -76,7 +76,7 @@
 		            <c:choose>
 		            	<c:when test="${sessionScope.generation != null}">
 		            		<div class="container text-center">
-				            	<a href="#" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표하러가기</a>
+				            	<a href="/myapt/vote/authvote?voteNo=${voteMng.voteNo}" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표하러가기</a>
 				            </div>
 		            	</c:when>
 		            	<c:otherwise>

@@ -32,4 +32,7 @@ public interface VoteMngRepository {
 			+ ", vote_content = #{voteContent}, vote_item = #{voteItem} where vote_no = #{voteNo}")
 	int updateVoteMng(VoteMng voteMng);
 	
+	@Update("update tb_vote_mng set vote_is_finish = 1 where vote_no = #{voteNo}")
+	int updateVoteIsFinish(@Param(value = "voteNo") String voteNo);
+	
 }

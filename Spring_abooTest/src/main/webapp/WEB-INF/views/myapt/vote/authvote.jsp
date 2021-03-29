@@ -61,23 +61,24 @@
         </div>
         <div class="row block-9 d-flex justify-content-center text-center">
           <div class="col-md-9 pr-md-5">
-            <form action="#">
+            <form action="/myapt/vote/authvoteimpl" method="post">
+              <input type="text" name="voteNo" style="display: none;" value="${voteNo}">
               <h5 class="font-weight-bold text-left">세대 정보</h5>
               <div class="form-group d-flex">
-                <input type="text" class="form-control" placeholder="Your Building"><span class="ml-3 mr-3 align-self-center">동</span>
-                <input type="text" class="form-control" placeholder="Your Unit"><span class="ml-3 align-self-center">호</span>
+                <input type="text" class="form-control" name="building" placeholder="Your Building"><span class="ml-3 mr-3 align-self-center">동</span>
+                <input type="text" class="form-control" name="num" placeholder="Your Unit"><span class="ml-3 align-self-center">호</span>
               </div>
               <h5 class="font-weight-bold text-left mt-5">세대원 정보</h5>
               <div class="form-group d-flex">
-                <span class="col-md-3 align-self-center text-left">이름</span><input type="text" class="form-control" placeholder="Your Name">
+                <span class="col-md-3 align-self-center text-left">이름</span><input type="text" class="form-control" name="name" placeholder="Your Name">
               </div>
               <div class="form-group d-flex">
-                <span class="col-md-3 align-self-center text-left">전화번호</span><input type="text" class="form-control" placeholder="Your Phone">
-                <input type="button" value="전송" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
+                <span class="col-md-3 align-self-center text-left">전화번호</span><input type="text" class="form-control" name="tell" id="tell" placeholder="Your Phone">
+                <input type="button" onclick="certSms()" value="전송" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
               </div>
               <div class="form-group d-flex">
-                <span class="col-md-3 align-self-center text-left">인증번호</span><input type="text" class="form-control" placeholder="Your Certification Number">
-                <input type="button" value="확인" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
+                <span class="col-md-3 align-self-center text-left">인증번호</span><input type="text" class="form-control" name="certNum" placeholder="Your Certification Number">
+                <input type="button" onclick="certNum()" value="확인" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
               </div>
               <div class="form-group">
                 <input type="submit" value="다음" class="btn btn-primary py-3 px-5 col-md-5 mt-5" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">
@@ -180,6 +181,27 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../../resources/js/generation/google-map.js"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
+  
+  <script type="text/javascript">
+  	let certSms = () => {
+  		let tell = document.querySelector('#tell').value;
+  		if(tell){
+  			fetch("/myapt/vote/certsms?tell=" + tell,{
+  				method:"GET"
+  			})
+  			.then(response => response.text())
+  			.then(text => {
+  				if(text == 'success'){
+  					alert("인증번호가 전송되었습니다.");
+  				}else{
+  					alert("인증번호 전송 중 에러가 발생했습니다.");
+  				}
+  			})
+  		}else{
+  			alert("인증번호가 전송될 전화번호를 입력해주세요.");
+  		}
+  	}
+  </script>
     
   </body>
 </html>

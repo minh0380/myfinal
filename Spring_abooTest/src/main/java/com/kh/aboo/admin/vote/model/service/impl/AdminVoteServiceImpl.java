@@ -55,5 +55,10 @@ public class AdminVoteServiceImpl implements AdminVoteService {
 	public int updateVoteMng(VoteMng voteMng) {
 		return voteMngRepository.updateVoteMng(voteMng);
 	}
+
+	@Override
+	public int updateVoteIsFinish(String voteNo) {
+		return voteMngRepository.updateVoteIsFinish(voteNo);
+	}
 	
 }

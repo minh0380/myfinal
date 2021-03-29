@@ -11,5 +11,6 @@ public interface AdminVoteService {
 	VoteMng selectVoteMngByIdx(String voteNo);
 	int deleteVoteMng(String voteNo);
 	int updateVoteMng(VoteMng voteMng);
+	int updateVoteIsFinish(String voteNo);
 	
 }
