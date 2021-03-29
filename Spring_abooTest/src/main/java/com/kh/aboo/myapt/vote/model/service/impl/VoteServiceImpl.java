@@ -51,7 +51,8 @@ public class VoteServiceImpl implements VoteService {
 	@Override
 	public void authToVote(String tell) {
 		String method = "POST";
-		String url = "https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages";
+		//String url = "https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages";
+		String url = "/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages";
 		String timestamp = Long.toString(System.currentTimeMillis());
 		System.out.println(timestamp);
 		String accessKey = "XZ23fBAH16NMQ1qUq0ll";
@@ -61,15 +62,15 @@ public class VoteServiceImpl implements VoteService {
 		System.out.println(signature);
 		HttpHeaders header = new HttpHeaders();
 		header.add("Content-Type", "application/json; charset=UTF-8");
-		header.setContentType(MediaType.APPLICATION_JSON);
-		header.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+		//header.setContentType(MediaType.APPLICATION_JSON);
+		//header.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
 		header.add("x-ncp-apigw-timestamp", timestamp);
 		header.add("x-ncp-iam-access-key", accessKey);
 		header.add("x-ncp-apigw-signature-v2", signature);
 		
 		String certNum = makeCertNum();
 		
-		/*JSONObject params = new JSONObject();
+		JSONObject params = new JSONObject();
 		JSONObject params2 = new JSONObject();
 		JSONArray messages = new JSONArray();
 		try {
@@ -82,26 +83,26 @@ public class VoteServiceImpl implements VoteService {
 			String body = params.toString();
 			System.out.println(body);
 			
-			RequestEntity<JSONObject> request = 
+			RequestEntity<String> request = 
 					RequestEntity
-					.post(url)
+					.post("https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages")
 					.headers(header)
-					.body(params);
+					.body(body);
 			
 			URI uri = new URI(url);
 			
 			System.out.println("헤더"+request.getHeaders());
 			System.out.println("바디"+request.getBody());
 			
-			ResponseEntity<JSONObject> response = restTemplate.exchange(request, JSONObject.class);
+			ResponseEntity<String> response = restTemplate.exchange(request, String.class);
 			System.out.println("코드"+response.getStatusCode());
 			
 		} catch (JSONException | URISyntaxException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 		
-		MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
+		/*MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
 		JSONObject param = new JSONObject();
 		
 		try {
@@ -114,11 +115,11 @@ public class VoteServiceImpl implements VoteService {
 		body.add("type", "SMS");
 		body.add("from", "01028906219");
 		body.add("content", "[ABOO:아파트를 부탁해] 인증번호 [" + certNum + "] 을 입력해주세요.");
-		body.add("messages", param.toString());
+		body.add("messages.to", "01028906219");
 		
 		RequestEntity<MultiValueMap<String, String>> request = 
 				RequestEntity
-				.post(url)
+				.post("https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages")
 				.headers(header)
 				.body(body);
 		
@@ -126,7 +127,7 @@ public class VoteServiceImpl implements VoteService {
 		System.out.println("바디"+request.getBody());
 		
 		ResponseEntity<String> response = restTemplate.exchange(request, String.class);
-		System.out.println(response.getBody());
+		System.out.println(response.getBody());*/
 		
 	}
 	
