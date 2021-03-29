@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.kh.aboo.admin.vote.model.repository.VoteMngRepository">
+	
+	<select id="selectVoteMngList" resultType="voteMng">
+		select *
+		from(
+			select rownum rnum, b.*
+			from(
+				select *
+				from tb_vote_mng
+				where apartment_idx = #{apartmentIdx} and vote_is_del = 0
+				order by vote_no desc
+			) b
+		) where rnum between #{queryStart} and #{queryEnd}
+	</select>
+	
+</mapper>

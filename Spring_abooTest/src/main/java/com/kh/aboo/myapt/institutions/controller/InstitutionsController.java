@@ -13,7 +13,7 @@ import com.kh.aboo.user.apartment.model.vo.Apartment;
 import com.kh.aboo.user.generation.model.vo.Generation;
 import com.kh.aboo.user.manager.model.vo.Admin;
 
-@RequestMapping("myapt")
+@RequestMapping("myapt/institutions")
 @Controller
 public class InstitutionsController {
 	

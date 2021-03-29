@@ -13,11 +13,13 @@
 <!-- 2. 경로 별칭 지정-->
 	<typeAliases>
 		<typeAlias type="com.kh.aboo.board.interior.model.vo.InteriorBrd" alias="interiorBrd"/>
+		<typeAlias type="com.kh.aboo.admin.vote.model.vo.VoteMng" alias="voteMng"/>
 	</typeAliases>
 
 <!-- 3. 작성쿼리 root등록을 위한 경로 설정. 맨아래에 있어야 한다.-->
 	<mappers>
 		<mapper resource="mybatis/mapper/board/interiorBrdMapper.xml"/>
+		<mapper resource="mybatis/mapper/myapt/voteMngMapper.xml"/>
 	</mappers>
 
 </configuration>

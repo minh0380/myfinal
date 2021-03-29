@@ -140,7 +140,7 @@
       <div class="content">
         <div class="row">
           <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form>
+          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
             <div class="card">
               <div class="card-header">
                 <h5 class="title">투표 만들기</h5>
@@ -150,7 +150,7 @@
               		<div class="col-md-12">
                       <div class="form-group">
                         <label>제목</label>
-                        <input type="text" class="form-control" placeholder="제목을 입력해주세요.">
+                        <input type="text" class="form-control" name="voteTitle" placeholder="제목을 입력해주세요.">
                       </div>
                     </div>
               	</div>
@@ -163,9 +163,9 @@
                       <div class="form-group">
                         <label>투표 기간</label>
                         <div class="d-flex">
-                        	<input type="date" class="form-control">
+                        	<input type="date" class="form-control" name="voteBeginDate">
                         	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
-                        	<input type="date" class="form-control">
+                        	<input type="date" class="form-control" name="voteEndDate">
                         </div>
                       </div>
                     </div>
@@ -174,7 +174,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>안건 내용</label>
-                        <textarea class="form-control" id="p_content"></textarea>
+                        <textarea class="form-control" id="p_content" name="voteContent"></textarea>
 		              	<script type="text/javascript">
 							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '안건 내용에 대한 설명을 입력해주세요.'});
 							CKEDITOR.config.resize_enabled = false;
@@ -187,7 +187,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>선택지</label>
-                        <input type="text" class="form-control" placeholder="선택지를 ','로 구분하여 입력해주세요.">
+                        <input type="text" class="form-control" name="voteItem" placeholder="선택지를 ','로 구분하여 입력해주세요.">
                         <small class="text-danger pl-1" style="display: block;">선택지는 ','로 구분하여 작성해주세요.</small>
                         <small class="text-danger pl-1" style="display: block;">ex) 1번 보기,2번 보기,3번보기</small>
                       </div>
