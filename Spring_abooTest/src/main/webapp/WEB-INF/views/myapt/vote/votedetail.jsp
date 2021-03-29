@@ -53,65 +53,82 @@
         <div class="row">
           <div class="col-md-8 ftco-animate" style="flex: 0 0 100% !important; max-width: 100% !important;">
           	<div class="d-flex justify-content-between">
-          		<h2 class="mb-3">아파트 건물 외벽 도색 투표</h2>
+          		<h2 class="mb-3">${voteMng.voteTitle}</h2>
           		<div class="d-flex align-self-center">
           			<i class="fas fa-clock align-self-center mr-2"></i>
-          			<span>2021-03-17 ~ 2021-03-18</span>
+          			<span>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</span>
           		</div>
           	</div>
           	<hr>
-            <p>안녕하세요 ㅇㅇ아파트 입주민 여러분 다들 평안하신지요? 다름이 아니라 저희 ㅇㅇ아파트의 건물 외벽 도색을 추진하고자 합니다. 그에 앞서 어떤 색조합이 가장 입주민 분들이 선호하실지 몰라 투표를 통해 결정하기로 했습니다.</p>
-            <p>
-              <img src="../../../../resources/images/image_6.jpg" alt="" class="img-fluid">
-            </p>
-            <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-            <!-- <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2> -->
-            <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-            <p>
-              <img src="../../../../resources/images/image_5.jpg" alt="" class="img-fluid">
-            </p>
-            <p>Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
-            <p>Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum, quo velit commodi rerum eum quidem pariatur! Quia fuga iste tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro explicabo soluta commodi libero voluptatem similique id quidem? Blanditiis voluptates aperiam non magni. Reprehenderit nobis odit inventore, quia laboriosam harum excepturi ea.</p>
-            <p>Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam ipsam quidem, dolor distinctio similique asperiores voluptas enim, exercitationem ratione aut adipisci modi quod quibusdam iusto, voluptates beatae iure nemo itaque laborum. Consequuntur et pariatur totam fuga eligendi vero dolorum provident. Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus culpa, tenetur recusandae!</p>
-            <p>Voluptas dolores dignissimos dolorum temporibus, autem aliquam ducimus at officia adipisci quasi nemo a perspiciatis provident magni laboriosam repudiandae iure iusto commodi debitis est blanditiis alias laborum sint dolore. Dolores, iure, reprehenderit. Error provident, pariatur cupiditate soluta doloremque aut ratione. Harum voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
+            ${voteMng.voteContent}
             
-            <div class="about-author d-flex p-5 bg-light mt-3">
-              <div class="desc align-self-md-center w-100">
-                <h3 class="text-center">아파트 건물 외벽 도색 투표</h3>
-                <div class="text-center">1번 보기</div>
-                <div class="text-center">2번 보기</div>
-                <div class="text-center">3번 보기</div>
-              </div>
-            </div>
-            
-            <div class="container text-center">
-            	<a href="#" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표하러가기</a>
-            </div>
-            <div class="container text-center">
-            	<a href="#" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">투표종료하기</a>
-            </div>
-            
-            <div class="about-author d-flex p-5 bg-light mt-3">
-              <div class="desc align-self-md-center w-100 d-flex flex-column align-items-center">
-                <h3 class="text-center">아파트 건물 외벽 도색 투표</h3>
-                <div class="text-center col-md-3 d-flex justify-content-between"><span>축구</span><span>35%</span></div>
-                <div class="text-center col-md-3 d-flex justify-content-between"><span>농구가 하고 싶으신 분?</span><span>25%</span></div>
-                <div class="text-center col-md-3 d-flex justify-content-between"><span>야구 갑시다</span><span>45%</span></div>
-              </div>
-            </div>
-            
-            <div class="mt-5 mb-5 text-danger text-center">
-            	<p class="mb-0">투표가 종료되었습니다.</p>
-            	<p class="mb-0">투표결과 3번 선택지가 40%로 가장 높은 수의 표를 얻었습니다.</p>
-            	<p>투표에 참여해주신 입주민 여러분 감사드립니다.</p>
-            </div>
+            <c:choose>
+            	<c:when test="${voteMng.voteIsFinish == 0}">
+            		<div class="about-author d-flex p-5 bg-light mt-3">
+		              <div class="desc align-self-md-center w-100">
+		                <h3 class="text-center">${voteMng.voteTitle}</h3>
+		                <c:forEach items="${itemList}" var="itemList" varStatus="status">
+		                	<div class="text-center">${status.count}. ${itemList}</div>
+		                </c:forEach>
+		              </div>
+		            </div>
+		            
+		            <c:choose>
+		            	<c:when test="${sessionScope.generation != null}">
+		            		<div class="container text-center">
+				            	<a href="#" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표하러가기</a>
+				            </div>
+		            	</c:when>
+		            	<c:otherwise>
+		            		<div class="container text-center">
+				            	<a href="/admin/vote/votefinish" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">투표 종료</a>
+				            </div>
+		            	</c:otherwise>
+		            </c:choose>
+            	</c:when>
+            	<c:otherwise>
+            		<div class="about-author d-flex p-5 bg-light mt-3">
+		              <div class="desc align-self-md-center w-100 d-flex flex-column align-items-center">
+		                <h3 class="text-center">${voteMng.voteTitle}</h3>
+		                <div class="text-center col-md-4 d-flex justify-content-between"><span>축구</span><span>35%</span></div>
+		                <div class="text-center col-md-4 d-flex justify-content-between"><span>농구가 하고 싶으신 분?</span><span>25%</span></div>
+		                <div class="text-center col-md-4 d-flex justify-content-between"><span>야구 갑시다</span><span>45%</span></div>
+		              </div>
+		            </div>
+		            
+		            <div class="mt-5 mb-5 text-danger text-center">
+		            	<p class="mb-0">투표가 종료되었습니다.</p>
+		            	<p class="mb-0">투표결과 3번 선택지가 40%로 가장 높은 수의 표를 얻었습니다.</p>
+		            	<p>투표에 참여해주신 입주민 여러분 감사드립니다.</p>
+		            </div>
+            	</c:otherwise>
+            </c:choose>
             
             <hr>
-            <div class="d-flex justify-content-end">
-            	<a href="#" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-            	<a href="#" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
-            	<a href="#" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
-            </div>
+            <c:choose>
+            	<c:when test="${sessionScope.admin != null}">
+            		<c:choose>
+            			<c:when test="${voteMng.voteIsFinish == 0}">
+            				<div class="d-flex justify-content-end">
+				            	<a href="/admin/vote/votemodify?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
+				            	<a onclick="voteDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+				            </div>
+            			</c:when>
+            			<c:otherwise>
+            				<div class="d-flex justify-content-end">
+				            	<a onclick="voteDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+				            </div>
+            			</c:otherwise>
+            		</c:choose>
+            	</c:when>
+            	<c:otherwise>
+            		<div class="d-flex justify-content-end">
+		            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+		            </div>
+            	</c:otherwise>
+            </c:choose>
 
           </div> <!-- .col-md-8 -->
 
@@ -210,6 +227,29 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../../resources/js/generation/google-map.js"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
+  
+  <script type="text/javascript">
+	  let voteDelete = () => {
+			let voteNo = ${voteMng.voteNo};
+			if(confirm("투표를 삭제하시겠습니까?")){
+				fetch("/admin/vote/votedelete?voteNo=" + voteNo,{
+					method:"GET"
+				})
+				.then(response => response.text())
+		  		.then(text => {
+		  			if(text == 'success'){
+		  				alert("투표가 삭제되었습니다.");
+						location.href = "/myapt/vote/votelist";
+		  			}else{
+		  				alert("투표 삭제 중 에러가 발생했습니다.");
+		  				location.href = "/myapt/vote/votelist";
+		  			}
+		  		})
+			}else{
+				alert("취소되었습니다.");
+			}
+		}
+  </script>
     
   </body>
 </html>

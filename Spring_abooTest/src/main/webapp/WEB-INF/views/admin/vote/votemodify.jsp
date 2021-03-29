@@ -140,17 +140,18 @@
       <div class="content">
         <div class="row">
           <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
+          	<form action="/admin/vote/votemodifyimpl" method="post" enctype="multipart/form-data">
+          	<input type="text" name="voteNo" value="${voteMng.voteNo}" style="display: none;">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">투표 만들기</h5>
+                <h5 class="title">투표 수정하기</h5>
               </div>
               <div class="card-body">
               	<div class="row">
               		<div class="col-md-12">
                       <div class="form-group">
                         <label>제목</label>
-                        <input type="text" class="form-control" name="voteTitle" required="required" placeholder="제목을 입력해주세요.">
+                        <input type="text" class="form-control" name="voteTitle" required="required" placeholder="제목을 입력해주세요." value="${voteMng.voteTitle}">
                       </div>
                     </div>
               	</div>
@@ -163,9 +164,9 @@
                       <div class="form-group">
                         <label>투표 기간</label>
                         <div class="d-flex">
-                        	<input type="date" class="form-control" name="voteBeginDate" required="required">
+                        	<input type="date" class="form-control" name="voteBeginDate" required="required" value="${voteMng.voteBeginDate}">
                         	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
-                        	<input type="date" class="form-control" name="voteEndDate" required="required">
+                        	<input type="date" class="form-control" name="voteEndDate" required="required" value="${voteMng.voteEndDate}">
                         </div>
                       </div>
                     </div>
@@ -179,6 +180,7 @@
 							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '안건 내용에 대한 설명을 입력해주세요.'});
 							CKEDITOR.config.resize_enabled = false;
 							CKEDITOR.config.uiColor = '#222a42';
+							CKEDITOR.instances.p_content.setData('${voteContent}');
 						</script>
                       </div>
                     </div>
@@ -187,7 +189,7 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>선택지</label>
-                        <input type="text" class="form-control" name="voteItem" required="required" placeholder="선택지를 ','로 구분하여 입력해주세요.">
+                        <input type="text" class="form-control" name="voteItem" required="required" placeholder="선택지를 ','로 구분하여 입력해주세요." value="${voteMng.voteItem}">
                         <small class="text-danger pl-1" style="display: block;">선택지는 ','로 구분하여 작성해주세요.</small>
                         <small class="text-danger pl-1" style="display: block;">ex) 1번 보기,2번 보기,3번보기</small>
                       </div>
@@ -195,7 +197,7 @@
                   </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">생성하기</button>
+                <button type="submit" class="btn btn-fill btn-primary">수정하기</button>
               </div>
             </div>
             </form>

@@ -8,5 +8,8 @@ public interface AdminVoteService {
 	
 	int insertVoteMng(VoteMng voteMng);
 	Map<String, Object> selectVoteMngList(int currentPage, String apartmentIdx);
+	VoteMng selectVoteMngByIdx(String voteNo);
+	int deleteVoteMng(String voteNo);
+	int updateVoteMng(VoteMng voteMng);
 	
 }

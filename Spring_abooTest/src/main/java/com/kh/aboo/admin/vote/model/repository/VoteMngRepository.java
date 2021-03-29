@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.kh.aboo.admin.vote.model.vo.VoteMng;
 
@@ -20,5 +21,15 @@ public interface VoteMngRepository {
 	
 	@Select("select count(*) from tb_vote_mng where apartment_idx = #{apartmentIdx}")
 	int selectVoteMngCnt(@Param(value = "apartmentIdx") String apartmentIdx);
+	
+	@Select("select * from tb_vote_mng where vote_no = #{voteNo} and vote_is_del = 0")
+	VoteMng selectVoteMngByIdx(@Param(value = "voteNo") String voteNo);
+	
+	@Update("update tb_vote_mng set vote_is_del = 1 where vote_no = #{voteNo}")
+	int deleteVoteMng(@Param(value = "voteNo") String voteNo);
+	
+	@Update("update tb_vote_mng set vote_begin_date = #{voteBeginDate}, vote_end_date = #{voteEndDate}, vote_title = #{voteTitle}"
+			+ ", vote_content = #{voteContent}, vote_item = #{voteItem} where vote_no = #{voteNo}")
+	int updateVoteMng(VoteMng voteMng);
 	
 }

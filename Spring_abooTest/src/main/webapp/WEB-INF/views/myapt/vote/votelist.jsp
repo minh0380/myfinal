@@ -69,66 +69,26 @@
 						      </tr>
 						    </thead>
 						    <tbody>
-						      <tr>
-						        <td>10010</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 중</td>
-						      </tr>
-						      <tr>
-						        <td>10009</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 중</td>
-						      </tr>
-						      <tr>
-						        <td>10008</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10007</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10006</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10005</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10004</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10003</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10002</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
-						      <tr>
-						        <td>10001</td>
-						        <td>아파트 건물 외벽 도색 투표</td>
-						        <td>2021-03-17 ~ 2021-03-18</td>
-						        <td>투표 완료</td>
-						      </tr>
+						      <c:forEach items="${voteMng}" var="voteMng" >
+						      	<c:choose>
+						      		<c:when test="${voteMng.voteIsFinish == 0}">
+						      			<tr>
+								          <td>${voteMng.voteNo}</td>
+								          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+								          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+								          <td>투표 중</td>
+								        </tr>
+						      		</c:when>
+						      		<c:otherwise>
+						      			<tr>
+								          <td>${voteMng.voteNo}</td>
+								          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+								          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+								          <td>투표 완료</td>
+								        </tr>
+						      		</c:otherwise>
+						      	</c:choose>
+						      </c:forEach>
 						    </tbody>
 						  </table>
 					  </div>
@@ -145,24 +105,39 @@
 	          </div>
          </form>
 		</div>
-    	<div class="container text-center d-flex justify-content-end">
-	      <a href="#" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 mt-3 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표만들기</a>
-	    </div>
+		
+		<c:choose>
+			<c:when test="${sessionScope.admin != null}">
+				<div class="container text-center d-flex justify-content-end">
+			      <a href="/admin/vote/makevote" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 mt-3 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표만들기</a>
+			    </div>
+			</c:when>
+			<c:otherwise></c:otherwise>
+		</c:choose>
+		
     	<div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li><a href="#">&lt;</a></li>
-                <li class="active"><span>1</span></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist">&lt;&lt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.prev}">&lt;</a></li>
+	                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+	                   <c:choose>
+	                      <c:when test="${paging.currentPage eq page}">
+	                         <li class="active"><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                      </c:when>
+	                      <c:otherwise>
+	                         <li><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                      </c:otherwise>
+	                   </c:choose>
+	              	 </c:forEach>
+                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.next}">&gt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.lastPage}">&gt;&gt;</a></li>
               </ul>
             </div>
           </div>
         </div>
+        
     </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">

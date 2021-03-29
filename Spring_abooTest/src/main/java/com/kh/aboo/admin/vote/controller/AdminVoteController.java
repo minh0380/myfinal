@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kh.aboo.admin.vote.model.service.AdminVoteService;
 import com.kh.aboo.admin.vote.model.vo.VoteMng;
@@ -46,6 +46,43 @@ public class AdminVoteController {
 			model.addAttribute("url", "/myapt/vote/votelist");
 		}else {
 			model.addAttribute("alertMsg", "투표 생성 중 에러가 발생했습니다.");
+			model.addAttribute("url", "/myapt/vote/votelist");
+		}
+		
+		return "common/result";
+	}
+	
+	@GetMapping("votedelete")
+	@ResponseBody
+	public String voteDelete(String voteNo) {
+		int res = adminVoteService.deleteVoteMng(voteNo);
+		
+		if(res > 0) {
+			return "success";
+		}
+		
+		return "fail";
+	}
+	
+	@GetMapping("votemodify")
+	public String voteModify(String voteNo, Model model) {
+		VoteMng voteMng = adminVoteService.selectVoteMngByIdx(voteNo);
+		String ctnt = voteMng.getVoteContent().replace(System.getProperty("line.separator").toString(),"");
+		model.addAttribute("voteMng", voteMng);
+		model.addAttribute("voteContent", ctnt);
+		
+		return "admin/vote/votemodify";
+	}
+	
+	@PostMapping("votemodifyimpl")
+	public String voteModifyImpl(VoteMng voteMng, Model model) {
+		int res = adminVoteService.updateVoteMng(voteMng);
+		
+		if(res > 0) {
+			model.addAttribute("alertMsg", "투표가 수정되었습니다.");
+			model.addAttribute("url", "/myapt/vote/votelist");
+		}else {
+			model.addAttribute("alertMsg", "투표 수정 중 에러가 발생했습니다.");
 			model.addAttribute("url", "/myapt/vote/votelist");
 		}
 		

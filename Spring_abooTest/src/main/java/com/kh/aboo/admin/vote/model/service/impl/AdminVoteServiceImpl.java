@@ -40,5 +40,20 @@ public class AdminVoteServiceImpl implements AdminVoteService {
 		
 		return commandMap;
 	}
+
+	@Override
+	public VoteMng selectVoteMngByIdx(String voteNo) {
+		return voteMngRepository.selectVoteMngByIdx(voteNo);
+	}
+
+	@Override
+	public int deleteVoteMng(String voteNo) {
+		return voteMngRepository.deleteVoteMng(voteNo);
+	}
+
+	@Override
+	public int updateVoteMng(VoteMng voteMng) {
+		return voteMngRepository.updateVoteMng(voteMng);
+	}
 	
 }
