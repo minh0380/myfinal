@@ -52,39 +52,43 @@
       <div class="container">
         <div class="row">
         	<c:forEach items="${interiorBrd}" var="interiorBrd" varStatus="status">
-                <div class="col-md-4 ftco-animate">
-					<div class="blog-entry">
-					  <a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');">
-					  </a>
-					  <div class="text d-flex py-4">
-					    <div class="meta mb-3">
-					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
-					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
-					      <div><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
-					    </div>
-					    <div class="desc pl-3">
-					      <h3 class="heading"><a href="${context}/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>
-					    </div>
-					  </div>
-					</div>
-            	</div>
+        		<c:choose>
+        			<c:when test="${interiorBrd.intIsPrivate == 0}">
+        				<div class="col-md-4 ftco-animate">
+							<div class="blog-entry">
+							  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');"></a>
+							  <div class="text d-flex py-4">
+							    <div class="meta mb-3">
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
+							    </div>
+							    <div class="desc pl-3">
+							      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>
+							    </div>
+							  </div>
+							</div>
+		            	</div>
+        			</c:when>
+        			<c:otherwise>
+        				<div class="col-md-4 ftco-animate">
+							<div class="blog-entry">
+							  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('../../../resources/abooimg/nopreviewimg.jpg');"></a>
+							  <div class="text d-flex py-4">
+							    <div class="meta mb-3">
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
+							    </div>
+							    <div class="desc pl-3">
+							      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">비공개 처리 된 게시물입니다.</a></h3>
+							    </div>
+							  </div>
+							</div>
+		            	</div>
+        			</c:otherwise>
+        		</c:choose>
             </c:forEach>
-            <!-- <div class="col-md-4 ftco-animate">
-              <div class="blog-entry">
-                <a href="blog-single.html" class="block-20" style="background-image: url('../../../../resources/images/image_1.jpg');">
-                </a>
-                <div class="text d-flex py-4">
-                  <div class="meta mb-3">
-                    <div><a href="#">Sep. 20, 2018</a></div>
-                    <div><a href="#">Admin</a></div>
-                    <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-                  </div>
-                  <div class="desc pl-3">
-                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  </div>
-                </div>
-              </div>
-            </div> -->
         </div>
         
         <div class="container d-flex justify-content-end">

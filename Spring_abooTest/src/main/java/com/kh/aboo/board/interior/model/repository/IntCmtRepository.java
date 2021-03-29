@@ -29,4 +29,7 @@ public interface IntCmtRepository {
 	@Update("update tb_int_cmt set int_cmt_content = #{intCmtContent} where int_cmt_no = #{intCmtNo}")
 	int updateIntCmt(IntCmt intCmt);
 	
+	@Update("update tb_int_cmt set int_cmt_is_private = 1 where int_cmt_no = #{intCmtNo}")
+	int updateIntCmtIsPrivate(@Param(value = "intCmtNo") String intCmtNo);
+	
 }

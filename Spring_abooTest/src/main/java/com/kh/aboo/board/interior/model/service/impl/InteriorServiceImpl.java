@@ -63,6 +63,11 @@ public class InteriorServiceImpl implements InteriorService {
 		return interiorBrdRepository.updateInteriorBrd(interiorBrd);
 	}
 	
+	@Override
+	public int updateIntIsPrivate(String intPostNo) {
+		return interiorBrdRepository.updateIntIsPrivate(intPostNo);
+	}
+	
 	//IntCmt
 
 	@Override
@@ -88,6 +93,11 @@ public class InteriorServiceImpl implements InteriorService {
 	@Override
 	public int updateIntCmt(IntCmt intCmt) {
 		return intCmtRepository.updateIntCmt(intCmt);
+	}
+
+	@Override
+	public int updateIntCmtIsPrivate(String intCmtNo) {
+		return intCmtRepository.updateIntCmtIsPrivate(intCmtNo);
 	}
 	
 }

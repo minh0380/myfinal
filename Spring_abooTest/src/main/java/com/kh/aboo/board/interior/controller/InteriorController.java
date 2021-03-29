@@ -189,6 +189,18 @@ public class InteriorController {
 		return "fail";
 	}
 	
+	@GetMapping("intprivate")
+	@ResponseBody
+	public String intPrivate(String intPostNo) {
+		int res = interiorService.updateIntIsPrivate(intPostNo);
+		
+		if(res > 0) {
+			return "success";
+		}
+		
+		return "fail";
+	}
+	
 	@PostMapping("intcmtupload")
 	public String intCmtUpload(IntCmt intCmt, Model model, HttpSession session) {
 		Generation generation = (Generation) session.getAttribute("generation");
@@ -231,6 +243,18 @@ public class InteriorController {
 		}
 		
 		return "common/result";
+	}
+	
+	@GetMapping("intcmtprivate")
+	@ResponseBody
+	public String intCmtPrivate(String intCmtNo) {
+		int res = interiorService.updateIntCmtIsPrivate(intCmtNo);
+		
+		if(res > 0) {
+			return "success";
+		}
+		
+		return "fail";
 	}
 	
 }

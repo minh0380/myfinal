@@ -33,4 +33,7 @@ public interface InteriorBrdRepository {
 	@Update("update tb_interior_brd set int_title = #{intTitle}, int_thumbnail = #{intThumbnail}, int_content = #{intContent} where int_post_no = #{intPostNo}")
 	int updateInteriorBrd(InteriorBrd interiorBrd);
 	
+	@Update("update tb_interior_brd set int_is_private = 1 where int_post_no = #{intPostNo}")
+	int updateIntIsPrivate(@Param(value = "intPostNo") String intPostNo);
+	
 }
