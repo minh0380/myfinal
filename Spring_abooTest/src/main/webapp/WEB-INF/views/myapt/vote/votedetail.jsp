@@ -81,7 +81,7 @@
 		            	</c:when>
 		            	<c:otherwise>
 		            		<div class="container text-center">
-				            	<a href="/admin/vote/votefinish" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">투표 종료</a>
+				            	<a href="/admin/vote/votefinish?voteNo=${voteMng.voteNo}" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">투표 종료</a>
 				            </div>
 		            	</c:otherwise>
 		            </c:choose>
@@ -89,10 +89,10 @@
             	<c:otherwise>
             		<div class="about-author d-flex p-5 bg-light mt-3">
 		              <div class="desc align-self-md-center w-100 d-flex flex-column align-items-center">
-		                <h3 class="text-center">${voteMng.voteTitle}</h3>
-		                <div class="text-center col-md-4 d-flex justify-content-between"><span>축구</span><span>35%</span></div>
-		                <div class="text-center col-md-4 d-flex justify-content-between"><span>농구가 하고 싶으신 분?</span><span>25%</span></div>
-		                <div class="text-center col-md-4 d-flex justify-content-between"><span>야구 갑시다</span><span>45%</span></div>
+		                <h3 class="text-center">아파트 건물 외벽 도색 투표</h3>
+		                <div class="text-center col-md-3 d-flex justify-content-between"><span>축구</span><span>35%</span></div>
+		                <div class="text-center col-md-3 d-flex justify-content-between"><span>농구가 하고 싶으신 분?</span><span>25%</span></div>
+		                <div class="text-center col-md-3 d-flex justify-content-between"><span>야구 갑시다</span><span>45%</span></div>
 		              </div>
 		            </div>
 		            
@@ -105,31 +105,32 @@
             </c:choose>
             
             <hr>
+            
             <c:choose>
-            	<c:when test="${sessionScope.admin != null}">
+            	<c:when test="${sessionScope.generation != null}">
+            		<div class="d-flex justify-content-end">
+		            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
+		            </div>
+            	</c:when>
+            	<c:otherwise>
             		<c:choose>
             			<c:when test="${voteMng.voteIsFinish == 0}">
             				<div class="d-flex justify-content-end">
 				            	<a href="/admin/vote/votemodify?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-				            	<a onclick="voteDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a href="/admin/vote/votedelete?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
 				            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
 				            </div>
             			</c:when>
             			<c:otherwise>
             				<div class="d-flex justify-content-end">
-				            	<a onclick="voteDelete()" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a href="/admin/vote/votedelete?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
 				            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
 				            </div>
             			</c:otherwise>
             		</c:choose>
-            	</c:when>
-            	<c:otherwise>
-            		<div class="d-flex justify-content-end">
-		            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
-		            </div>
             	</c:otherwise>
             </c:choose>
-
+            
           </div> <!-- .col-md-8 -->
 
         </div>

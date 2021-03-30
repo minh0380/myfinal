@@ -2,6 +2,7 @@ package com.kh.aboo.admin.vote.model.repository;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -34,5 +35,8 @@ public interface VoteMngRepository {
 	
 	@Update("update tb_vote_mng set vote_is_finish = 1 where vote_no = #{voteNo}")
 	int updateVoteIsFinish(@Param(value = "voteNo") String voteNo);
+	
+	@Delete("delete from tb_vote_gen where vote_no = #{voteNo}")
+	int deleteVoteGen(@Param(value = "voteNo") String voteNo);
 	
 }

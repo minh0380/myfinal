@@ -61,24 +61,25 @@
         </div>
         <div class="row block-9 d-flex justify-content-center text-center">
           <div class="col-md-9 pr-md-5">
-            <form action="/myapt/vote/authvoteimpl" method="post">
+            <form action="/myapt/vote/authvoteimpl" method="post" id="frm_authvote">
               <input type="text" name="voteNo" style="display: none;" value="${voteNo}">
+              <input type="text" name="apartmentIdx" style="display: none;" value="${sessionScope.generation.apartmentIdx}">
               <h5 class="font-weight-bold text-left">세대 정보</h5>
               <div class="form-group d-flex">
-                <input type="text" class="form-control" name="building" placeholder="Your Building"><span class="ml-3 mr-3 align-self-center">동</span>
-                <input type="text" class="form-control" name="num" placeholder="Your Unit"><span class="ml-3 align-self-center">호</span>
+                <input type="text" class="form-control" name="building" required="required" placeholder="Your Building"><span class="ml-3 mr-3 align-self-center">동</span>
+                <input type="text" class="form-control" name="num" required="required" placeholder="Your Unit"><span class="ml-3 align-self-center">호</span>
               </div>
               <h5 class="font-weight-bold text-left mt-5">세대원 정보</h5>
               <div class="form-group d-flex">
-                <span class="col-md-3 align-self-center text-left">이름</span><input type="text" class="form-control" name="name" placeholder="Your Name">
+                <span class="col-md-3 align-self-center text-left">이름</span><input type="text" class="form-control" name="name" required="required" placeholder="Your Name">
               </div>
               <div class="form-group d-flex">
-                <span class="col-md-3 align-self-center text-left">전화번호</span><input type="text" class="form-control" name="tell" id="tell" placeholder="Your Phone">
-                <input type="button" onclick="certSms()" value="전송" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
+                <span class="col-md-3 align-self-center text-left">전화번호</span><input type="text" class="form-control" name="tell" id="tell" required="required" placeholder="전화번호는 '-'를 제외한 숫자만 입력해주세요.">
+                <input id="tellsms" type="button" onclick='certSms()' value="전송" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
               </div>
               <div class="form-group d-flex">
-                <span class="col-md-3 align-self-center text-left">인증번호</span><input type="text" class="form-control" name="certNum" placeholder="Your Certification Number">
-                <input type="button" onclick="certNum()" value="확인" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
+                <span class="col-md-3 align-self-center text-left">인증번호</span><input type="text" class="form-control" name="certNum" id="certNum" required="required" placeholder="Your Certification Number">
+                <input id="smsconfirm" type="button" onclick='certNumConfirm()' value="확인" class="btn btn-primary py-2 px-2 col-md-2 ml-3" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">
               </div>
               <div class="form-group">
                 <input type="submit" value="다음" class="btn btn-primary py-3 px-5 col-md-5 mt-5" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">
@@ -182,7 +183,7 @@
   <script src="../../../../resources/js/generation/google-map.js"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
   
-  <script type="text/javascript">
+  <script>
   	let certSms = () => {
   		let tell = document.querySelector('#tell').value;
   		if(tell){
@@ -200,7 +201,38 @@
   		}else{
   			alert("인증번호가 전송될 전화번호를 입력해주세요.");
   		}
-  	}
+  	};
+  	
+  	let certNumFlg = false;
+  	let certNumConfirm = () => {
+  		let certNumber = document.querySelector('#certNum').value;
+  		if(certNumber){
+  			fetch("/myapt/vote/certconfirm?certNumber=" + certNumber,{
+  				method:"GET"
+  			})
+  			.then(response => response.text())
+  			.then(text => {
+  				if(text == 'success'){
+  					alert("인증이 완료되었습니다.");
+  					certNumFlg = true;
+  				}else{
+  					alert("인증번호를 다시 확인해주세요.");
+  				}
+  			})
+  		}else{
+  			alert("인증번호를 입력해주세요.");
+  		}
+  	};
+  	
+  	//지워줘야함!!!!
+  	let certNumFlg = true;
+  	
+  	document.querySelector('#frm_authvote').addEventListener('submit',(e)=>{
+  		if(!certNumFlg){
+  			e.preventDefault();
+  			alert("전화번호 인증을 완료해주세요.");
+  		}
+  	});
   </script>
     
   </body>

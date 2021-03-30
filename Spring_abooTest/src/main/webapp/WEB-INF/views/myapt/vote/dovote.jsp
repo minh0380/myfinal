@@ -53,40 +53,30 @@
         <div class="row">
           <div class="col-md-8 ftco-animate" style="flex: 0 0 100% !important; max-width: 100% !important;">
           	<div class="d-flex justify-content-between">
-          		<h2 class="mb-3">아파트 건물 외벽 도색 투표</h2>
+          		<h2 class="mb-3">${voteMng.voteTitle}</h2>
           		<div class="d-flex align-self-center">
           			<i class="fas fa-clock align-self-center mr-2"></i>
-          			<span>2021-03-17 ~ 2021-03-18</span>
+          			<span>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</span>
           		</div>
           	</div>
           	<hr>
-            <p>안녕하세요 ㅇㅇ아파트 입주민 여러분 다들 평안하신지요? 다름이 아니라 저희 ㅇㅇ아파트의 건물 외벽 도색을 추진하고자 합니다. 그에 앞서 어떤 색조합이 가장 입주민 분들이 선호하실지 몰라 투표를 통해 결정하기로 했습니다.</p>
-            <p>
-              <img src="../../../../resources/images/image_6.jpg" alt="" class="img-fluid">
-            </p>
-            <p>Molestiae cupiditate inventore animi, maxime sapiente optio, illo est nemo veritatis repellat sunt doloribus nesciunt! Minima laborum magni reiciendis qui voluptate quisquam voluptatem soluta illo eum ullam incidunt rem assumenda eveniet eaque sequi deleniti tenetur dolore amet fugit perspiciatis ipsa, odit. Nesciunt dolor minima esse vero ut ea, repudiandae suscipit!</p>
-            <!-- <h2 class="mb-3 mt-5">#2. Creative WordPress Themes</h2> -->
-            <p>Temporibus ad error suscipit exercitationem hic molestiae totam obcaecati rerum, eius aut, in. Exercitationem atque quidem tempora maiores ex architecto voluptatum aut officia doloremque. Error dolore voluptas, omnis molestias odio dignissimos culpa ex earum nisi consequatur quos odit quasi repellat qui officiis reiciendis incidunt hic non? Debitis commodi aut, adipisci.</p>
-            <p>
-              <img src="../../../../resources/images/image_5.jpg" alt="" class="img-fluid">
-            </p>
-            <p>Quisquam esse aliquam fuga distinctio, quidem delectus veritatis reiciendis. Nihil explicabo quod, est eos ipsum. Unde aut non tenetur tempore, nisi culpa voluptate maiores officiis quis vel ab consectetur suscipit veritatis nulla quos quia aspernatur perferendis, libero sint. Error, velit, porro. Deserunt minus, quibusdam iste enim veniam, modi rem maiores.</p>
-            <p>Odit voluptatibus, eveniet vel nihil cum ullam dolores laborum, quo velit commodi rerum eum quidem pariatur! Quia fuga iste tenetur, ipsa vel nisi in dolorum consequatur, veritatis porro explicabo soluta commodi libero voluptatem similique id quidem? Blanditiis voluptates aperiam non magni. Reprehenderit nobis odit inventore, quia laboriosam harum excepturi ea.</p>
-            <p>Adipisci vero culpa, eius nobis soluta. Dolore, maxime ullam ipsam quidem, dolor distinctio similique asperiores voluptas enim, exercitationem ratione aut adipisci modi quod quibusdam iusto, voluptates beatae iure nemo itaque laborum. Consequuntur et pariatur totam fuga eligendi vero dolorum provident. Voluptatibus, veritatis. Beatae numquam nam ab voluptatibus culpa, tenetur recusandae!</p>
-            <p>Voluptas dolores dignissimos dolorum temporibus, autem aliquam ducimus at officia adipisci quasi nemo a perspiciatis provident magni laboriosam repudiandae iure iusto commodi debitis est blanditiis alias laborum sint dolore. Dolores, iure, reprehenderit. Error provident, pariatur cupiditate soluta doloremque aut ratione. Harum voluptates mollitia illo minus praesentium, rerum ipsa debitis, inventore?</p>
+            ${voteMng.voteContent}
             
-            <form action="#" class="d-flex p-5 bg-light">
+            <form action="/myapt/vote/dovoteimpl" method="post" enctype="multipart/form-data">
+            <div class="d-flex p-5 bg-light">
               <div class="desc align-self-md-center w-100 d-flex flex-column align-items-center">
-                <h3 class="text-center">아파트 건물 외벽 도색 투표</h3>
-               	<div class="text-center col-md-3 d-flex justify-content-between"><label class="mb-0" for="vote">축구 하실 분?</label> <input class="align-self-center" type="radio" name="vote"></div>
-               	<div class="text-center col-md-3 d-flex justify-content-between"><label class="mb-0" for="vote">농구 경기 보러 가실 분?</label> <input class="align-self-center" type="radio" name="vote"></div>
-               	<div class="text-center col-md-3 d-flex justify-content-between"><label class="mb-0" for="vote">3번 보기</label> <input class="align-self-center" type="radio" name="vote"></div>
+              	<input type="text" name="generationIdx" value="${sessionScope.generation.generationIdx}" style="display: none;">
+              	<input type="text" name="voteNo" value="${voteMng.voteNo}" style="display: none;">
+                <h3 class="text-center">${voteMng.voteTitle}</h3>
+                <c:forEach items="${itemList}" var="itemList" varStatus="status">
+                	<div class="text-center col-md-3 d-flex justify-content-between"><label class="mb-0" for="voteOnWhat">${status.count}. ${itemList}</label> <input class="align-self-center" type="radio" name="voteOnWhat" value="${itemList}"></div>
+                </c:forEach>
+              </div>
+            </div>
+              <div class="container text-center">
+            	<input type="submit" value="투표 완료" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-5" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">
               </div>
             </form>
-            
-            <div class="container text-center">
-            	<a href="#" class="center-block btn btn-primary p-3 px-xl-5 py-xl-3 mt-5" style="background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%); border: none; color: white !important;">투표완료</a>
-            </div>
 
           </div> <!-- .col-md-8 -->
 
