@@ -1,6 +1,7 @@
 package com.kh.aboo.myapt.vote.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -61,6 +62,14 @@ public class VoteController {
 			itemList.add(item);
 		}
 		
+		if(voteMng.getVoteIsFinish() != 0) {
+			List<Double> turnoutList = voteService.calculateTurnout(voteNo);
+			double maxTurnout = Collections.max(turnoutList);
+			int idxOfMax = turnoutList.indexOf(maxTurnout);
+			model.addAttribute("turnoutList", turnoutList);
+			model.addAttribute("maxTurnout", maxTurnout);
+			model.addAttribute("idxOfMax", idxOfMax);
+		}
 		
 		model.addAttribute("voteMng", voteMng);
 		model.addAttribute("itemList", itemList);
@@ -110,24 +119,25 @@ public class VoteController {
 	
 	@PostMapping("authvoteimpl")
 	public String authVoteImpl(AuthToVote authToVote, Model model, HttpSession session) {
+		Generation generation = (Generation) session.getAttribute("generation");
 		String generationWonIdxToVote = voteService.selectGenerationWonIdxToVote(authToVote);
 		String generationWonTellToVote = voteService.selectGenerationWonTellToVote(authToVote);
 		session.setAttribute("generationWonIdxToVote", generationWonIdxToVote);
 		session.setAttribute("generationWonTellToVote", generationWonTellToVote);
-		/*int res = voteService.selectGenerationWonToAuth(authToVote);
+		int res = voteService.selectGenerationWonToAuth(authToVote);
 		
-		if(res > 0) {
+		if(res > 0 && generation.getGenerationIdx().equals(voteService.selectGenerationIdxToConfirm(generationWonIdxToVote))) {
 			session.removeAttribute("certNumToVote");
 			model.addAttribute("alertMsg", "세대원 인증이 완료되었습니다. 투표를 진행합니다.");
 			model.addAttribute("url", "/myapt/vote/dovote?voteNo=" + authToVote.getVoteNo());
 		}else {
 			model.addAttribute("alertMsg", "세대 정보와 세대원 정보를 다시 확인해주세요.");
 			model.addAttribute("url", "/myapt/vote/authvote?voteNo=" + authToVote.getVoteNo());
-		}*/
+		}
 		
 		//꼭 지우기!!!!
-		model.addAttribute("alertMsg", "세대원 인증이 완료되었습니다. 투표를 진행합니다.");
-		model.addAttribute("url", "/myapt/vote/dovote?voteNo=" + authToVote.getVoteNo());
+		//model.addAttribute("alertMsg", "세대원 인증이 완료되었습니다. 투표를 진행합니다.");
+		//model.addAttribute("url", "/myapt/vote/dovote?voteNo=" + authToVote.getVoteNo());
 		
 		return "common/result";
 	}

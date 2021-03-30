@@ -89,16 +89,16 @@
             	<c:otherwise>
             		<div class="about-author d-flex p-5 bg-light mt-3">
 		              <div class="desc align-self-md-center w-100 d-flex flex-column align-items-center">
-		                <h3 class="text-center">아파트 건물 외벽 도색 투표</h3>
-		                <div class="text-center col-md-3 d-flex justify-content-between"><span>축구</span><span>35%</span></div>
-		                <div class="text-center col-md-3 d-flex justify-content-between"><span>농구가 하고 싶으신 분?</span><span>25%</span></div>
-		                <div class="text-center col-md-3 d-flex justify-content-between"><span>야구 갑시다</span><span>45%</span></div>
+		                <h3 class="text-center">${voteMng.voteTitle}</h3>
+		                <c:forEach items="${itemList}" var="itemList" varStatus="status">
+		                	<div class="text-center col-md-4 d-flex justify-content-between"><span>${status.count}. ${itemList}</span><span>${turnoutList[status.index]}%</span></div>
+		                </c:forEach>
 		              </div>
 		            </div>
 		            
 		            <div class="mt-5 mb-5 text-danger text-center">
 		            	<p class="mb-0">투표가 종료되었습니다.</p>
-		            	<p class="mb-0">투표결과 3번 선택지가 40%로 가장 높은 수의 표를 얻었습니다.</p>
+		            	<p class="mb-0">투표결과 ${idxOfMax+1}번 선택지가 ${maxTurnout}%로 가장 높은 수의 표를 얻었습니다.</p>
 		            	<p>투표에 참여해주신 입주민 여러분 감사드립니다.</p>
 		            </div>
             	</c:otherwise>
@@ -117,13 +117,13 @@
             			<c:when test="${voteMng.voteIsFinish == 0}">
             				<div class="d-flex justify-content-end">
 				            	<a href="/admin/vote/votemodify?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-pen" style="color: #666666;"></i></a>
-				            	<a href="/admin/vote/votedelete?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a onclick="voteDelete()" style="cursor: pointer;" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
 				            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
 				            </div>
             			</c:when>
             			<c:otherwise>
             				<div class="d-flex justify-content-end">
-				            	<a href="/admin/vote/votedelete?voteNo=${voteMng.voteNo}" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
+				            	<a onclick="voteDelete()" style="cursor: pointer;" class="mr-4"><i class="fas fa-trash" style="color: #666666;"></i></a>
 				            	<a href="/myapt/vote/votelist" class="mr-4"><i class="fas fa-list-ul" style="color: #666666;"></i></a>
 				            </div>
             			</c:otherwise>

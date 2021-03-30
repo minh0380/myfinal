@@ -37,6 +37,6 @@ public interface VoteMngRepository {
 	int updateVoteIsFinish(@Param(value = "voteNo") String voteNo);
 	
 	@Delete("delete from tb_vote_gen where vote_no = #{voteNo}")
-	int deleteVoteGen(@Param(value = "voteNo") String voteNo);
+	void deleteVoteGen(@Param(value = "voteNo") String voteNo);
 	
 }

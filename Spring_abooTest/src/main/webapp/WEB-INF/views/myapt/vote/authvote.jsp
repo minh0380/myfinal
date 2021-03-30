@@ -64,6 +64,7 @@
             <form action="/myapt/vote/authvoteimpl" method="post" id="frm_authvote">
               <input type="text" name="voteNo" style="display: none;" value="${voteNo}">
               <input type="text" name="apartmentIdx" style="display: none;" value="${sessionScope.generation.apartmentIdx}">
+              <input type="text" name="generationIdx" style="display: none;" value="${sessionScope.generation.generationIdx}">
               <h5 class="font-weight-bold text-left">세대 정보</h5>
               <div class="form-group d-flex">
                 <input type="text" class="form-control" name="building" required="required" placeholder="Your Building"><span class="ml-3 mr-3 align-self-center">동</span>
@@ -225,7 +226,7 @@
   	};
   	
   	//지워줘야함!!!!
-  	let certNumFlg = true;
+  	//let certNumFlg = true;
   	
   	document.querySelector('#frm_authvote').addEventListener('submit',(e)=>{
   		if(!certNumFlg){

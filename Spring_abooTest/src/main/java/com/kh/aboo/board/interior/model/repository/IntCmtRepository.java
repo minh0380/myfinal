@@ -17,7 +17,7 @@ public interface IntCmtRepository {
 			+ "values(sc_int_cmt_idx.nextval, #{intPostNo}, #{intCmtContent}, #{intCmtWriter}, #{generationIdx})")
 	int insertIntCmt(IntCmt intCmt);
 	
-	@Select("select * from tb_int_cmt where int_post_no = #{intPostNo} and int_cmt_is_del = 0")
+	@Select("select * from tb_int_cmt where int_post_no = #{intPostNo} and int_cmt_is_del = 0 order by int_cmt_no")
 	List<IntCmt> selectIntCmtByIntPostNo(@Param(value = "intPostNo") String intPostNo);
 	
 	@Select("select count(*) from tb_int_cmt where int_post_no = #{intPostNo} and int_cmt_is_del = 0")

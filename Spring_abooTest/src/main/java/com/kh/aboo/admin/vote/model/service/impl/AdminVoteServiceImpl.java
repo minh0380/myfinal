@@ -62,8 +62,8 @@ public class AdminVoteServiceImpl implements AdminVoteService {
 	}
 
 	@Override
-	public int deleteVoteGen(String voteNo) {
-		return voteMngRepository.deleteVoteGen(voteNo);
+	public void deleteVoteGen(String voteNo) {
+		voteMngRepository.deleteVoteGen(voteNo);
 	}
 	
 }

@@ -77,9 +77,9 @@ public class AdminVoteController {
 	@PostMapping("votemodifyimpl")
 	public String voteModifyImpl(VoteMng voteMng, Model model) {
 		int res = adminVoteService.updateVoteMng(voteMng);
-		int resetVoteGen = adminVoteService.deleteVoteGen(voteMng.getVoteNo());
+		adminVoteService.deleteVoteGen(voteMng.getVoteNo());
 		
-		if(res > 0 && resetVoteGen > 0) {
+		if(res > 0) {
 			model.addAttribute("alertMsg", "투표가 수정되었습니다.");
 			model.addAttribute("url", "/myapt/vote/votelist");
 		}else {

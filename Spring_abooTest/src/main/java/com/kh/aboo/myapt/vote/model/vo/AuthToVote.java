@@ -4,6 +4,7 @@ public class AuthToVote {
 	
 	private String voteNo;
 	private String apartmentIdx;
+	private String generationIdx;
 	private String building;
 	private String num;
 	private String name;
@@ -23,6 +24,14 @@ public class AuthToVote {
 	
 	public void setApartmentIdx(String apartmentIdx) {
 		this.apartmentIdx = apartmentIdx;
+	}
+	
+	public String getGenerationIdx() {
+		return generationIdx;
+	}
+	
+	public void setGenerationIdx(String generationIdx) {
+		this.generationIdx = generationIdx;
 	}
 	
 	public String getBuilding() {
@@ -59,8 +68,8 @@ public class AuthToVote {
 
 	@Override
 	public String toString() {
-		return "AuthToVote [voteNo=" + voteNo + ", apartmentIdx=" + apartmentIdx + ", building=" + building + ", num="
-				+ num + ", name=" + name + ", tell=" + tell + "]";
+		return "AuthToVote [voteNo=" + voteNo + ", apartmentIdx=" + apartmentIdx + ", generationIdx=" + generationIdx
+				+ ", building=" + building + ", num=" + num + ", name=" + name + ", tell=" + tell + "]";
 	}
 	
 }

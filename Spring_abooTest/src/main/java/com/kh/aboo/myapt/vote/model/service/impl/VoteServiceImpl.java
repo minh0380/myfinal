@@ -3,6 +3,8 @@ package com.kh.aboo.myapt.vote.model.service.impl;
 import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 import javax.crypto.Mac;
@@ -20,6 +22,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.kh.aboo.admin.vote.model.repository.VoteMngRepository;
+import com.kh.aboo.admin.vote.model.vo.VoteMng;
 import com.kh.aboo.myapt.vote.model.repository.VoteRepository;
 import com.kh.aboo.myapt.vote.model.service.VoteService;
 import com.kh.aboo.myapt.vote.model.vo.AuthToVote;
@@ -32,9 +36,11 @@ public class VoteServiceImpl implements VoteService {
 	private RestTemplate restTemplate;
 	
 	private final VoteRepository voteRepository;
+	private final VoteMngRepository voteMngRepository;
 	
-	public VoteServiceImpl(VoteRepository voteRepository) {
+	public VoteServiceImpl(VoteRepository voteRepository, VoteMngRepository voteMngRepository) {
 		this.voteRepository = voteRepository;
+		this.voteMngRepository = voteMngRepository;
 	}
 
 	@Override
@@ -152,6 +158,37 @@ public class VoteServiceImpl implements VoteService {
 	@Override
 	public int selectIfParticipate(String generationIdx, String voteNo) {
 		return voteRepository.selectIfParticipate(generationIdx, voteNo);
+	}
+
+	@Override
+	public List<Double> calculateTurnout(String voteNo) {
+		VoteMng voteMng = voteMngRepository.selectVoteMngByIdx(voteNo);
+		String[] voteOnWhatArr = voteMng.getVoteItem().split(",");
+		
+		int voteGenCnt = voteRepository.selectVoteGenCnt(voteNo); //총 투표 수
+		
+		int voteOnWhatCnt; //각 선택지 별 득표 수
+		List<Integer> voteOnWhatList = new ArrayList<>();
+		
+		double turnout; //각 선택지 별 득표율
+		List<Double> turnoutList = new ArrayList<>();
+		
+		for (String voteOnWhat : voteOnWhatArr) {
+			voteOnWhatCnt = voteRepository.selectVoteOnWhatCnt(voteOnWhat, voteNo);
+			voteOnWhatList.add(voteOnWhatCnt);
+		}
+		
+		for (int votes : voteOnWhatList) {
+			turnout = Math.round((((double)votes/(double)voteGenCnt)*100)*100)/100.0;
+			turnoutList.add(turnout);
+		}
+		
+		return turnoutList;
+	}
+
+	@Override
+	public String selectGenerationIdxToConfirm(String generationWonIdx) {
+		return voteRepository.selectGenerationIdxToConfirm(generationWonIdx);
 	}
 
 }
