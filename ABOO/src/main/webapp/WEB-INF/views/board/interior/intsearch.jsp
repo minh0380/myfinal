@@ -49,99 +49,86 @@
     </section>
   
     <section class="ftco-section bg-light">
-      <c:choose>
-      	<c:when test="${!empty interiorBrd}">
-      		<div class="container">
-		        <div class="row">
-		        	<c:forEach items="${interiorBrd}" var="interiorBrd" varStatus="status">
-		        		<c:choose>
-		        			<c:when test="${interiorBrd.intIsPrivate == 0}">
-		        				<div class="col-md-4 ftco-animate">
-									<div class="blog-entry">
-									  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');"></a>
-									  <div class="text d-flex py-4">
-									    <div class="meta mb-3">
-									      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
-									      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
-									      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
-									    </div>
-									    <div class="desc pl-3">
-									      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>
-									    </div>
-									  </div>
-									</div>
-				            	</div>
-		        			</c:when>
-		        			<c:otherwise>
-		        				<div class="col-md-4 ftco-animate">
-									<div class="blog-entry">
-									  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('../../../resources/abooimg/nopreviewimg.jpg');"></a>
-									  <div class="text d-flex py-4">
-									    <div class="meta mb-3">
-									      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
-									      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
-									      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
-									    </div>
-									    <div class="desc pl-3">
-									      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">비공개 처리 된 게시물입니다.</a></h3>
-									    </div>
-									  </div>
-									</div>
-				            	</div>
-		        			</c:otherwise>
-		        		</c:choose>
-		            </c:forEach>
-		        </div>
-		        
-		        <div class="container d-flex justify-content-end">
-			          <form class="search-form" style="width: 40%;">
-			          <div class="form-group mb-0">
-			            <div class="icon" style="cursor: pointer;">
-			            	<a id="intSearchIcon" class="icon-search"></a>
-			            </div>
-			            <input type="text" id="intSearch" name="intSearch" class="form-control" placeholder="제목을 입력하세요.">
-			         </div>
-			        </form>
-				</div>
-		        
-		        <div class="container text-center d-flex justify-content-end mt-0">
-			      <a href="${context}/board/interior/intupload" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">글쓰기</a>
-			    </div>
-		        
-		        <div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27">
-		              <ul>
-		                <li><a href="${context}/board/${paging.type}/intlist">&lt;&lt;</a></li>
-		                <li><a href="${context}/board/${paging.type}/intlist?page=${paging.prev}">&lt;</a></li>
-			                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-			                   <c:choose>
-			                      <c:when test="${paging.currentPage eq page}">
-			                         <li class="active"><a href="${context}/board/${paging.type}/intlist?page=${page}">${page}</a></li>
-			                      </c:when>
-			                      <c:otherwise>
-			                         <li><a href="${context}/board/${paging.type}/intlist?page=${page}">${page}</a></li>
-			                      </c:otherwise>
-			                   </c:choose>
-			              	 </c:forEach>
-		                <li><a href="${context}/board/${paging.type}/intlist?page=${paging.next}">&gt;</a></li>
-		                <li><a href="${context}/board/${paging.type}/intlist?page=${paging.lastPage}">&gt;&gt;</a></li>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
-		      </div>
-      	</c:when>
-      	<c:otherwise>
-      		<div class="container">
-      			<div class="mt-5 mb-5 text-center">작성된 게시글이 없습니다.</div>
-      			
-      			<div class="container text-center d-flex justify-content-end mt-0">
-			      <a href="${context}/board/interior/intupload" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">글쓰기</a>
-			    </div>
-      		</div>
-      	</c:otherwise>
-      </c:choose>
+      <div class="container">
+        <div class="row">
+        	<c:forEach items="${interiorBrd}" var="interiorBrd" varStatus="status">
+        		<c:choose>
+        			<c:when test="${interiorBrd.intIsPrivate == 0}">
+        				<div class="col-md-4 ftco-animate">
+							<div class="blog-entry">
+							  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');"></a>
+							  <div class="text d-flex py-4">
+							    <div class="meta mb-3">
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
+							    </div>
+							    <div class="desc pl-3">
+							      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>
+							    </div>
+							  </div>
+							</div>
+		            	</div>
+        			</c:when>
+        			<c:otherwise>
+        				<div class="col-md-4 ftco-animate">
+							<div class="blog-entry">
+							  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('../../../resources/abooimg/nopreviewimg.jpg');"></a>
+							  <div class="text d-flex py-4">
+							    <div class="meta mb-3">
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
+							    </div>
+							    <div class="desc pl-3">
+							      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">비공개 처리 된 게시물입니다.</a></h3>
+							    </div>
+							  </div>
+							</div>
+		            	</div>
+        			</c:otherwise>
+        		</c:choose>
+            </c:forEach>
+        </div>
+        
+        <div class="container d-flex justify-content-end">
+	          <form class="search-form" style="width: 40%;">
+	          <div class="form-group mb-0">
+	            <div class="icon" style="cursor: pointer;">
+	            	<a id="intSearchIcon" class="icon-search"></a>
+	            </div>
+	            <input type="text" id="intSearch" name="intSearch" class="form-control" placeholder="제목을 입력하세요.">
+	         </div>
+	        </form>
+		</div>
+        
+        <div class="container text-center d-flex justify-content-end mt-0">
+	      <a href="${context}/board/interior/intupload" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">글쓰기</a>
+	    </div>
+        
+        <div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}">&lt;&lt;</a></li>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${paging.prev}">&lt;</a></li>
+	                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+	                   <c:choose>
+	                      <c:when test="${paging.currentPage eq page}">
+	                         <li class="active"><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${page}">${page}</a></li>
+	                      </c:when>
+	                      <c:otherwise>
+	                         <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${page}">${page}</a></li>
+	                      </c:otherwise>
+	                   </c:choose>
+	              	 </c:forEach>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${paging.next}">&gt;</a></li>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${paging.lastPage}">&gt;&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">

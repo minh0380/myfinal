@@ -59,38 +59,79 @@
     		<div class="row">
     			<div class="col-md-12 ftco-animate">
     				<div class="table-responsive">
-	    				<table class="table">
-						    <thead class="thead-primary">
-						      <tr>
-						        <th class="w-15">투표 번호</th>
-						        <th class="w-40">제목</th>
-						        <th class="w-25">투표 기간</th>
-						        <th class="w-20">투표 상태</th>
-						      </tr>
-						    </thead>
-						    <tbody>
-						      <c:forEach items="${voteMng}" var="voteMng" >
-						      	<c:choose>
-						      		<c:when test="${voteMng.voteIsFinish == 0}">
-						      			<tr>
-								          <td>${voteMng.voteNo}</td>
-								          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-								          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-								          <td>투표 중</td>
-								        </tr>
-						      		</c:when>
-						      		<c:otherwise>
-						      			<tr>
-								          <td>${voteMng.voteNo}</td>
-								          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-								          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-								          <td>투표 완료</td>
-								        </tr>
-						      		</c:otherwise>
-						      	</c:choose>
-						      </c:forEach>
-						    </tbody>
-						  </table>
+    					<c:choose>
+    						<c:when test="${sessionScope.generation != null}">
+    							<table class="table">
+								    <thead class="thead-primary">
+								      <tr>
+								        <th class="w-10">투표 번호</th>
+								        <th class="w-40">제목</th>
+								        <th class="w-25">투표 기간</th>
+								        <th class="w-15">투표 상태</th>
+								        <th class="w-10">참여 여부</th>
+								      </tr>
+								    </thead>
+								    <tbody>
+								      <c:forEach items="${voteMng}" var="voteMng" varStatus="status" >
+								      	<c:choose>
+								      		<c:when test="${voteMng.voteIsFinish == 0}">
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 중</td>
+										          <td>${ifParticipate[status.index]}</td>
+										        </tr>
+								      		</c:when>
+								      		<c:otherwise>
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 완료</td>
+										          <td>${ifParticipate[status.index]}</td>
+										        </tr>
+								      		</c:otherwise>
+								      	</c:choose>
+								      </c:forEach>
+								    </tbody>
+								  </table>
+    						</c:when>
+    						<c:otherwise>
+    							<table class="table">
+								    <thead class="thead-primary">
+								      <tr>
+								        <th class="w-15">투표 번호</th>
+								        <th class="w-40">제목</th>
+								        <th class="w-25">투표 기간</th>
+								        <th class="w-20">투표 상태</th>
+								      </tr>
+								    </thead>
+								    <tbody>
+								      <c:forEach items="${voteMng}" var="voteMng" >
+								      	<c:choose>
+								      		<c:when test="${voteMng.voteIsFinish == 0}">
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 중</td>
+										        </tr>
+								      		</c:when>
+								      		<c:otherwise>
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 완료</td>
+										        </tr>
+								      		</c:otherwise>
+								      	</c:choose>
+								      </c:forEach>
+								    </tbody>
+								  </table>
+    						</c:otherwise>
+    					</c:choose>
 					  </div>
     			</div>
     		</div>

@@ -49,172 +49,136 @@
     </section>
   
     <section class="ftco-section">
-    	<c:choose>
-       		<c:when test="${!empty voteMng}">
-       			<div class="container">
-		    		<div class="row justify-content-center mb-5">
-			          <div class="col-md-7 text-center heading-section ftco-animate">
-			            <h2 class="mb-4">투표 목록</h2>
-			            <p>아파트 주민들과 상의하여 결정하여야 하는 안건에 대해 투표를 진행합니다.</p>
-			          </div>
-			        </div>
-		        	
-		    		<div class="row">
-		    			<div class="col-md-12 ftco-animate">
-		    				<div class="table-responsive">
-		    					<c:choose>
-		    						<c:when test="${sessionScope.generation != null}">
-		    							<table class="table">
-										    <thead class="thead-primary">
-										      <tr>
-										        <th class="w-10">투표 번호</th>
-										        <th class="w-40">제목</th>
-										        <th class="w-25">투표 기간</th>
-										        <th class="w-15">투표 상태</th>
-										        <th class="w-10">참여 여부</th>
-										      </tr>
-										    </thead>
-										    <tbody>
-										      <c:forEach items="${voteMng}" var="voteMng" varStatus="status" >
-										      	<c:choose>
-										      		<c:when test="${voteMng.voteIsFinish == 0}">
-										      			<tr>
-												          <td>${voteMng.voteNo}</td>
-												          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-												          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-												          <td>투표 중</td>
-												          <td>${ifParticipate[status.index]}</td>
-												        </tr>
-										      		</c:when>
-										      		<c:otherwise>
-										      			<tr>
-												          <td>${voteMng.voteNo}</td>
-												          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-												          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-												          <td>투표 완료</td>
-												          <td>${ifParticipate[status.index]}</td>
-												        </tr>
-										      		</c:otherwise>
-										      	</c:choose>
-										      </c:forEach>
-										    </tbody>
-										  </table>
-		    						</c:when>
-		    						<c:otherwise>
-		    							<table class="table">
-										    <thead class="thead-primary">
-										      <tr>
-										        <th class="w-15">투표 번호</th>
-										        <th class="w-40">제목</th>
-										        <th class="w-25">투표 기간</th>
-										        <th class="w-20">투표 상태</th>
-										      </tr>
-										    </thead>
-										    <tbody>
-										      <c:forEach items="${voteMng}" var="voteMng" >
-										      	<c:choose>
-										      		<c:when test="${voteMng.voteIsFinish == 0}">
-										      			<tr>
-												          <td>${voteMng.voteNo}</td>
-												          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-												          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-												          <td>투표 중</td>
-												        </tr>
-										      		</c:when>
-										      		<c:otherwise>
-										      			<tr>
-												          <td>${voteMng.voteNo}</td>
-												          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-												          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-												          <td>투표 완료</td>
-												        </tr>
-										      		</c:otherwise>
-										      	</c:choose>
-										      </c:forEach>
-										    </tbody>
-										  </table>
-		    						</c:otherwise>
-		    					</c:choose>
-							  </div>
-		    			</div>
-		    		</div>
-		    	</div>
-				<div class="container d-flex justify-content-end">
-					<form class="search-form" style="width: 40%;">
-			          <div class="form-group mb-0">
-			            <div class="icon" style="cursor: pointer;">
-			            	<a id="voteSearchIcon" class="icon-search"></a>
-			            </div>
-			            <input id="voteSearch" type="text" class="form-control" placeholder="제목을 입력하세요.">
-			          </div>
-		         </form>
-				</div>
-				
-				<c:choose>
-					<c:when test="${sessionScope.admin != null}">
-						<div class="container text-center d-flex justify-content-end">
-					      <a href="/admin/vote/makevote" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 mt-3 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표만들기</a>
-					    </div>
-					</c:when>
-					<c:otherwise></c:otherwise>
-				</c:choose>
-				
-		    	<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27">
-		              <ul>
-		                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}">&lt;&lt;</a></li>
-		                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${paging.prev}">&lt;</a></li>
-			                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-			                   <c:choose>
-			                      <c:when test="${paging.currentPage eq page}">
-			                         <li class="active"><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${page}">${page}</a></li>
-			                      </c:when>
-			                      <c:otherwise>
-			                         <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${page}">${page}</a></li>
-			                      </c:otherwise>
-			                   </c:choose>
-			              	 </c:forEach>
-		                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${paging.next}">&gt;</a></li>
-		                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${paging.lastPage}">&gt;&gt;</a></li>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
-       		</c:when>
-       		<c:otherwise>
-       			<div class="container">
-		    		<div class="row justify-content-center mb-5">
-			          <div class="col-md-7 text-center heading-section ftco-animate">
-			            <h2 class="mb-4">투표 목록</h2>
-			            <p>아파트 주민들과 상의하여 결정하여야 하는 안건에 대해 투표를 진행합니다.</p>
-			          </div>
-			        </div>
+    	<div class="container">
+    		<div class="row justify-content-center mb-5">
+          <div class="col-md-7 text-center heading-section ftco-animate">
+            <h2 class="mb-4">투표 목록</h2>
+            <p>아파트 주민들과 상의하여 결정하여야 하는 안건에 대해 투표를 진행합니다.</p>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-12 ftco-animate">
+    				<div class="table-responsive">
+    					<c:choose>
+    						<c:when test="${sessionScope.generation != null}">
+    							<table class="table">
+								    <thead class="thead-primary">
+								      <tr>
+								        <th class="w-10">투표 번호</th>
+								        <th class="w-40">제목</th>
+								        <th class="w-25">투표 기간</th>
+								        <th class="w-15">투표 상태</th>
+								        <th class="w-10">참여 여부</th>
+								      </tr>
+								    </thead>
+								    <tbody>
+								      <c:forEach items="${voteMng}" var="voteMng" varStatus="status" >
+								      	<c:choose>
+								      		<c:when test="${voteMng.voteIsFinish == 0}">
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 중</td>
+										          <td>${ifParticipate[status.index]}</td>
+										        </tr>
+								      		</c:when>
+								      		<c:otherwise>
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 완료</td>
+										          <td>${ifParticipate[status.index]}</td>
+										        </tr>
+								      		</c:otherwise>
+								      	</c:choose>
+								      </c:forEach>
+								    </tbody>
+								  </table>
+    						</c:when>
+    						<c:otherwise>
+    							<table class="table">
+								    <thead class="thead-primary">
+								      <tr>
+								        <th class="w-15">투표 번호</th>
+								        <th class="w-40">제목</th>
+								        <th class="w-25">투표 기간</th>
+								        <th class="w-20">투표 상태</th>
+								      </tr>
+								    </thead>
+								    <tbody>
+								      <c:forEach items="${voteMng}" var="voteMng" >
+								      	<c:choose>
+								      		<c:when test="${voteMng.voteIsFinish == 0}">
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 중</td>
+										        </tr>
+								      		</c:when>
+								      		<c:otherwise>
+								      			<tr>
+										          <td>${voteMng.voteNo}</td>
+										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
+										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
+										          <td>투표 완료</td>
+										        </tr>
+								      		</c:otherwise>
+								      	</c:choose>
+								      </c:forEach>
+								    </tbody>
+								  </table>
+    						</c:otherwise>
+    					</c:choose>
+					  </div>
+    			</div>
+    		</div>
+    	</div>
+		<div class="container d-flex justify-content-end">
+			<form class="search-form" style="width: 40%;">
+	          <div class="form-group mb-0">
+	            <div class="icon" style="cursor: pointer;">
+	            	<a id="voteSearchIcon" class="icon-search"></a>
+	            </div>
+	            <input id="voteSearch" type="text" class="form-control" placeholder="제목을 입력하세요.">
+	          </div>
+         </form>
+		</div>
+		
+		<c:choose>
+			<c:when test="${sessionScope.admin != null}">
+				<div class="container text-center d-flex justify-content-end">
+			      <a href="/admin/vote/makevote" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 mt-3 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표만들기</a>
 			    </div>
-			    
-			    <div class="mt-5 mb-5 text-center">해당 검색어가 포함된 제목을 가진 투표가 없습니다.</div>
-			    
-			    <div class="container d-flex justify-content-end">
-					<form class="search-form" style="width: 40%;">
-			          <div class="form-group mb-0">
-			            <div class="icon" style="cursor: pointer;">
-			            	<a id="voteSearchIcon" class="icon-search"></a>
-			            </div>
-			            <input id="voteSearch" type="text" class="form-control" placeholder="제목을 입력하세요.">
-			          </div>
-		         </form>
-				</div>
-				
-				<c:choose>
-					<c:when test="${sessionScope.admin != null}">
-						<div class="container text-center d-flex justify-content-end">
-					      <a href="/admin/vote/makevote" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 mt-3 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표만들기</a>
-					    </div>
-					</c:when>
-					<c:otherwise></c:otherwise>
-				</c:choose>
-       		</c:otherwise>
-       	</c:choose>
+			</c:when>
+			<c:otherwise></c:otherwise>
+		</c:choose>
+		
+    	<div class="row mt-5">
+          <div class="col text-center">
+            <div class="block-27">
+              <ul>
+                <li><a href="${context}/myapt/${paging.type}/votelist">&lt;&lt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.prev}">&lt;</a></li>
+	                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+	                   <c:choose>
+	                      <c:when test="${paging.currentPage eq page}">
+	                         <li class="active"><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                      </c:when>
+	                      <c:otherwise>
+	                         <li><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                      </c:otherwise>
+	                   </c:choose>
+	              	 </c:forEach>
+                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.next}">&gt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.lastPage}">&gt;&gt;</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
     </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">

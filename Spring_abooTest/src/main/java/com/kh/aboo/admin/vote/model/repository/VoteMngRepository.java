@@ -44,4 +44,7 @@ public interface VoteMngRepository {
 	@Select("select count(*) from (select replace(vote_title, ' ', '') p from tb_vote_mng where vote_is_del = 0 and apartment_idx = #{apartmentIdx}) where p like '%'||#{voteSearch}||'%'")
 	int selectVoteMngSearchCnt(@Param(value = "apartmentIdx") String apartmentIdx, @Param(value = "voteSearch") String voteSearch);
 	
+	@Update("update tb_vote_mng set vote_is_finish = 1 where vote_end_date + 1 < sysdate and vote_is_finish = 0")
+	void updateVoteIsFinishBatch();
+	
 }
