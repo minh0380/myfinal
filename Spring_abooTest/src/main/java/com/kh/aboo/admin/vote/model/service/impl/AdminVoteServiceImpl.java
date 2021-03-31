@@ -65,5 +65,22 @@ public class AdminVoteServiceImpl implements AdminVoteService {
 	public void deleteVoteGen(String voteNo) {
 		voteMngRepository.deleteVoteGen(voteNo);
 	}
+
+	@Override
+	public Map<String, Object> selectVoteMngSearchList(int currentPage, String apartmentIdx, String voteSearch) {
+		Paging paging = Paging.builder()
+				.currentPage(currentPage)
+				.blockCnt(5)
+				.cntPerPage(10)
+				.type("vote")
+				.total(voteMngRepository.selectVoteMngSearchCnt(apartmentIdx, voteSearch))
+				.build();
+		
+		Map<String, Object> commandMap = new HashMap<>();
+		commandMap.put("paging", paging);
+		commandMap.put("voteMng", voteMngRepository.selectVoteMngSearchList(paging.getQueryStart(), paging.getQueryEnd(), apartmentIdx, voteSearch));
+		
+		return commandMap;
+	}
 	
 }

@@ -16,8 +16,8 @@
 	        <ul class="navbar-nav ml-auto">
 	          <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
 	          <li class="nav-item"><a href="/about" class="nav-link">About</a></li>
-	          <li class="nav-item active"><a href="/myapt/schedule" class="nav-link">MyApt</a></li>
-	          <li class="nav-item"><a class="nav-link" href="/board/info/listinfo">Board</a></li>
+	          <li class="nav-item"><a href="/myapt/schedule" class="nav-link">MyApt</a></li>
+	          <li class="nav-item active"><a class="nav-link" href="/board/info/listinfo">Board</a></li>
 	          <li class="nav-item"><a href="/mypage/modifyinfo" class="nav-link">MyPage</a></li>
 	          <c:choose>
 	          <c:when test="${sessionScope.generation == null}">
@@ -40,145 +40,95 @@
           <div class="row slider-text align-items-center justify-content-center" data-scrollax-parent="true">
 
             <div class="col-md-8 mt-5 text-center col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
-              <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Parking</a></span> <span class="mr-2">Schedule</span> <span>Institutions</span></p>
-	            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Vote</h1>
+              <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="index.html">Info</a></span> <span>Used</span></p>
+	            <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Interior</h1>
             </div>
           </div>
         </div>
       </div>
     </section>
   
-    <section class="ftco-section">
-    	<div class="container">
-    		<div class="row justify-content-center mb-5">
-          <div class="col-md-7 text-center heading-section ftco-animate">
-            <h2 class="mb-4">투표 목록</h2>
-            <p>아파트 주민들과 상의하여 결정하여야 하는 안건에 대해 투표를 진행합니다.</p>
-          </div>
+    <section class="ftco-section bg-light">
+      <div class="container">
+        <div class="row">
+        	<c:forEach items="${interiorBrd}" var="interiorBrd" varStatus="status">
+        		<c:choose>
+        			<c:when test="${interiorBrd.intIsPrivate == 0}">
+        				<div class="col-md-4 ftco-animate">
+							<div class="blog-entry">
+							  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('${interiorBrd.intThumbnail}');"></a>
+							  <div class="text d-flex py-4">
+							    <div class="meta mb-3">
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
+							    </div>
+							    <div class="desc pl-3">
+							      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intTitle}</a></h3>
+							    </div>
+							  </div>
+							</div>
+		            	</div>
+        			</c:when>
+        			<c:otherwise>
+        				<div class="col-md-4 ftco-animate">
+							<div class="blog-entry">
+							  <a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="block-20" style="background-image: url('../../../resources/abooimg/nopreviewimg.jpg');"></a>
+							  <div class="text d-flex py-4">
+							    <div class="meta mb-3">
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intRegDate}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">${interiorBrd.intWriter}</a></div>
+							      <div><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}" class="meta-chat"><span class="icon-chat"></span> ${intCmtCntList[status.index]}</a></div>
+							    </div>
+							    <div class="desc pl-3">
+							      <h3 class="heading"><a href="/board/interior/intdetail?intPostNo=${interiorBrd.intPostNo}">비공개 처리 된 게시물입니다.</a></h3>
+							    </div>
+							  </div>
+							</div>
+		            	</div>
+        			</c:otherwise>
+        		</c:choose>
+            </c:forEach>
         </div>
-    		<div class="row">
-    			<div class="col-md-12 ftco-animate">
-    				<div class="table-responsive">
-    					<c:choose>
-    						<c:when test="${sessionScope.generation != null}">
-    							<table class="table">
-								    <thead class="thead-primary">
-								      <tr>
-								        <th class="w-10">투표 번호</th>
-								        <th class="w-40">제목</th>
-								        <th class="w-25">투표 기간</th>
-								        <th class="w-15">투표 상태</th>
-								        <th class="w-10">참여 여부</th>
-								      </tr>
-								    </thead>
-								    <tbody>
-								      <c:forEach items="${voteMng}" var="voteMng" varStatus="status" >
-								      	<c:choose>
-								      		<c:when test="${voteMng.voteIsFinish == 0}">
-								      			<tr>
-										          <td>${voteMng.voteNo}</td>
-										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-										          <td>투표 중</td>
-										          <td>${ifParticipate[status.index]}</td>
-										        </tr>
-								      		</c:when>
-								      		<c:otherwise>
-								      			<tr>
-										          <td>${voteMng.voteNo}</td>
-										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-										          <td>투표 완료</td>
-										          <td>${ifParticipate[status.index]}</td>
-										        </tr>
-								      		</c:otherwise>
-								      	</c:choose>
-								      </c:forEach>
-								    </tbody>
-								  </table>
-    						</c:when>
-    						<c:otherwise>
-    							<table class="table">
-								    <thead class="thead-primary">
-								      <tr>
-								        <th class="w-15">투표 번호</th>
-								        <th class="w-40">제목</th>
-								        <th class="w-25">투표 기간</th>
-								        <th class="w-20">투표 상태</th>
-								      </tr>
-								    </thead>
-								    <tbody>
-								      <c:forEach items="${voteMng}" var="voteMng" >
-								      	<c:choose>
-								      		<c:when test="${voteMng.voteIsFinish == 0}">
-								      			<tr>
-										          <td>${voteMng.voteNo}</td>
-										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-										          <td>투표 중</td>
-										        </tr>
-								      		</c:when>
-								      		<c:otherwise>
-								      			<tr>
-										          <td>${voteMng.voteNo}</td>
-										          <td><a href="/myapt/vote/votedetail?voteNo=${voteMng.voteNo}" style="cursor: pointer; color: black;">${voteMng.voteTitle}</a></td>
-										          <td>${voteMng.voteBeginDate} ~ ${voteMng.voteEndDate}</td>
-										          <td>투표 완료</td>
-										        </tr>
-								      		</c:otherwise>
-								      	</c:choose>
-								      </c:forEach>
-								    </tbody>
-								  </table>
-    						</c:otherwise>
-    					</c:choose>
-					  </div>
-    			</div>
-    		</div>
-    	</div>
-		<div class="container d-flex justify-content-end">
-			<form class="search-form" style="width: 40%;">
+        
+        <div class="container d-flex justify-content-end">
+	          <form class="search-form" style="width: 40%;">
 	          <div class="form-group mb-0">
 	            <div class="icon" style="cursor: pointer;">
-	            	<a id="voteSearchIcon" class="icon-search"></a>
+	            	<a id="intSearchIcon" class="icon-search"></a>
 	            </div>
-	            <input id="voteSearch" type="text" class="form-control" placeholder="제목을 입력하세요.">
-	          </div>
-         </form>
+	            <input type="text" id="intSearch" name="intSearch" class="form-control" placeholder="제목을 입력하세요.">
+	         </div>
+	        </form>
 		</div>
-		
-		<c:choose>
-			<c:when test="${sessionScope.admin != null}">
-				<div class="container text-center d-flex justify-content-end">
-			      <a href="/admin/vote/makevote" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 mt-3 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">투표만들기</a>
-			    </div>
-			</c:when>
-			<c:otherwise></c:otherwise>
-		</c:choose>
-		
-    	<div class="row mt-5">
+        
+        <div class="container text-center d-flex justify-content-end mt-0">
+	      <a href="${context}/board/interior/intupload" class="center-block btn btn-primary p-3 px-xl-4 py-xl-2 btn-sm" style="background: linear-gradient(45deg, #12e6ca 0%, #8be55d 100%); border: none; color: white !important;">글쓰기</a>
+	    </div>
+        
+        <div class="row mt-5">
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li><a href="${context}/myapt/${paging.type}/votelist">&lt;&lt;</a></li>
-                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.prev}">&lt;</a></li>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}">&lt;&lt;</a></li>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${paging.prev}">&lt;</a></li>
 	                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
 	                   <c:choose>
 	                      <c:when test="${paging.currentPage eq page}">
-	                         <li class="active"><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                         <li class="active"><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${page}">${page}</a></li>
 	                      </c:when>
 	                      <c:otherwise>
-	                         <li><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                         <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${page}">${page}</a></li>
 	                      </c:otherwise>
 	                   </c:choose>
 	              	 </c:forEach>
-                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.next}">&gt;</a></li>
-                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.lastPage}">&gt;&gt;</a></li>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${paging.next}">&gt;</a></li>
+                <li><a href="${context}/board/${paging.type}/intsearch?intSearch=${intSearch}&page=${paging.lastPage}">&gt;&gt;</a></li>
               </ul>
             </div>
           </div>
         </div>
-        
+      </div>
     </section>
 
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -274,11 +224,11 @@
   <script src="../../../../resources/js/generation/main.js"></script>
   
   <script type="text/javascript">
-  	document.querySelector('#voteSearchIcon').addEventListener('click', (e)=>{
-		let keyword = document.querySelector('#voteSearch').value;
+  	document.querySelector('#intSearchIcon').addEventListener('click', (e)=>{
+		let keyword = document.querySelector('#intSearch').value;
 		
 		if(keyword){
-  			location.href = '/myapt/vote/votesearch?voteSearch=' + keyword;
+  			location.href = '/board/interior/intsearch?intSearch=' + keyword;
   		}else{
   			alert("검색할 게시글 제목을 입력해주세요.");
   		}

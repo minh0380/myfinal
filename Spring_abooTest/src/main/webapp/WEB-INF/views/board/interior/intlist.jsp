@@ -92,14 +92,14 @@
         </div>
         
         <div class="container d-flex justify-content-end">
-			<form action="#" class="search-form" style="width: 40%;">
+	          <form class="search-form" style="width: 40%;">
 	          <div class="form-group mb-0">
 	            <div class="icon" style="cursor: pointer;">
-	            	<a class="icon-search"></a>
+	            	<a id="intSearchIcon" class="icon-search"></a>
 	            </div>
-	            <input type="text" class="form-control" placeholder="제목을 입력하세요.">
-	          </div>
-         </form>
+	            <input type="text" id="intSearch" name="intSearch" class="form-control" placeholder="제목을 입력하세요.">
+	         </div>
+	        </form>
 		</div>
         
         <div class="container text-center d-flex justify-content-end mt-0">
@@ -222,6 +222,18 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../../resources/js/generation/google-map.js"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
+  
+  <script type="text/javascript">
+  	document.querySelector('#intSearchIcon').addEventListener('click', (e)=>{
+		let keyword = document.querySelector('#intSearch').value;
+		
+		if(keyword){
+  			location.href = '/board/interior/intsearch?intSearch=' + keyword;
+  		}else{
+  			alert("검색할 게시글 제목을 입력해주세요.");
+  		}
+	})
+  </script>
     
   </body>
 </html>

@@ -13,5 +13,6 @@ public interface AdminVoteService {
 	int updateVoteMng(VoteMng voteMng);
 	int updateVoteIsFinish(String voteNo);
 	void deleteVoteGen(String voteNo);
+	Map<String, Object> selectVoteMngSearchList(int currentPage, String apartmentIdx, String voteSearch);
 	
 }

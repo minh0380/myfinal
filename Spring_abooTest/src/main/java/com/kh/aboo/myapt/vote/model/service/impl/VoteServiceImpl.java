@@ -48,8 +48,8 @@ public class VoteServiceImpl implements VoteService {
 		String method = "POST";
 		String url = "/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages";
 		String timestamp = Long.toString(System.currentTimeMillis());
-		String accessKey = "XZ23fBAH16NMQ1qUq0ll";
-		String secretKey = "W4qIGuV0Fq1dhDTK4ett0CEfESnIDZRNflxG9Guo";
+		String accessKey = "oLDcvFTXukjoZRHKLNyO";
+		String secretKey = "b0dMePC64t6D3UvMI87611xIp38vrBdby8TAujf4";
 		
 		String signature = makeSignature(url, timestamp, method, accessKey, secretKey);
 		HttpHeaders header = new HttpHeaders();

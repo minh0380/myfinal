@@ -18,4 +18,20 @@
 		) where rnum between #{queryStart} and #{queryEnd}
 	</select>
 	
+	<select id="selectInteriorBrdSearchList" resultType="interiorBrd">
+		select *
+		from(
+			select rownum rnum, b.*
+			from(
+				select int_post_no, apartment_idx, int_title, int_thumbnail, int_content, int_writer, int_reg_date, int_is_del, int_is_private 
+				from(
+					select int_post_no, apartment_idx, int_title, int_thumbnail, int_content, int_writer, int_reg_date, int_is_del, int_is_private, replace(int_title, ' ', '') p 
+					from tb_interior_brd
+					where apartment_idx = #{apartmentIdx} and int_is_del = 0) 
+				where p like '%'||#{intSearch}||'%'
+				order by int_post_no desc
+			) b
+		) where rnum between #{queryStart} and #{queryEnd}
+	</select>
+	
 </mapper>

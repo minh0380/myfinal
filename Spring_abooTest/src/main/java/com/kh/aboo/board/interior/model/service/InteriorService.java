@@ -15,6 +15,7 @@ public interface InteriorService {
 	int deleteInteriorBrd(String intPostNo, String apartmentIdx);
 	int updateInteriorBrd(InteriorBrd interiorBrd);
 	int updateIntIsPrivate(String intPostNo);
+	Map<String, Object> selectInteriorBrdSearchList(int currentPage, String apartmentIdx, String intSearch);
 	
 	//IntCmt
 	int insertIntCmt(IntCmt intCmt);

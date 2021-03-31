@@ -99,5 +99,22 @@ public class InteriorServiceImpl implements InteriorService {
 	public int updateIntCmtIsPrivate(String intCmtNo) {
 		return intCmtRepository.updateIntCmtIsPrivate(intCmtNo);
 	}
+
+	@Override
+	public Map<String, Object> selectInteriorBrdSearchList(int currentPage, String apartmentIdx, String intSearch) {
+		Paging paging = Paging.builder()
+				.currentPage(currentPage)
+				.blockCnt(5)
+				.cntPerPage(6)
+				.type("interior")
+				.total(interiorBrdRepository.selectInteriorBrdSearchCnt(apartmentIdx, intSearch))
+				.build();
+		
+		Map<String, Object> commandMap = new HashMap<>();
+		commandMap.put("paging", paging);
+		commandMap.put("interiorBrd", interiorBrdRepository.selectInteriorBrdSearchList(paging.getQueryStart(), paging.getQueryEnd(), apartmentIdx, intSearch));
+		
+		return commandMap;
+	}
 	
 }

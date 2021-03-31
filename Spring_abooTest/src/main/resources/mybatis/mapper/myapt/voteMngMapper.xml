@@ -18,4 +18,20 @@
 		) where rnum between #{queryStart} and #{queryEnd}
 	</select>
 	
+	<select id="selectVoteMngSearchList" resultType="voteMng">
+		select *
+		from(
+			select rownum rnum, b.*
+			from(
+				select vote_no, apartment_idx, vote_begin_date, vote_end_date, vote_writer, vote_title, vote_content, vote_item, vote_is_finish, vote_is_del 
+				from(
+					select vote_no, apartment_idx, vote_begin_date, vote_end_date, vote_writer, vote_title, vote_content, vote_item, vote_is_finish, vote_is_del, replace(vote_title, ' ', '') p 
+					from tb_vote_mng
+					where apartment_idx = #{apartmentIdx} and vote_is_del = 0) 
+				where p like '%'||#{voteSearch}||'%'
+				order by vote_no desc
+			) b
+		) where rnum between #{queryStart} and #{queryEnd}
+	</select>
+	
 </mapper>

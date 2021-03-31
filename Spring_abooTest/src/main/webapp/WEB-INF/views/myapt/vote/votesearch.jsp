@@ -160,20 +160,20 @@
           <div class="col text-center">
             <div class="block-27">
               <ul>
-                <li><a href="${context}/myapt/${paging.type}/votelist">&lt;&lt;</a></li>
-                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.prev}">&lt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}">&lt;&lt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${paging.prev}">&lt;</a></li>
 	                <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
 	                   <c:choose>
 	                      <c:when test="${paging.currentPage eq page}">
-	                         <li class="active"><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                         <li class="active"><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${page}">${page}</a></li>
 	                      </c:when>
 	                      <c:otherwise>
-	                         <li><a href="${context}/myapt/${paging.type}/votelist?page=${page}">${page}</a></li>
+	                         <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${page}">${page}</a></li>
 	                      </c:otherwise>
 	                   </c:choose>
 	              	 </c:forEach>
-                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.next}">&gt;</a></li>
-                <li><a href="${context}/myapt/${paging.type}/votelist?page=${paging.lastPage}">&gt;&gt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${paging.next}">&gt;</a></li>
+                <li><a href="${context}/myapt/${paging.type}/votelist?voteSearch=${voteSearch}&page=${paging.lastPage}">&gt;&gt;</a></li>
               </ul>
             </div>
           </div>

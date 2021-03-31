@@ -23,7 +23,7 @@ public interface InteriorBrdRepository {
 	
 	List<InteriorBrd> selectInteriorBrdList(@Param(value = "queryStart") int queryStart, @Param(value = "queryEnd") int queryEnd, @Param(value = "apartmentIdx") String apartmentIdx);
 	
-	@Select("select count(*) from tb_interior_brd where apartment_idx = #{apartmentIdx}")
+	@Select("select count(*) from tb_interior_brd where apartment_idx = #{apartmentIdx} and int_is_del = 0")
 	int selectInteriorBrdCnt(@Param(value = "apartmentIdx") String apartmentIdx);
 	
 	@Update("update tb_interior_brd set int_is_del = 1 where int_post_no = #{intPostNo} "
@@ -36,4 +36,8 @@ public interface InteriorBrdRepository {
 	@Update("update tb_interior_brd set int_is_private = 1 where int_post_no = #{intPostNo}")
 	int updateIntIsPrivate(@Param(value = "intPostNo") String intPostNo);
 	
+	List<InteriorBrd> selectInteriorBrdSearchList(@Param(value = "queryStart") int queryStart, @Param(value = "queryEnd") int queryEnd, @Param(value = "apartmentIdx") String apartmentIdx, @Param(value = "intSearch") String intSearch);
+	
+	@Select("select count(*) from (select replace(int_title, ' ', '') p from tb_interior_brd where int_is_del = 0 and apartment_idx = #{apartmentIdx}) where p like '%'||#{intSearch}||'%'")
+	int selectInteriorBrdSearchCnt(@Param(value = "apartmentIdx") String apartmentIdx, @Param(value = "intSearch") String intSearch);
 }
