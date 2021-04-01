@@ -3,9 +3,6 @@
 <%@ include file="/WEB-INF/views/include/adminhead.jsp" %>
 <!DOCTYPE html>
 <html>
-<head>
-	<script type="text/javascript" src="../../../../resources/ckeditor/ckeditor.js"></script>
-</head>
 <body class=" ">
   <div class="wrapper ">
     <div class="sidebar">
@@ -91,7 +88,7 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Vote</a>
+            <a class="navbar-brand" href="#pablo">Notice</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -145,66 +142,153 @@
       <!-- End Navbar -->
       <div class="content">
         <div class="row">
-          <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
-            <div class="card">
+          <div class="col-md-12">
+            <div class="card ">
               <div class="card-header">
-                <h5 class="title">투표 만들기</h5>
+                <h4 class="card-title"> 공지사항</h4>
               </div>
               <div class="card-body">
-              	<div class="row">
-              		<div class="col-md-12">
-                      <div class="form-group">
-                        <label>제목</label>
-                        <input type="text" class="form-control" name="voteTitle" required="required" placeholder="제목을 입력해주세요.">
-                      </div>
-                    </div>
-              	</div>
+                <div class="table-responsive">
+                  <table class="table tablesorter " id="">
+                    <thead class=" text-primary">
+                      <th>공지번호</th>
+                      <th>작성일</th>
+                      <th>제목</th>
+                      <th class="text-center">작성자</th>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>100001</td>
+                        <td>2021-04-01</td>
+                        <td>아파트를 부탁해!</td>
+                        <td class="text-center">ABOO</td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Minerva Hooper
+                        </td>
+                        <td>
+                          Curaçao
+                        </td>
+                        <td>
+                          Sinaai-Waas
+                        </td>
+                        <td class="text-center">
+                          $23,789
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Sage Rodriguez
+                        </td>
+                        <td>
+                          Netherlands
+                        </td>
+                        <td>
+                          Baileux
+                        </td>
+                        <td class="text-center">
+                          $56,142
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Philip Chaney
+                        </td>
+                        <td>
+                          Korea, South
+                        </td>
+                        <td>
+                          Overland Park
+                        </td>
+                        <td class="text-center">
+                          $38,735
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Doris Greene
+                        </td>
+                        <td>
+                          Malawi
+                        </td>
+                        <td>
+                          Feldkirchen in Kärnten
+                        </td>
+                        <td class="text-center">
+                          $63,542
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Mason Porter
+                        </td>
+                        <td>
+                          Chile
+                        </td>
+                        <td>
+                          Gloucester
+                        </td>
+                        <td class="text-center">
+                          $78,615
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          Jon Porter
+                        </td>
+                        <td>
+                          Portugal
+                        </td>
+                        <td>
+                          Gloucester
+                        </td>
+                        <td class="text-center">
+                          $98,615
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-            <div class="card">
-              <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>투표 기간</label>
-                        <div class="d-flex">
-                        	<input type="date" class="form-control" name="voteBeginDate" required="required">
-                        	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
-                        	<input type="date" class="form-control" name="voteEndDate" required="required">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>안건 내용</label>
-                        <textarea class="form-control" id="p_content" name="voteContent" required="required"></textarea>
-		              	<script type="text/javascript">
-							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '안건 내용에 대한 설명을 입력해주세요.'});
-							CKEDITOR.config.resize_enabled = false;
-							CKEDITOR.config.uiColor = '#222a42';
-						</script>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>선택지</label>
-                        <input type="text" class="form-control" name="voteItem" required="required" placeholder="선택지를 ','로 구분하여 입력해주세요.">
-                        <small class="text-danger pl-1" style="display: block;">선택지는 ','로 구분하여 작성해주세요.</small>
-                        <small class="text-danger pl-1" style="display: block;">ex) 1번 보기,2번 보기,3번보기</small>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">생성하기</button>
-              </div>
-            </div>
-            </form>
+            <c:choose>
+            	<c:when test="${sessionScope.bdmin != null}">
+            		<div class="card-footer text-right p-0">
+		              <button type="button" onclick="location.href='/bdmin/notice/noticeupload'" class="btn btn-fill btn-primary">작성하기</button>
+		            </div>
+            	</c:when>
+            	<c:otherwise></c:otherwise>
+            </c:choose>
+            <div class="row d-flex card-body ">
+	          <div class="col text-center">
+	            <div class="block-27">
+	              <ul>
+	                <li><a href="/admin/${paging.type }?standard=dueDate&keyword=${keyword}">&lt;&lt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.prev}&standard=dueDate&keyword=${keyword}">&lt;</a></li>
+              	  <c:choose>
+                	<c:when test="${paging.lastPage eq 0 }">
+                		<li><a href="/admin/${paging.type }"><span>1</span></a></li>
+                	</c:when>
+                	<c:otherwise>
+	                 <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+                      <c:choose>
+                         <c:when test="${paging.currentPage eq page}">
+                            <li class="active"><a href="/admin/${paging.type }?page=${page}&standard=dueDate&keyword=${keyword}">${page}</a></li>
+                         </c:when>
+                         <c:otherwise>
+                            <li><a href="/admin/${paging.type }?page=${page}&standard=dueDate&keyword=${keyword}">${page}</a></li>
+                         </c:otherwise>
+                      </c:choose>
+                 	 </c:forEach> 
+                 	 </c:otherwise>
+	                </c:choose>
+	                <li><a href="/admin/${paging.type }?page=${paging.next}&standard=dueDate&keyword=${keyword}">&gt;</a></li>
+	                <li><a href="/admin/${paging.type }?page=${paging.lastPage }&standard=dueDate&keyword=${keyword}">&gt;&gt;</a></li>
+	              </ul>
+	            </div>
+	          </div>
+	        </div>
           </div>
         </div>
       </div>

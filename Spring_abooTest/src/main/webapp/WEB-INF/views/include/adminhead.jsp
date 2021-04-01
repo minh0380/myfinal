@@ -2,14 +2,20 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+ <%@ taglib prefix="fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%> 
 <!DOCTYPE html>
 <html>
-<%-- 모든 페이지에서 공통적으로 사용할 헤더정보를 담은 헤더태그! --%>
+<%-- 모든 페이지에서 공통적으로 사용할 헤더정보를 담은 헤더태그! 
+core : jstl 사용
+form : form 사용 (errors 내보낼때?)
+fmt : format 사용 (숫자 콤마때문에 추가함)
+functions : List size 때문에 추가함.--%>
 <head>
 <meta charset="UTF-8">
 <%-- admin! --%>
 <link rel="apple-touch-icon" sizes="76x76" href="../../../resources/img/apple-icon.png">
-<link rel="icon" type="image/png" href="../../../resources/abooimg/logo_b.png">
+<link rel="icon" type="image/png" href="../../../resources/img/favicon.png">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 <!--     Fonts and icons     -->

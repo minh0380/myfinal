@@ -73,6 +73,10 @@ id="WebApp_ID" version="3.1">
 	  <servlet-name>ConnectorServlet</servlet-name>
 	  <url-pattern>/admin/ckfinder/core/connector/java/connector.java</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+	  <servlet-name>ConnectorServlet</servlet-name>
+	  <url-pattern>/bdmin/ckfinder/core/connector/java/connector.java</url-pattern>
+	</servlet-mapping>
 	<!-- CKFINDER END -->
 
 </web-app>

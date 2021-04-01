@@ -4,15 +4,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script type="text/javascript" src="../../../../resources/ckeditor/ckeditor.js"></script>
+<meta charset="UTF-8">
+<title>Insert title here</title>
 </head>
+
 <body class=" ">
   <div class="wrapper ">
     <div class="sidebar">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="blue | green | orange | red | yellow"
     -->
-      <div class="sidebar-wrapper">
+     <div class="sidebar-wrapper">
         <div class="logo">
           <a href="/admin/index" class="simple-text logo-mini">
             <img src="../../../resources/abooimg/logo_w.png">
@@ -64,18 +66,26 @@
               <p>Chat</p>
             </a>
           </li>
-         <li>
-           <a href="/admin/notice">
-              <i class="tim-icons icon-volume-98"></i>
-              <p>notice</p>
-            </a>
-          </li>
           <li>
-            <a href="/bdmin/login">
-              <i class="tim-icons icon-key-25"></i>
-              <p>BDMIN</p>
-            </a>
+          <a href="/admin/chat">
+            <i class="tim-icons icon-key-25"></i>
+      			 <p>notice</p>
+      		</a>
+      	 </li>
+      	  <li>
+            <c:choose>
+           	<c:when test="${sessionScope.bdmin == null}">
+
+           	</c:when>
+           	<c:when test="${sessionScope.bdmin != null}">
+           		 <a href="/admin/bdin">
+             	<i class="tim-icons icon-key-25"></i>
+      			 <p>BDIN</p>
+      			  </a>
+           	</c:when>
+          </c:choose>
           </li>
+	     
         </ul>
       </div>
     </div>
@@ -91,23 +101,23 @@
                 <span class="navbar-toggler-bar bar3"></span>
               </button>
             </div>
-            <a class="navbar-brand" href="#pablo">Vote</a>
+            <a class="navbar-brand" href="#pablo">Table List</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
             <span class="navbar-toggler-bar navbar-kebab"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navigation">
+            <div class="collapse navbar-collapse" id="navigation">
             <ul class="navbar-nav ml-auto ">
               <li class="dropdown nav-item">
                 <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                   <div class="photo">
-                    <img src="../../../../resources/img/anime3.png">
+                    <img src="../../resources/img/anime3.png">
                   </div>
                   <b class="caret d-none d-lg-block d-xl-block"></b>
                   <p class="d-lg-none">
-                    Log out
+                    Log out / Login
                   </p>
                 </a>
                 <ul class="dropdown-menu dropdown-navbar">
@@ -119,7 +129,14 @@
                   </li>
                   <div class="dropdown-divider"></div>
                   <li class="nav-link">
-                    <a href="#" class="nav-item dropdown-item">Log out</a>
+                  <c:choose>
+                  	<c:when test="${sessionScope.admin == null}">
+                    	<a href="/admin/login" class="nav-item dropdown-item">Log in</a>
+                  	</c:when>
+                  	<c:when test="${sessionScope.admin != null}">
+                    	<a href="/admin/logout" class="nav-item dropdown-item">Log out</a>
+                  	</c:when>
+                  </c:choose>
                   </li>
                 </ul>
               </li>
@@ -143,72 +160,29 @@
         </div>
       </div>
       <!-- End Navbar -->
-      <div class="content">
-        <div class="row">
-          <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
-            <div class="card">
-              <div class="card-header">
-                <h5 class="title">투표 만들기</h5>
-              </div>
-              <div class="card-body">
-              	<div class="row">
-              		<div class="col-md-12">
-                      <div class="form-group">
-                        <label>제목</label>
-                        <input type="text" class="form-control" name="voteTitle" required="required" placeholder="제목을 입력해주세요.">
-                      </div>
-                    </div>
-              	</div>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>투표 기간</label>
-                        <div class="d-flex">
-                        	<input type="date" class="form-control" name="voteBeginDate" required="required">
-                        	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
-                        	<input type="date" class="form-control" name="voteEndDate" required="required">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>안건 내용</label>
-                        <textarea class="form-control" id="p_content" name="voteContent" required="required"></textarea>
-		              	<script type="text/javascript">
-							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '안건 내용에 대한 설명을 입력해주세요.'});
-							CKEDITOR.config.resize_enabled = false;
-							CKEDITOR.config.uiColor = '#222a42';
-						</script>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>선택지</label>
-                        <input type="text" class="form-control" name="voteItem" required="required" placeholder="선택지를 ','로 구분하여 입력해주세요.">
-                        <small class="text-danger pl-1" style="display: block;">선택지는 ','로 구분하여 작성해주세요.</small>
-                        <small class="text-danger pl-1" style="display: block;">ex) 1번 보기,2번 보기,3번보기</small>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">생성하기</button>
-              </div>
-            </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <footer class="footer">
+		<div class="content d-flex align-items-center">
+		        <div class="container">
+		          <div class="row block-9 justify-content-center">
+		            <div class="col-md-6 pr-md-5 ">
+          			<h4 class = "text-center">BDMIN 로그인</h4>
+		                <div class="form-group">
+		                  <input type="text" id = "id" name = "id" class="form-control" placeholder="아이디를 입력해주세요.">
+		                </div>
+		                <div class="form-group">
+		                  <input type="text" id ="password" name = "password"class="form-control" placeholder="비밀번호를 입력해주세요.">
+		                </div>
+		                <div class="form-group">
+		                  <input type="submit" value="로그인" class="btn btn-primary py-3 px-5 col-sm-12" onclick="login()">
+		                </div>
+		              <div class="col-sm-12 d-flex justify-content-center">
+		                <h5 class="text-center"> 아이디, 비밀번호 분실시 개발팀에 문의하세요</h5>
+		              </div>
+		            </div>
+		          </div>
+		        </div>
+		      </div>
+
+     <footer class="footer">
         <div class="container-fluid">
           <nav>
             <ul>
@@ -234,61 +208,57 @@
       </footer>
       </div>
     </div>
-    <div class="fixed-plugin">
-      <div class="dropdown show-dropdown">
-        <a href="#" data-toggle="dropdown">
-          <i class="fa fa-cog fa-2x"> </i>
-        </a>
-        <ul class="dropdown-menu">
-          <li class="header-title"> Sidebar Background</li>
-          <li class="adjustments-line">
-            <a href="javascript:void(0)" class="switch-trigger background-color">
-              <div class="badge-colors text-center">
-                <span class="badge filter badge-primary active" data-color="primary"></span>
-                <span class="badge filter badge-blue" data-color="blue"></span>
-                <span class="badge filter badge-green" data-color="green"></span>
-              </div>
-              <div class="clearfix"></div>
-            </a>
-          </li>
-          <li class="adjustments-line text-center color-change">
-            <span class="color-label">LIGHT MODE</span>
-            <span class="badge light-badge mr-2"></span>
-            <span class="badge dark-badge ml-2"></span>
-            <span class="color-label">DARK MODE</span>
-          </li>
-          <li class="button-container">
-            <a href="https://www.creative-tim.com/product/black-dashboard" target="_blank" class="btn btn-primary btn-block btn-round">Download Now</a>
-            <a href="https://demos.creative-tim.com/black-dashboard/docs/1.0/getting-started/introduction.html" target="_blank" class="btn btn-default btn-block btn-round">
-              Documentation
-            </a>
-          </li>
-          <li class="header-title">Thank you for 95 shares!</li>
-          <li class="button-container text-center">
-            <button id="twitter" class="btn btn-round btn-info"><i class="fab fa-twitter"></i> &middot; 45</button>
-            <button id="facebook" class="btn btn-round btn-info"><i class="fab fa-facebook-f"></i> &middot; 50</button>
-            <br>
-            <br>
-            <a class="github-button" href="https://github.com/creativetimofficial/black-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star ntkme/github-buttons on GitHub">Star</a>
-          </li>
-        </ul>
-      </div>
-    </div>
+
     <!--   Core JS Files   -->
-    <script src="../../../../resources/js/admin/core/jquery.min.js"></script>
-    <script src="../../../../resources/js/admin/core/popper.min.js"></script>
-    <script src="../../../../resources/js/admin/core/bootstrap.min.js"></script>
-    <script src="../../../../resources/js/admin/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <script src="../../../resources/js/admin/core/jquery.min.js"></script>
+    <script src="../../../resources/js/admin/core/popper.min.js"></script>
+    <script src="../../../resources/js/admin/core/bootstrap.min.js"></script>
+    <script src="../../../resources/js/admin/plugins/perfect-scrollbar.jquery.min.js"></script>
     <!--  Google Maps Plugin    -->
     <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
     <!-- Chart JS -->
-    <script src="../../../../resources/js/admin/plugins/chartjs.min.js"></script>
+    <script src="../../../resources/js/admin/plugins/chartjs.min.js"></script>
     <!--  Notifications Plugin    -->
-    <script src="../../../../resources/js/admin/plugins/bootstrap-notify.js"></script>
+    <script src="../../../resources/js/admin/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Black Dashboard: parallax effects, scripts for the example pages etc -->
-    <script src="../../../../resources/js/admin/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
+    <script src="../../../resources/js/admin/black-dashboard.min.js?v=1.0.0" type="text/javascript"></script>
     <!-- Black Dashboard DEMO methods, don't include it in your project! -->
-    <script src="../../../../resources/demo/demo.js"></script>
+    <script src="../../../resources/demo/demo.js"></script>
+	   
+	   <script type="text/javascript">
+	      let login = () => {
+	         const url = '/bdmin/loginimpl';
+	         let paramObj = new Object();
+	         paramObj.id = id.value;
+	         paramObj.password = password.value;
+	         
+	         let headerObj = new Headers();
+	         headerObj.append("content-type","application/json");
+	         fetch(url,{
+	            method:"post",
+	            headers:headerObj,
+	            body:JSON.stringify(paramObj)
+	         }).then(response => {
+	            //response.ok : 상태코드 200~299사이라면 ok = true            
+	            if(response.ok){
+	               return response.text();   
+	            }
+	            //200번대 코드가 아니라면 에러를 발생시켜서 catch블록으로 이동
+	            throw new AsyncPageError(response.text());
+	         }).then((text) => {
+	            if(text == 'fail'){
+	          		alert("아이디와 비밀번호를 확인하세요")
+	            }else{
+	               <%-- 로그인에 성공하면 index페이지로 브라우저가 재요청 --%>
+	               location.href="/bdmin/apartment";
+	            }
+	         }).catch(error => {
+	            error.alertMessage();
+	         });
+	      }
+	   </script>
+    
+    
     <script>
       $(document).ready(function() {
         $().ready(function() {
@@ -400,6 +370,12 @@
         });
       });
     </script>
-</body>
+    <script>
+      $(document).ready(function() {
+        // Javascript method's body can be found in assets/js/demos.js
+        demo.initDashboardPageCharts();
 
+      });
+    </script>
+</body>
 </html>

@@ -28,6 +28,34 @@ Licensed under the MIT license - http://opensource.org/licenses/MIT
 Copyright (c) 2015 Daniel Eden
 */
 
+.block-27 ul {
+  padding: 0;
+  margin: 0; }
+  .block-27 ul li {
+    display: inline-block;
+    margin-bottom: 4px;
+    font-weight: 400; }
+    .block-27 ul li a, .block-27 ul li span {
+      color: #627bed;
+      text-align: center;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      border-radius: 50%;
+      border: 1px solid #d4dbfa; }
+    .block-27 ul li.active a, .block-27 ul li.active span {
+      background: #56c8fb;
+      background: -moz-linear-gradient(45deg, #56c8fb 0%, #627bed 100%);
+      background: -webkit-gradient(left bottom, right top, color-stop(0%, #56c8fb), color-stop(100%, #627bed));
+      background: -webkit-linear-gradient(45deg, #56c8fb 0%, #627bed 100%);
+      background: -o-linear-gradient(45deg, #56c8fb 0%, #627bed 100%);
+      background: -ms-linear-gradient(45deg, #56c8fb 0%, #627bed 100%);
+      background: linear-gradient(45deg, #56c8fb 0%, #627bed 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#56c8fb', endColorstr='#627bed', GradientType=1 );
+      color: #fff;
+      border: 1px solid transparent; }
+      
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;

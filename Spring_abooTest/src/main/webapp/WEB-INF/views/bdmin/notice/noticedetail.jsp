@@ -146,65 +146,41 @@
       <div class="content">
         <div class="row">
           <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">투표 만들기</h5>
+                <h5 class="title">공지사항</h5>
               </div>
               <div class="card-body">
               	<div class="row">
-              		<div class="col-md-12">
-                      <div class="form-group">
-                        <label>제목</label>
-                        <input type="text" class="form-control" name="voteTitle" required="required" placeholder="제목을 입력해주세요.">
+              		<div class="col-md-12 d-flex justify-content-between" style="color: rgba(255, 255, 255, 0.8);">
+                      <div class="ml-3">아파트를 부탁해! 공지사항입니다.</div>
+                      <div class="d-flex justify-content-around">
+                      	<div class="mr-3">ABOO</div>
+                      	<div class="mr-3">2021-04-01</div>
+                      	<div class="mr-3">
+	                      	<a class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-pencil"></i></a>
+	                      	<a class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-trash-simple"></i></a>
+	                      	<a class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-bullet-list-67"></i></a>
+                      	</div>
                       </div>
                     </div>
               	</div>
+              	<hr style="background-color: rgba(255, 255, 255, 0.8);">
+              	<div class="row">
+              		<div class="col-md-12 ml-3 mr-3" style="color: rgba(255, 255, 255, 0.8);">
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                    </div>
+              	</div>
+              	<hr style="background-color: rgba(255, 255, 255, 0.8);">
               </div>
             </div>
-            <div class="card">
-              <div class="card-body">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>투표 기간</label>
-                        <div class="d-flex">
-                        	<input type="date" class="form-control" name="voteBeginDate" required="required">
-                        	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
-                        	<input type="date" class="form-control" name="voteEndDate" required="required">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>안건 내용</label>
-                        <textarea class="form-control" id="p_content" name="voteContent" required="required"></textarea>
-		              	<script type="text/javascript">
-							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '안건 내용에 대한 설명을 입력해주세요.'});
-							CKEDITOR.config.resize_enabled = false;
-							CKEDITOR.config.uiColor = '#222a42';
-						</script>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>선택지</label>
-                        <input type="text" class="form-control" name="voteItem" required="required" placeholder="선택지를 ','로 구분하여 입력해주세요.">
-                        <small class="text-danger pl-1" style="display: block;">선택지는 ','로 구분하여 작성해주세요.</small>
-                        <small class="text-danger pl-1" style="display: block;">ex) 1번 보기,2번 보기,3번보기</small>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-              <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">생성하기</button>
-              </div>
-            </div>
-            </form>
           </div>
         </div>
       </div>

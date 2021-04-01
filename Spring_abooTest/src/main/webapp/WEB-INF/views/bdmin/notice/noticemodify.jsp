@@ -149,7 +149,7 @@
           	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
             <div class="card">
               <div class="card-header">
-                <h5 class="title">투표 만들기</h5>
+                <h5 class="title">공지사항 수정</h5>
               </div>
               <div class="card-body">
               	<div class="row">
@@ -167,41 +167,19 @@
                   <div class="row">
                     <div class="col-md-12">
                       <div class="form-group">
-                        <label>투표 기간</label>
-                        <div class="d-flex">
-                        	<input type="date" class="form-control" name="voteBeginDate" required="required">
-                        	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
-                        	<input type="date" class="form-control" name="voteEndDate" required="required">
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>안건 내용</label>
+                        <label>공지사항 내용</label>
                         <textarea class="form-control" id="p_content" name="voteContent" required="required"></textarea>
 		              	<script type="text/javascript">
-							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '안건 내용에 대한 설명을 입력해주세요.'});
+							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '공지사항 내용을 입력해주세요.'});
 							CKEDITOR.config.resize_enabled = false;
 							CKEDITOR.config.uiColor = '#222a42';
 						</script>
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-md-12">
-                      <div class="form-group">
-                        <label>선택지</label>
-                        <input type="text" class="form-control" name="voteItem" required="required" placeholder="선택지를 ','로 구분하여 입력해주세요.">
-                        <small class="text-danger pl-1" style="display: block;">선택지는 ','로 구분하여 작성해주세요.</small>
-                        <small class="text-danger pl-1" style="display: block;">ex) 1번 보기,2번 보기,3번보기</small>
-                      </div>
-                    </div>
-                  </div>
               </div>
               <div class="card-footer">
-                <button type="submit" class="btn btn-fill btn-primary">생성하기</button>
+                <button type="submit" class="btn btn-fill btn-primary">수정하기</button>
               </div>
             </div>
             </form>
