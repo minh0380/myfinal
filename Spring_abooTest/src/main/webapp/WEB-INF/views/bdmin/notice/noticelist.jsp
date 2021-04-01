@@ -143,152 +143,85 @@
       <div class="content">
         <div class="row">
           <div class="col-md-12">
-            <div class="card ">
-              <div class="card-header">
-                <h4 class="card-title"> 공지사항</h4>
-              </div>
-              <div class="card-body">
-                <div class="table-responsive">
-                  <table class="table tablesorter " id="">
-                    <thead class=" text-primary">
-                      <th>공지번호</th>
-                      <th>작성일</th>
-                      <th>제목</th>
-                      <th class="text-center">작성자</th>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td>100001</td>
-                        <td>2021-04-01</td>
-                        <td>아파트를 부탁해!</td>
-                        <td class="text-center">ABOO</td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Minerva Hooper
-                        </td>
-                        <td>
-                          Curaçao
-                        </td>
-                        <td>
-                          Sinaai-Waas
-                        </td>
-                        <td class="text-center">
-                          $23,789
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Sage Rodriguez
-                        </td>
-                        <td>
-                          Netherlands
-                        </td>
-                        <td>
-                          Baileux
-                        </td>
-                        <td class="text-center">
-                          $56,142
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Philip Chaney
-                        </td>
-                        <td>
-                          Korea, South
-                        </td>
-                        <td>
-                          Overland Park
-                        </td>
-                        <td class="text-center">
-                          $38,735
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Doris Greene
-                        </td>
-                        <td>
-                          Malawi
-                        </td>
-                        <td>
-                          Feldkirchen in Kärnten
-                        </td>
-                        <td class="text-center">
-                          $63,542
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Mason Porter
-                        </td>
-                        <td>
-                          Chile
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-center">
-                          $78,615
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          Jon Porter
-                        </td>
-                        <td>
-                          Portugal
-                        </td>
-                        <td>
-                          Gloucester
-                        </td>
-                        <td class="text-center">
-                          $98,615
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-            <c:choose>
-            	<c:when test="${sessionScope.bdmin != null}">
-            		<div class="card-footer text-right p-0">
-		              <button type="button" onclick="location.href='/bdmin/notice/noticeupload'" class="btn btn-fill btn-primary">작성하기</button>
+          	<c:choose>
+            	<c:when test="${!empty noticeList}">
+            		<div class="card ">
+		              <div class="card-header">
+		                <h4 class="card-title"> 공지사항</h4>
+		              </div>
+		              <div class="card-body">
+		                <div class="table-responsive">
+		                  <table class="table tablesorter " id="">
+		                    <thead class=" text-primary">
+		                      <th style="width: 20%;">공지번호</th>
+		                      <th style="width: 45%;">제목</th>
+		                      <th style="width: 20%;">작성일</th>
+		                      <th class="text-center" style="width: 15%;">작성자</th>
+		                    </thead>
+		                    <tbody>
+		                      <c:forEach items="${noticeList}" var="noticeList">
+		                      	<tr>
+		                          <td>${noticeList.nNo}</td>
+		                          <td><a href="/bdmin/notice/noticedetail?nNo=${noticeList.nNo}" style="cursor: pointer; color: rgba(255, 255, 255, 0.8);">${noticeList.nTitle}</a></td>
+		                          <td>${noticeList.nRegDate}</td>
+		                          <td class="text-center">${noticeList.nWriter}</td>
+		                        </tr>
+		                      </c:forEach>
+		                    </tbody>
+		                  </table>
+		                </div>
+		              </div>
 		            </div>
+		            <c:choose>
+		            	<c:when test="${sessionScope.bdmin != null}">
+		            		<div class="card-footer text-right p-0">
+				              <button type="button" onclick="location.href='/bdmin/notice/noticeupload'" class="btn btn-fill btn-primary">작성하기</button>
+				            </div>
+		            	</c:when>
+		            	<c:otherwise></c:otherwise>
+		            </c:choose>
+		            <div class="row d-flex card-body ">
+			          <div class="col text-center">
+			            <div class="block-27">
+			              <ul>
+			                <li><a href="/bdmin/${paging.type}/noticelist">&lt;&lt;</a></li>
+			                <li><a href="/bdmin/${paging.type}/noticelist?page=${paging.prev}">&lt;</a></li>
+			                 <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
+		                      <c:choose>
+		                         <c:when test="${paging.currentPage eq page}">
+		                            <li class="active"><a href="/bdmin/${paging.type}/noticelist?page=${page}">${page}</a></li>
+		                         </c:when>
+		                         <c:otherwise>
+		                            <li><a href="/bdmin/${paging.type}/noticelist?page=${page}">${page}</a></li>
+		                         </c:otherwise>
+		                      </c:choose>
+		                 	 </c:forEach> 
+			                <li><a href="/bdmin/${paging.type}/noticelist?page=${paging.next}">&gt;</a></li>
+			                <li><a href="/bdmin/${paging.type}/noticelist?page=${paging.lastPage}">&gt;&gt;</a></li>
+			              </ul>
+			            </div>
+			          </div>
+			        </div>
             	</c:when>
-            	<c:otherwise></c:otherwise>
+            	<c:otherwise>
+            		<div class="card ">
+		              <div class="card-header">
+		                <h4 class="card-title"> 공지사항</h4>
+		              </div>
+		              <div class="card-body">
+		                <div class="text-center" style="color: rgba(255, 255, 255, 0.8);">작성된 공지사항이 없습니다.</div>
+		              </div>
+		            </div>
+		            <c:choose>
+		            	<c:when test="${sessionScope.bdmin != null}">
+		            		<div class="card-footer text-right p-0">
+				              <button type="button" onclick="location.href='/bdmin/notice/noticeupload'" class="btn btn-fill btn-primary">작성하기</button>
+				            </div>
+		            	</c:when>
+		            	<c:otherwise></c:otherwise>
+		            </c:choose>
+            	</c:otherwise>
             </c:choose>
-            <div class="row d-flex card-body ">
-	          <div class="col text-center">
-	            <div class="block-27">
-	              <ul>
-	                <li><a href="/admin/${paging.type }?standard=dueDate&keyword=${keyword}">&lt;&lt;</a></li>
-	                <li><a href="/admin/${paging.type }?page=${paging.prev}&standard=dueDate&keyword=${keyword}">&lt;</a></li>
-              	  <c:choose>
-                	<c:when test="${paging.lastPage eq 0 }">
-                		<li><a href="/admin/${paging.type }"><span>1</span></a></li>
-                	</c:when>
-                	<c:otherwise>
-	                 <c:forEach begin="${paging.blockStart}" end="${paging.blockEnd}" var="page">
-                      <c:choose>
-                         <c:when test="${paging.currentPage eq page}">
-                            <li class="active"><a href="/admin/${paging.type }?page=${page}&standard=dueDate&keyword=${keyword}">${page}</a></li>
-                         </c:when>
-                         <c:otherwise>
-                            <li><a href="/admin/${paging.type }?page=${page}&standard=dueDate&keyword=${keyword}">${page}</a></li>
-                         </c:otherwise>
-                      </c:choose>
-                 	 </c:forEach> 
-                 	 </c:otherwise>
-	                </c:choose>
-	                <li><a href="/admin/${paging.type }?page=${paging.next}&standard=dueDate&keyword=${keyword}">&gt;</a></li>
-	                <li><a href="/admin/${paging.type }?page=${paging.lastPage }&standard=dueDate&keyword=${keyword}">&gt;&gt;</a></li>
-	              </ul>
-	            </div>
-	          </div>
-	        </div>
           </div>
         </div>
       </div>

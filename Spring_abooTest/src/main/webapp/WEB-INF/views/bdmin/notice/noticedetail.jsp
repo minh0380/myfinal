@@ -153,14 +153,21 @@
               <div class="card-body">
               	<div class="row">
               		<div class="col-md-12 d-flex justify-content-between" style="color: rgba(255, 255, 255, 0.8);">
-                      <div class="ml-3">아파트를 부탁해! 공지사항입니다.</div>
+                      <div class="ml-3">${notice.nTitle}</div>
                       <div class="d-flex justify-content-around">
-                      	<div class="mr-3">ABOO</div>
-                      	<div class="mr-3">2021-04-01</div>
+                      	<div class="mr-3">${notice.nWriter}</div>
+                      	<div class="mr-3">${notice.nRegDate}</div>
                       	<div class="mr-3">
-	                      	<a class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-pencil"></i></a>
-	                      	<a class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-trash-simple"></i></a>
-	                      	<a class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-bullet-list-67"></i></a>
+                      		<c:choose>
+                      			<c:when test="${sessionScope.bdmin != null}">
+                      				<a href="/bdmin/notice/noticemodify?nNo=${notice.nNo}" class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-pencil"></i></a>
+			                      	<a href="/bdmin/notice/noticedelete?nNo=${notice.nNo}" class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-trash-simple"></i></a>
+			                      	<a href="/bdmin/notice/noticelist" class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-bullet-list-67"></i></a>
+                      			</c:when>
+                      			<c:otherwise>
+                      				<a href="/bdmin/notice/noticelist" class="mr-3" style="cursor: pointer;"><i class="tim-icons icon-bullet-list-67"></i></a>
+                      			</c:otherwise>
+                      		</c:choose>
                       	</div>
                       </div>
                     </div>
@@ -168,14 +175,7 @@
               	<hr style="background-color: rgba(255, 255, 255, 0.8);">
               	<div class="row">
               		<div class="col-md-12 ml-3 mr-3" style="color: rgba(255, 255, 255, 0.8);">
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
-                      <p>여러분 안녕하세요 이러쿵 저러쿵</p>
+                      ${notice.nContent}
                     </div>
               	</div>
               	<hr style="background-color: rgba(255, 255, 255, 0.8);">

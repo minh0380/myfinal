@@ -65,7 +65,7 @@
             </a>
           </li>
          <li>
-           <a href="/admin/notice">
+           <a href="/bdmin/notice/noticelist">
               <i class="tim-icons icon-volume-98"></i>
               <p>notice</p>
             </a>
@@ -146,7 +146,7 @@
       <div class="content">
         <div class="row">
           <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
+          	<form action="/bdmin/notice/noticeuploadimpl" method="post" enctype="multipart/form-data">
             <div class="card">
               <div class="card-header">
                 <h5 class="title">공지사항 작성</h5>
