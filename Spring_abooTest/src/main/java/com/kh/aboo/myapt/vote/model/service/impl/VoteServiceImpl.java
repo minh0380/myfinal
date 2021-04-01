@@ -4,7 +4,9 @@ import java.io.UnsupportedEncodingException;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 
 import javax.crypto.Mac;
@@ -161,9 +163,10 @@ public class VoteServiceImpl implements VoteService {
 	}
 
 	@Override
-	public List<Double> calculateTurnout(String voteNo) {
+	public Map<String, Object> calculateTurnout(String voteNo) {
 		VoteMng voteMng = voteMngRepository.selectVoteMngByIdx(voteNo);
 		String[] voteOnWhatArr = voteMng.getVoteItem().split(",");
+		Map<String, Object> commandMap = new HashMap<>();
 		
 		int voteGenCnt = voteRepository.selectVoteGenCnt(voteNo); //총 투표 수
 		
@@ -183,7 +186,11 @@ public class VoteServiceImpl implements VoteService {
 			turnoutList.add(turnout);
 		}
 		
-		return turnoutList;
+		commandMap.put("turnoutList", turnoutList);
+		commandMap.put("voteOnWhatList", voteOnWhatList);
+		commandMap.put("voteGenCnt", voteGenCnt);
+		
+		return commandMap;
 	}
 
 	@Override

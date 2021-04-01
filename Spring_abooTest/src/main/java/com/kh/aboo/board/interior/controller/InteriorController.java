@@ -204,6 +204,14 @@ public class InteriorController {
 	@PostMapping("intcmtupload")
 	public String intCmtUpload(IntCmt intCmt, Model model, HttpSession session) {
 		Generation generation = (Generation) session.getAttribute("generation");
+		
+		if(generation == null) {
+			model.addAttribute("alertMsg", "회원 로그인 후 댓글을 작성하실 수 있습니다.");
+			model.addAttribute("url", "/login");
+			
+			return "common/result";
+		}
+		
 		intCmt.setIntCmtWriter(generation.getBuilding() + "동 " + generation.getNum() + "호");
 		int res = interiorService.insertIntCmt(intCmt);
 		

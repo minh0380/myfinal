@@ -79,12 +79,13 @@ public class VoteController {
 		}
 		
 		if(voteMng.getVoteIsFinish() != 0) {
-			List<Double> turnoutList = voteService.calculateTurnout(voteNo);
-			double maxTurnout = Collections.max(turnoutList);
-			int idxOfMax = turnoutList.indexOf(maxTurnout);
+			List<Double> turnoutList = (List<Double>) voteService.calculateTurnout(voteNo).get("turnoutList"); //득표율
+			List<Integer> voteOnWhatList = (List<Integer>) voteService.calculateTurnout(voteNo).get("voteOnWhatList"); //득표수
+			int voteGenCnt = (int) voteService.calculateTurnout(voteNo).get("voteGenCnt"); //전체 표 수
+			
 			model.addAttribute("turnoutList", turnoutList);
-			model.addAttribute("maxTurnout", maxTurnout);
-			model.addAttribute("idxOfMax", idxOfMax);
+			model.addAttribute("voteOnWhatList", voteOnWhatList);
+			model.addAttribute("voteGenCnt", voteGenCnt);
 		}
 		
 		model.addAttribute("voteMng", voteMng);

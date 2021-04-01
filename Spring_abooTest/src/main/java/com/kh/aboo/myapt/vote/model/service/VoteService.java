@@ -1,6 +1,7 @@
 package com.kh.aboo.myapt.vote.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,6 @@ public interface VoteService {
 	String selectGenerationWonTellToVote(AuthToVote authToVote);
 	int insertVoteGen(VoteGen voteGen);
 	int selectIfParticipate(String generationIdx, String voteNo);
-	List<Double> calculateTurnout(String voteNo);
+	Map<String, Object> calculateTurnout(String voteNo);
 	
 }

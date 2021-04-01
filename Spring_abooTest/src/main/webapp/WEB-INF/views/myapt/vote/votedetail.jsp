@@ -90,15 +90,15 @@
             		<div class="about-author d-flex p-5 bg-light mt-3">
 		              <div class="desc align-self-md-center w-100 d-flex flex-column align-items-center">
 		                <h3 class="text-center">${voteMng.voteTitle}</h3>
+		                <h6 class="text-center">총 ${voteGenCnt}명 참여</h6>
 		                <c:forEach items="${itemList}" var="itemList" varStatus="status">
-		                	<div class="text-center col-md-4 d-flex justify-content-between"><span>${status.count}. ${itemList}</span><span>${turnoutList[status.index]}%</span></div>
+		                	<div class="text-center col-md-4 d-flex justify-content-between"><span>${status.count}. ${itemList}</span><span>${turnoutList[status.index]}% (${voteOnWhatList[status.index]}표)</span></div>
 		                </c:forEach>
 		              </div>
 		            </div>
 		            
 		            <div class="mt-5 mb-5 text-danger text-center">
 		            	<p class="mb-0">투표가 종료되었습니다.</p>
-		            	<p class="mb-0">투표결과 ${idxOfMax+1}번 선택지가 ${maxTurnout}%로 가장 높은 수의 표를 얻었습니다.</p>
 		            	<p>투표에 참여해주신 입주민 여러분 감사드립니다.</p>
 		            </div>
             	</c:otherwise>

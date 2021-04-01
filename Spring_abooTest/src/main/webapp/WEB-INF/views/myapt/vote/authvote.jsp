@@ -188,17 +188,22 @@
   	let certSms = () => {
   		let tell = document.querySelector('#tell').value;
   		if(tell){
-  			fetch("/myapt/vote/certsms?tell=" + tell,{
-  				method:"GET"
-  			})
-  			.then(response => response.text())
-  			.then(text => {
-  				if(text == 'success'){
-  					alert("인증번호가 전송되었습니다.");
-  				}else{
-  					alert("인증번호 전송 중 에러가 발생했습니다.");
-  				}
-  			})
+  			let regExp = /^\d{11}$/;
+  			if(regExp.test(tell)){
+  				fetch("/myapt/vote/certsms?tell=" + tell,{
+  	  				method:"GET"
+  	  			})
+  	  			.then(response => response.text())
+  	  			.then(text => {
+  	  				if(text == 'success'){
+  	  					alert("인증번호가 전송되었습니다.");
+  	  				}else{
+  	  					alert("인증번호 전송 중 에러가 발생했습니다.");
+  	  				}
+  	  			})
+  			}else{
+  				alert("전화번호는 '-'를 제외한 11자리 숫자를 입력해주세요.");
+  			}
   		}else{
   			alert("인증번호가 전송될 전화번호를 입력해주세요.");
   		}
@@ -218,6 +223,7 @@
   					certNumFlg = true;
   				}else{
   					alert("인증번호를 다시 확인해주세요.");
+  					certNumFlg = false;
   				}
   			})
   		}else{
