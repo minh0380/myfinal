@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.kh.aboo.mypage.writelist.model.repository.WriteListRepository">
+	
+	<select id="selectMyInteriorBrdList" resultType="interiorBrd">
+		select *
+		from(
+			select rownum rnum, b.*
+			from(
+				select *
+				from tb_interior_brd
+				where apartment_idx = #{apartmentIdx} and int_is_del = 0 and generation_idx = #{generationIdx}
+				order by int_post_no desc
+			) b
+		) where rnum between #{queryStart} and #{queryEnd}
+	</select>
+	
+	<select id="selectMyUsedBrdList" resultType="usedBrd">
+		select *
+		from(
+			select rownum rnum, b.*
+			from(
+				select *
+				from tb_used_brd
+				where apartment_idx = #{apartmentIdx} and is_del = 0 and generation_idx = #{generationIdx}
+				order by used_idx desc
+			) b
+		) where rnum between #{queryStart} and #{queryEnd}
+	</select>
+	
+	<select id="selectMyInfoBrdList" resultType="infoBoard">
+		select *
+		from(
+			select rownum rnum, b.*
+			from(
+				select *
+				from tb_inf_qst_brd
+				where apartment_idx = #{apartmentIdx} and b_isdel = 0 and generation_idx = #{generationIdx}
+				order by b_idx desc
+			) b
+		) where rnum between #{queryStart} and #{queryEnd}
+	</select>
+	
+</mapper>

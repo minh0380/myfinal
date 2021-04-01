@@ -20,7 +20,7 @@ public interface VoteMngRepository {
 	
 	List<VoteMng> selectVoteMngList(@Param(value = "queryStart") int queryStart, @Param(value = "queryEnd") int queryEnd, @Param(value = "apartmentIdx") String apartmentIdx);
 	
-	@Select("select count(*) from tb_vote_mng where apartment_idx = #{apartmentIdx}")
+	@Select("select count(*) from tb_vote_mng where apartment_idx = #{apartmentIdx} and vote_is_del = 0")
 	int selectVoteMngCnt(@Param(value = "apartmentIdx") String apartmentIdx);
 	
 	@Select("select * from tb_vote_mng where vote_no = #{voteNo} and vote_is_del = 0")

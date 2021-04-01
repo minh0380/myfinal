@@ -85,7 +85,7 @@ public class AdminVoteServiceImpl implements AdminVoteService {
 	}
 
 	@Override
-	@Scheduled(cron = "0 0 0 * * *")
+	@Scheduled(cron = "0 40 * * * *")
 	public void updateVoteIsFinishBatch() {
 		voteMngRepository.updateVoteIsFinishBatch();
 	}

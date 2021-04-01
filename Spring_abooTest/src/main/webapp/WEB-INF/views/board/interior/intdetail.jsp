@@ -153,21 +153,27 @@
               </ul>
               <!-- END comment-list -->
               
-              <div class="comment-form-wrap pt-5">
-                <h3 class="mb-5">Leave a comment</h3>
-                <form action="/board/interior/intcmtupload" method="post" enctype="multipart/form-data" class="p-5 bg-light">
-                  <div class="form-group">
-                    <label for="message">Message</label>
-                    <input style="display: none;" name="generationIdx" value="${sessionScope.generation.generationIdx}">
-                    <input style="display: none;" name="intPostNo" value="${interiorBrd.intPostNo}">
-                    <textarea name="intCmtContent" id="intCmtContent" cols="30" rows="10" class="form-control"></textarea>
-                  </div>
-                  <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
-                  </div>
-
-                </form>
-              </div>
+              <c:choose>
+              	<c:when test="${interiorBrd.intIsPrivate == 0}">
+              		<div class="comment-form-wrap pt-5">
+		                <h3 class="mb-5">Leave a comment</h3>
+		                <form action="/board/interior/intcmtupload" method="post" enctype="multipart/form-data" class="p-5 bg-light">
+		                  <div class="form-group">
+		                    <label for="message">Message</label>
+		                    <input style="display: none;" name="generationIdx" value="${sessionScope.generation.generationIdx}">
+		                    <input style="display: none;" name="intPostNo" value="${interiorBrd.intPostNo}">
+		                    <textarea name="intCmtContent" id="intCmtContent" cols="30" rows="10" class="form-control"></textarea>
+		                  </div>
+		                  <div class="form-group">
+		                    <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary">
+		                  </div>
+		
+		                </form>
+		              </div>
+              	</c:when>
+              	<c:otherwise></c:otherwise>
+              </c:choose>
+              
             </div>
 
           </div> <!-- .col-md-8 -->
