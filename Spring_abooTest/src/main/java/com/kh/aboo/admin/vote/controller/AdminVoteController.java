@@ -83,6 +83,7 @@ public class AdminVoteController {
 		adminVoteService.deleteVoteGen(voteMng.getVoteNo());
 		
 		if(res > 0) {
+			//myAlarmService.insertAptAlarm("'" + voteMng.getVoteTitle() + "' " + AlarmCode.MODIFY_VOTE, admin.getApartmentIdx());
 			model.addAttribute("alertMsg", "투표가 수정되었습니다.");
 			model.addAttribute("url", "/myapt/vote/votelist");
 		}else {

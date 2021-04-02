@@ -85,7 +85,7 @@
 								      	  <tr>
 									        <td>${board.bIdx}</td>
 									        <td>정보&질문</td>
-									        <td><a href="/board/info/detailinfo?bIdx=${board.bIdx}" style="cursor: pointer; color: black;">${board.bTitle}</a></td>
+									        <td><a href="/board/info/detail?bIdx=${board.bIdx}" style="cursor: pointer; color: black;">${board.bTitle}</a></td>
 									        <td>${board.bWdate}</td>
 									      </tr>
 								      </c:forEach>

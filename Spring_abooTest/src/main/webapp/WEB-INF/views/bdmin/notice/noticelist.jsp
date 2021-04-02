@@ -62,7 +62,7 @@
             </a>
           </li>
          <li>
-           <a href="/admin/notice">
+           <a href="/bdmin/notice/noticelist">
               <i class="tim-icons icon-volume-98"></i>
               <p>notice</p>
             </a>
@@ -174,7 +174,7 @@
 		            </div>
 		            <c:choose>
 		            	<c:when test="${sessionScope.bdmin != null}">
-		            		<div class="card-footer text-right p-0">
+		            		<div class="text-right p-0">
 				              <button type="button" onclick="location.href='/bdmin/notice/noticeupload'" class="btn btn-fill btn-primary">작성하기</button>
 				            </div>
 		            	</c:when>
