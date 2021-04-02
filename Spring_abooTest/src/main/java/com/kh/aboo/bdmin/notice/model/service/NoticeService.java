@@ -9,5 +9,7 @@ public interface NoticeService {
 	int insertNotice(Notice notice);
 	Map<String, Object> selectNoticeList(int currentPage);
 	Notice selectNoticeByIdx(String nNo);
+	int updateNotice(Notice notice);
+	int deleteNotice(String nNo);
 	
 }

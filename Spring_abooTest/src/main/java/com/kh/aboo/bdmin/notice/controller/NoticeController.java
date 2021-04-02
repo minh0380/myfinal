@@ -78,4 +78,58 @@ public class NoticeController {
 		return "bdmin/notice/noticedetail";
 	}
 	
+	@GetMapping("noticemodify")
+	public String noticeModifiy(String nNo, Model model) {
+		Notice notice = noticeService.selectNoticeByIdx(nNo);
+		String ctnt = notice.getnContent().replace(System.getProperty("line.separator").toString(),"");
+		model.addAttribute("notice", notice);
+		model.addAttribute("ctnt", ctnt);
+		
+		return "bdmin/notice/noticemodify";
+	}
+	
+	@PostMapping("noticemodifyimpl")
+	public String noticeModifyImpl(Notice notice, Model model, HttpSession session) {
+		Bdmin bdmin = (Bdmin) session.getAttribute("bdmin");
+		if(bdmin == null) {
+			model.addAttribute("alertMsg", "ABOO 관리자 로그인 후 공지사항을 수정할 수 있습니다.");
+			model.addAttribute("url", "/bdmin/login");
+			
+			return "common/result";
+		}
+		
+		int res = noticeService.updateNotice(notice);
+		if(res > 0) {
+			model.addAttribute("alertMsg", "공지사항이 수정되었습니다.");
+			model.addAttribute("url", "/bdmin/notice/noticedetail?nNo=" + notice.getnNo());
+		}else {
+			model.addAttribute("alertMsg", "공지사항이 수정 중 에러가 발생했습니다.");
+			model.addAttribute("url", "/bdmin/notice/noticedetail?nNo=" + notice.getnNo());
+		}
+		
+		return "common/result";
+	}
+	
+	@GetMapping("noticedelete")
+	public String noticeDelete(String nNo, Model model, HttpSession session) {
+		Bdmin bdmin = (Bdmin) session.getAttribute("bdmin");
+		if(bdmin == null) {
+			model.addAttribute("alertMsg", "ABOO 관리자 로그인 후 공지사항을 삭제할 수 있습니다.");
+			model.addAttribute("url", "/bdmin/login");
+			
+			return "common/result";
+		}
+		
+		int res = noticeService.deleteNotice(nNo);
+		if(res > 0) {
+			model.addAttribute("alertMsg", "공지사항이 삭제되었습니다.");
+			model.addAttribute("url", "/bdmin/notice/noticelist");
+		}else {
+			model.addAttribute("alertMsg", "공지사항이 삭제 중 에러가 발생했습니다.");
+			model.addAttribute("url", "/bdmin/notice/noticelist");
+		}
+		
+		return "common/result";
+	}
+	
 }

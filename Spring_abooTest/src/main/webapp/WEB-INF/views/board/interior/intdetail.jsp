@@ -99,8 +99,8 @@
                 		<li class="comment">작성된 댓글이 없습니다.</li>
                 	</c:when>
                 	<c:otherwise>
-              			<c:forEach items="${intCmtList}" var="intCmt">
-			                <li class="comment" id="intCmtOriginal">
+              			<c:forEach items="${intCmtList}" var="intCmt" varStatus="status">
+			                <li class="comment" id="intCmtOriginal${intCmt.intCmtNo}">
 			                  	<div class="vcard bio">
 			                      <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
 			                    </div>
@@ -113,7 +113,7 @@
 			                      		<c:choose>
 				                      	    <c:when test="${sessionScope.generation.generationIdx == intCmt.generationIdx}">
 				                      	  	    <p>
-				                        	      <a onclick="intCmtModify()" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
+				                        	      <a onclick="intCmtModify(${intCmt.intCmtNo})" class="mr-4" style="cursor: pointer;"><i class="fas fa-pen" style="color: #666666;"></i></a>
 						                  	      <a onclick="intCmtDelete(${intCmt.intCmtNo})" class="mr-4" style="cursor: pointer;"><i class="fas fa-trash" style="color: #666666;"></i></a>
 				                          	    </p>
 				                        	</c:when>
@@ -130,7 +130,7 @@
 			                      </c:choose>
 			                    </div>
 			                </li>
-			                <li class="comment" id="intCmtModify" style="display: none;">
+			                <li class="comment" id="intCmtModify${intCmt.intCmtNo}" style="display: none;">
 			                  	<div class="vcard bio">
 			                      <img src="../../../../resources/abooimg/user.jpg" alt="Image placeholder">
 			                    </div>
@@ -317,9 +317,9 @@
   		}
   	}
   	
-  	let intCmtModify = () => {
-  		document.querySelector('#intCmtOriginal').style.display = "none";
-  		document.querySelector('#intCmtModify').style.display = "block";
+  	let intCmtModify = (intCmtNo) => {
+  		document.querySelector('#intCmtOriginal' + intCmtNo).style.display = "none";
+  		document.querySelector('#intCmtModify' + intCmtNo).style.display = "block";
   	}
   	
   	let intPrivate = () => {

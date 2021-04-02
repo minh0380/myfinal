@@ -169,7 +169,7 @@
                       <div class="form-group">
                         <label>투표 기간</label>
                         <div class="d-flex">
-                        	<input type="date" class="form-control" name="voteBeginDate" required="required">
+                        	<input id="voteBeginDate" type="date" class="form-control" name="voteBeginDate" required="required" readonly>
                         	<div class="ml-5 mr-5 font-weight-bold align-self-center" style="color: rgba(255, 255, 255, 0.8); font-size: 1.3rem">&#126;</div>
                         	<input type="date" class="form-control" name="voteEndDate" required="required">
                         </div>
@@ -399,6 +399,8 @@
           });
         });
       });
+      
+      document.querySelector('#voteBeginDate').valueAsDate = new Date();
     </script>
 </body>
 

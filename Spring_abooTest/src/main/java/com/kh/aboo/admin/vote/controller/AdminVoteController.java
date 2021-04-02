@@ -18,9 +18,11 @@ import com.kh.aboo.user.manager.model.vo.Admin;
 public class AdminVoteController {
 	
 	private final AdminVoteService adminVoteService;
+	//private final MyAlarmService myAlarmService;
 	
-	public AdminVoteController(AdminVoteService adminVoteService) {
+	public AdminVoteController(AdminVoteService adminVoteService/*, MyAlarmService myAlarmService*/) {
 		this.adminVoteService = adminVoteService;
+		//this.myAlarmService = myAlarmService;
 	}
 	
 	@GetMapping("makevote")
@@ -42,6 +44,7 @@ public class AdminVoteController {
 		
 		int res = adminVoteService.insertVoteMng(voteMng);
 		if(res > 0) {
+			//myAlarmService.insertAptAlarm("'" + voteMng.getVoteTitle() + "' " + AlarmCode.ADD_VOTE, admin.getApartmentIdx());
 			model.addAttribute("alertMsg", "투표가 생성되었습니다.");
 			model.addAttribute("url", "/myapt/vote/votelist");
 		}else {

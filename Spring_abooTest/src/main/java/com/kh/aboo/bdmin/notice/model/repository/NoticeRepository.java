@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.kh.aboo.bdmin.notice.model.vo.Notice;
 import com.kh.aboo.common.util.paging.Paging;
@@ -23,5 +24,11 @@ public interface NoticeRepository {
 	
 	@Select("select * from tb_notice where n_no = #{nNo}")
 	Notice selectNoticeByIdx(@Param(value = "nNo") String nNo);
+	
+	@Update("update tb_notice set n_title = #{nTitle}, n_content = #{nContent} where n_no = #{nNo}")
+	int updateNotice(Notice notice);
+	
+	@Update("update tb_notice set n_is_del = 1 where n_no = #{nNo}")
+	int deleteNotice(@Param(value = "nNo") String nNo);
 	
 }

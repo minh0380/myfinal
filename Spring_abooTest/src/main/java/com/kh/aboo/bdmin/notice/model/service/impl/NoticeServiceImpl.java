@@ -45,5 +45,15 @@ public class NoticeServiceImpl implements NoticeService {
 	public Notice selectNoticeByIdx(String nNo) {
 		return noticeRepository.selectNoticeByIdx(nNo);
 	}
+
+	@Override
+	public int updateNotice(Notice notice) {
+		return noticeRepository.updateNotice(notice);
+	}
+
+	@Override
+	public int deleteNotice(String nNo) {
+		return noticeRepository.deleteNotice(nNo);
+	}
 	
 }

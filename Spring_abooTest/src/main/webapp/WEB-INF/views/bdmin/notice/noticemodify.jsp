@@ -146,7 +146,8 @@
       <div class="content">
         <div class="row">
           <div class="col-md-8" style="flex: 0 0 100% !important; max-width: 100% !important;">
-          	<form action="/admin/vote/makevoteimpl" method="post" enctype="multipart/form-data">
+          	<form action="/bdmin/notice/noticemodifyimpl" method="post" enctype="multipart/form-data">
+          	<input type="text" name="nNo" style="display: none;" value="${notice.nNo}">
             <div class="card">
               <div class="card-header">
                 <h5 class="title">공지사항 수정</h5>
@@ -156,7 +157,7 @@
               		<div class="col-md-12">
                       <div class="form-group">
                         <label>제목</label>
-                        <input type="text" class="form-control" name="voteTitle" required="required" placeholder="제목을 입력해주세요.">
+                        <input type="text" class="form-control" name="nTitle" required="required" placeholder="제목을 입력해주세요." value="${notice.nTitle}">
                       </div>
                     </div>
               	</div>
@@ -168,11 +169,12 @@
                     <div class="col-md-12">
                       <div class="form-group">
                         <label>공지사항 내용</label>
-                        <textarea class="form-control" id="p_content" name="voteContent" required="required"></textarea>
+                        <textarea class="form-control" id="p_content" name="nContent" required="required"></textarea>
 		              	<script type="text/javascript">
 							CKEDITOR.replace('p_content', {height: 400, editorplaceholder: '공지사항 내용을 입력해주세요.'});
 							CKEDITOR.config.resize_enabled = false;
 							CKEDITOR.config.uiColor = '#222a42';
+							CKEDITOR.instances.p_content.setData('${ctnt}');
 						</script>
                       </div>
                     </div>
