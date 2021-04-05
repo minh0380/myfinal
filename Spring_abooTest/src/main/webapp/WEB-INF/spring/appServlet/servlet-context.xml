@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
 	xmlns:task="http://www.springframework.org/schema/task"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:aop="http://www.springframework.org/schema/aop"
@@ -11,7 +12,8 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
-		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+		http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket.xsd">
 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
@@ -75,4 +77,11 @@
 	</aop:config>
 	
 	<context:component-scan base-package="com.kh.toy, com.kh.aboo" />
+	
+	<!-- 채팅 -->
+	<websocket:handlers>
+		<websocket:mapping handler="echoHandler" path="/echo"/>
+		<websocket:sockjs/>
+	</websocket:handlers>
+	<beans:bean id="echoHandler" class="com.kh.aboo.admin.chat.EchoHandler"></beans:bean>
 </beans:beans>
