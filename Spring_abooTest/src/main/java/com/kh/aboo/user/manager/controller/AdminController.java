@@ -40,10 +40,10 @@ public class AdminController {
 	}
 
 
-	@GetMapping("admin/index")
+	/*@GetMapping("admin/index")
 	public String admin() {
 		return "admin/index";
-	}
+	}*/
 	
 	@GetMapping("admin/login")
 	public String login() {
