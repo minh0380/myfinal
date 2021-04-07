@@ -10,7 +10,7 @@ import com.kh.aboo.bdmin.notice.model.vo.Notice;
 @Mapper
 public interface IndexNoticeRepository {
 	
-	@Select("select * from tb_notice where n_is_del = 0")
+	@Select("select * from tb_notice where n_is_del = 0 order by n_no desc")
 	List<Notice> selectIndexNotice();
 	
 }
