@@ -235,6 +235,7 @@
               <div class="card-body ">
                 <div class="chart-area">
                   <canvas id="chartLinePurple"></canvas>
+                  <input type="hidden" value="${list}" id="list">
                 </div>
               </div>
             </div>

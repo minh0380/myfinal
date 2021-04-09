@@ -421,10 +421,18 @@ demo = {
 
     });
 
-
+	let list = document.querySelector("#list").value;
+	list = list.replace('[','');
+	list = list.replace(']','');
+	list = list.replace(' ','');
+	list = list.split(',');
+	console.dir(list);
+	list.forEach(e=>{
+		console.dir(e);
+	})
 
     var chart_labels = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-    var chart_data = [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100];
+    var chart_data = list;
 
 
     var ctx = document.getElementById("chartBig1").getContext('2d');
