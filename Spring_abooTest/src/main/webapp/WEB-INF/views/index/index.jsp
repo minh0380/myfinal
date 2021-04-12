@@ -5,6 +5,15 @@
 <html>
 <head>
 	<script src="https://threejs.org/build/three.min.js"></script>
+	<style>
+		#c {
+		    width: 100%;
+		    height: 100%;
+		    display: block;
+		    background: url(../../../resources/abooimg/인덱스_건물.png) no-repeat center center;
+		    background-size: 50%;
+		}
+	</style>
 </head>
 <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -37,8 +46,11 @@
 	    </div>
 	  </nav>
     <!-- END nav -->
-
-    <section class="home-slider owl-carousel">
+    
+    <div style="background: linear-gradient(45deg, #fb83b5 0%, #9a51ff 100%);">
+    <canvas id="c" class="home-slider owl-carousel" style="height: 750px;"></canvas>
+    </div>
+    <!-- <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url(../../../resources/images/bg_1.jpg);">
         <div class="overlay"></div>
         <div class="container-fluid">
@@ -49,14 +61,14 @@
               <p class="mb-4 mb-md-5 sub-p" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Up to 90% Discount with Free Domain Name Registration</p>
               <p><a href="/bdmin/contactus" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="/about" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
             </div>
-            <div class="col-md-6 ftco-animate" id="middle" style="background-color: white;">
+            <div class="col-md-6 ftco-animate">
             	<img src="../../../resources/abooimg/인덱스_건물.png" class="img-fluid" alt="">
             </div>
 
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
     
     <section class="ftco-section services-section bg-light">
       <div class="container">
@@ -148,87 +160,6 @@
         </div>
       </div>
     </section>
-
-		<section class="ftco-services" style="margin-bottom: 10%;">
-			<div class="container-wrap">
-				<div class="row no-gutters">
-					<div class="col-lg-5 img services-img" style="background-image: url(../../../resources/images/bg_1.jpg);" data-stellar-background-ratio="0.5">
-        		<a href="https://vimeo.com/45830194" class="icon popup-vimeo d-flex justify-content-center align-items-center">
-	        		<span class="icon-play"></a>
-	        	</a>
-					</div>
-					<div class="col-lg-7">
-						<div class="services-wrap p-4 p-md-5">
-      				<div class="heading-section mb-5 ftco-animate">
-		            <h2 class="mb-2">Why Choose Us?</h2>
-		            <span class="subheading">Peoples Choice WebHost The Best Web Hosting</span>
-		          </div>
-      				<div class="d-md-flex">
-      					<div class="one-half mr-4">
-      						<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
-		      						<span class="flaticon-cloud-computing"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
-			      					<h3>Free Domain Transfer</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
-		      						<span class="flaticon-bandwidth"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
-			      					<h3>Unlimited BandWidth</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex order-md-last justify-content-center align-items-center">
-		      						<span class="flaticon-shield"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pr-md-4 text-md-right">
-			      					<h3>Security</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-      					</div>
-
-      					<div class="one-half">
-      						<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex justify-content-center align-items-center">
-		      						<span class="flaticon-guarantee"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pl-md-4">
-			      					<h3>99% Uptime</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex justify-content-center align-items-center">
-		      						<span class="flaticon-settings"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pl-md-4">
-			      					<h3>Free Website Optimization</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-		      				<div class="list-services d-flex ftco-animate">
-		      					<div class="icon d-flex justify-content-center align-items-center">
-		      						<span class="flaticon-support"></span>
-		      					</div>
-		      					<div class="text pl-4 pl-sm-0 pl-md-4">
-			      					<h3>24/7 Tech Support</h3>
-			      					<p>Far far away, behind the word mountains, far from the countries Vokalia</p>
-		      					</div>
-		      				</div>
-      					</div>
-      				</div>
-      			</div>
-					</div>
-				</div>
-			</div>
-		</section>
 
     <section class="ftco-section ftco-partner">
     	<div class="container">
@@ -351,9 +282,9 @@
   <script src="../../../resources/js/generation/google-map.js"></script>
   <script src="../../../resources/js/generation/main.js"></script>
   <script type="text/javascript">
-  	let middle = document.querySelector('#middle');
+  	/* let middle = document.querySelector('#c');
   	const scene = new THREE.Scene();
-  	scene.background = new THREE.Color("skyblue");
+  	scene.background = new THREE.Color("#fb83b5");
   	const camera = new THREE.PerspectiveCamera( 75, middle.clientWidth / middle.clientHeight, 0.1, 1000 );
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setSize( middle.clientWidth, middle.clientHeight );
@@ -373,7 +304,90 @@
 		cube.rotation.y += 0.01;
 		renderer.render( scene, camera );	
 	}
-	animate();
+	animate(); */
+	
+	function main() {
+	      const canvas = document.querySelector('#c');
+	      const renderer = new THREE.WebGLRenderer({
+	        canvas,
+	        alpha: true,
+	      });
+
+	      const fov = 75;
+	      const aspect = 2;  // the canvas default
+	      const near = 0.1;
+	      const far = 5;
+	      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
+	      camera.position.z = 2;
+
+	      const scene = new THREE.Scene();
+
+	      {
+	        const color = 0xFFFFFF;
+	        const intensity = 1;
+	        const light = new THREE.DirectionalLight(color, intensity);
+	        light.position.set(-1, 2, 4);
+	        scene.add(light);
+	      }
+
+	      const boxWidth = 1;
+	      const boxHeight = 1;
+	      const boxDepth = 1;
+	      const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
+
+	      function makeInstance(geometry, color, x) {
+	        const material = new THREE.MeshPhongMaterial({ color });
+
+	        const cube = new THREE.Mesh(geometry, material);
+	        scene.add(cube);
+
+	        cube.position.x = x;
+
+	        return cube;
+	      }
+
+	      const cubes = [
+	        makeInstance(geometry, 0x44aa88, 0),
+	        makeInstance(geometry, 0x8844aa, -2),
+	        makeInstance(geometry, 0xaa8844, 2),
+	      ];
+
+	      function resizeRendererToDisplaySize(renderer) {
+	        const canvas = renderer.domElement;
+	        const width = canvas.clientWidth;
+	        const height = canvas.clientHeight;
+	        const needResize = canvas.width !== width || canvas.height !== height;
+	        if (needResize) {
+	          renderer.setSize(width, height, false);
+	        }
+	        return needResize;
+	      }
+
+	      function render(time) {
+	        time *= 0.001;
+
+	        if (resizeRendererToDisplaySize(renderer)) {
+	          const canvas = renderer.domElement;
+	          camera.aspect = canvas.clientWidth / canvas.clientHeight;
+	          camera.updateProjectionMatrix();
+	        }
+
+	        cubes.forEach((cube, ndx) => {
+	          const speed = 1 + ndx * .1;
+	          const rot = time * speed;
+	          cube.rotation.x = rot;
+	          cube.rotation.y = rot;
+	        });
+
+	        renderer.render(scene, camera);
+
+	        requestAnimationFrame(render);
+	      }
+
+	      requestAnimationFrame(render);
+	    }
+
+	    main();
   </script>
     
 </body>
