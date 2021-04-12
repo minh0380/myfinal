@@ -49,7 +49,7 @@
               <p class="mb-4 mb-md-5 sub-p" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Up to 90% Discount with Free Domain Name Registration</p>
               <p><a href="/bdmin/contactus" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="/about" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
             </div>
-            <div class="col-md-7 ftco-animate">
+            <div class="col-md-6 ftco-animate" id="middle" style="background-color: white;">
             	<img src="../../../resources/abooimg/인덱스_건물.png" class="img-fluid" alt="">
             </div>
 
