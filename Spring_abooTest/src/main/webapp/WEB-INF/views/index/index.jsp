@@ -4,16 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="https://threejs.org/build/three.min.js"></script>
-	<style>
-		#c {
-		    width: 100%;
-		    height: 100%;
-		    display: block;
-		    background: url(../../../resources/abooimg/인덱스_건물.png) no-repeat center center;
-		    background-size: 50%;
-		}
-	</style>
+	<link rel="stylesheet" href="../../../resources/css/generation/test.css">
 </head>
 <body>
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
@@ -47,10 +38,7 @@
 	  </nav>
     <!-- END nav -->
     
-    <div style="background: linear-gradient(45deg, #fb83b5 0%, #9a51ff 100%);">
-    <canvas id="c" class="home-slider owl-carousel" style="height: 750px;"></canvas>
-    </div>
-    <!-- <section class="home-slider owl-carousel">
+    <section class="home-slider owl-carousel">
       <div class="slider-item" style="background-image: url(../../../resources/images/bg_1.jpg);">
         <div class="overlay"></div>
         <div class="container-fluid">
@@ -59,16 +47,23 @@
             <div class="col-md-5 wrap col-sm-12 ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
               <h1 class="mb-4 mt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Everything you get what you need to Host your website</h1>
               <p class="mb-4 mb-md-5 sub-p" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Up to 90% Discount with Free Domain Name Registration</p>
-              <p><a href="/bdmin/contactus" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="/about" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
+              <p><a href="#" class="btn btn-primary p-3 px-xl-5 py-xl-3">Get started</a> <a href="#" class="btn btn-primary btn-primary-2 p-3 px-xl-5 py-xl-3">Read more</a></p>
             </div>
-            <div class="col-md-6 ftco-animate">
-            	<img src="../../../resources/abooimg/인덱스_건물.png" class="img-fluid" alt="">
+            <!-- 자동차 구현 부분.  -->
+            <div class="col-md-7 ftco-animate">
+              
+              <div class="rcloud-container"> 
+                <div class="bird-container rcloud-container--two">
+                  <div class="bird rcloud--two"></div>
+                </div>
+              </div>
             </div>
 
           </div>
         </div>
       </div>
-    </section> -->
+
+    </section>
     
     <section class="ftco-section services-section bg-light">
       <div class="container">
@@ -281,114 +276,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="../../../resources/js/generation/google-map.js"></script>
   <script src="../../../resources/js/generation/main.js"></script>
-  <script type="text/javascript">
-  	/* let middle = document.querySelector('#c');
-  	const scene = new THREE.Scene();
-  	scene.background = new THREE.Color("#fb83b5");
-  	const camera = new THREE.PerspectiveCamera( 75, middle.clientWidth / middle.clientHeight, 0.1, 1000 );
-	const renderer = new THREE.WebGLRenderer();
-	renderer.setSize( middle.clientWidth, middle.clientHeight );
-	middle.appendChild( renderer.domElement );
-	
-	const geometry = new THREE.BoxGeometry(); //기하학 도형 오브젝트 생성
-	const material = new THREE.MeshBasicMaterial( { color: "yellow" } ); //오브젝트에 적용할 재질, MeshBasicMaterial은 2d느낌의 재질
-	const cube = new THREE.Mesh( geometry, material ); //도형과 재질을 합쳐서 새로운 object 생성
-	//cube.position.set(5,5,-5);
-	scene.add( cube ); //무대에 추가
-	camera.position.z = 5;
-	
-	//화면 랜더링
-	function animate() {
-		requestAnimationFrame( animate );
-		cube.rotation.x += 0.01;
-		cube.rotation.y += 0.01;
-		renderer.render( scene, camera );	
-	}
-	animate(); */
-	
-	function main() {
-	      const canvas = document.querySelector('#c');
-	      const renderer = new THREE.WebGLRenderer({
-	        canvas,
-	        alpha: true,
-	      });
-
-	      const fov = 75;
-	      const aspect = 2;  // the canvas default
-	      const near = 0.1;
-	      const far = 5;
-	      const camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-	      camera.position.z = 2;
-
-	      const scene = new THREE.Scene();
-
-	      {
-	        const color = 0xFFFFFF;
-	        const intensity = 1;
-	        const light = new THREE.DirectionalLight(color, intensity);
-	        light.position.set(-1, 2, 4);
-	        scene.add(light);
-	      }
-
-	      const boxWidth = 1;
-	      const boxHeight = 1;
-	      const boxDepth = 1;
-	      const geometry = new THREE.BoxGeometry(boxWidth, boxHeight, boxDepth);
-
-	      function makeInstance(geometry, color, x) {
-	        const material = new THREE.MeshPhongMaterial({ color });
-
-	        const cube = new THREE.Mesh(geometry, material);
-	        scene.add(cube);
-
-	        cube.position.x = x;
-
-	        return cube;
-	      }
-
-	      const cubes = [
-	        makeInstance(geometry, 0x44aa88, 0),
-	        makeInstance(geometry, 0x8844aa, -2),
-	        makeInstance(geometry, 0xaa8844, 2),
-	      ];
-
-	      function resizeRendererToDisplaySize(renderer) {
-	        const canvas = renderer.domElement;
-	        const width = canvas.clientWidth;
-	        const height = canvas.clientHeight;
-	        const needResize = canvas.width !== width || canvas.height !== height;
-	        if (needResize) {
-	          renderer.setSize(width, height, false);
-	        }
-	        return needResize;
-	      }
-
-	      function render(time) {
-	        time *= 0.001;
-
-	        if (resizeRendererToDisplaySize(renderer)) {
-	          const canvas = renderer.domElement;
-	          camera.aspect = canvas.clientWidth / canvas.clientHeight;
-	          camera.updateProjectionMatrix();
-	        }
-
-	        cubes.forEach((cube, ndx) => {
-	          const speed = 1 + ndx * .1;
-	          const rot = time * speed;
-	          cube.rotation.x = rot;
-	          cube.rotation.y = rot;
-	        });
-
-	        renderer.render(scene, camera);
-
-	        requestAnimationFrame(render);
-	      }
-
-	      requestAnimationFrame(render);
-	    }
-
-	    main();
-  </script>
     
 </body>
 </html>

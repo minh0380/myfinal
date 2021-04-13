@@ -1,0 +1,91 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 자동차 div 배경이미지, 건물  */
+.rcloud-container {
+  z-index: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  min-height: 35rem;
+  background: url(../../../resources//abooimg/인덱스_건물.png) no-repeat center center;
+  background-blend-mode: soft-light;
+  background-size: contain;
+  background-position: center center;
+  padding: 2rem;
+}
+
+/* 띄울 div들의 배경 */
+.rcloud--two {
+  background-image: url(../../../resources/abooimg/구름_오.png);
+  background-size: auto 100%;
+  width: 500px;
+  height: 500px;
+  will-change: background-position;
+
+  animation-name: fly-cycle;
+  animation-timing-function: steps(10);
+  animation-iteration-count: infinite;
+
+  animation-delay: -0.5s;
+}
+
+/* 띄운 div의 효과 */
+.rcloud-container--two {
+  position: absolute;
+  top: 20%;
+  left: -10%;
+  transform: scale(0.1) translateY(-150vh) translateX(135vw);
+  will-change: transform;
+
+  animation-name: fly-right-two;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+
+  animation-duration: 16s;
+  animation-delay: 0.5s;
+}
+
+@keyframes fly-cycle {
+  100% {
+    background-position: -900px 0;
+  }
+}
+
+/* 띄운 div의 움직일 경로  */
+@keyframes fly-right-two {
+  0% {
+    transform: scale(0.2) translateY(-140vh) translateX(100vw);
+  }
+
+  10% {
+    transform: scale(0.225) translateY(-140vh) translateX(110vw);
+  }
+
+  20% {
+    transform: scale(0.2) translateY(-140vh) translateX(120vw);
+  }
+
+  50% {
+    transform: scale(0.225) translateY(-140vh) translateX(130vw);
+  }
+
+  80% {
+    transform: scale(0.2) translateY(-140vh) translateX(120vw);
+  }
+
+  90% {
+    transform: scale(0.225) translateY(-140vh) translateX(110vw);
+  }
+
+  100% {
+    transform: scale(0.2) translateY(-140vh) translateX(100vw);
+  }
+  
+}
