@@ -39,12 +39,15 @@ public class VoteRepositoryTest {
 	@Test
 	public void insertVoteGen() {
 		VoteGen voteGen = new VoteGen();
-		voteGen.setGenerationIdx("100522");
+		voteGen.setGenerationIdx("100362");
 		voteGen.setVoteNo("100180");
-		voteGen.setGenerationWonIdx("100340");
-		voteGen.setVoteGenwonTell("01011111111");
+		voteGen.setGenerationWonIdx("100360");
+		voteGen.setVoteGenwonTell("01028906219");
 		voteGen.setVoteOnWhat("테스트로");
-		System.out.println(voteRepository.insertVoteGen(voteGen));
+		
+		for (int i = 0; i < 7; i++) {
+			System.out.println(voteRepository.insertVoteGen(voteGen));
+		}
 	}
 	
 }
