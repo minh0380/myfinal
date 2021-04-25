@@ -32,6 +32,12 @@ public class InteriorControllerTest {
 	}
 	
 	@Test
+	public void intCmtDelete() throws Exception {
+		this.mockMvc.perform(get("/board/interior/intcmtdelete?intCmtNo=100020"))
+		.andDo(print());
+	}
+	
+	@Test
 	public void intCmtModify() throws Exception {
 		IntCmt intCmt = new IntCmt();
 		intCmt.setIntCmtNo("100020");
