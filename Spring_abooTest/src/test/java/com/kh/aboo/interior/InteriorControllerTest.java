@@ -16,6 +16,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.kh.aboo.board.interior.model.vo.IntCmt;
+import com.kh.aboo.user.generation.model.vo.Generation;
 
 @WebAppConfiguration
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -29,6 +30,25 @@ public class InteriorControllerTest {
 	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(this.context).build();
+	}
+	
+	@Test
+	public void intCmtUpload() throws Exception {
+		Generation generation = new Generation();
+		
+		IntCmt intCmt = new IntCmt();
+		intCmt.setIntPostNo("100080");
+		intCmt.setIntCmtContent("목객체를 이용한 댓글 작성!");
+		intCmt.setIntCmtWriter("123동 123호");
+		intCmt.setGenerationIdx("100523");
+		
+		this.mockMvc.perform(post("/board/interior/intcmtupload")
+				.sessionAttr("generation", generation)
+				.param("intPostNo", intCmt.getIntPostNo())
+				.param("intCmtContent", intCmt.getIntCmtContent())
+				.param("intCmtWriter", intCmt.getIntCmtWriter())
+				.param("generationIdx", intCmt.getGenerationIdx()))
+		.andDo(print());
 	}
 	
 	@Test
