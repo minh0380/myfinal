@@ -49,4 +49,22 @@ public class NoticeControllerTest {
 		}
 	}
 	
+	//공지사항 수정
+	@Test
+	public void noticeModifyImpl() throws Exception {
+		Bdmin bdmin = new Bdmin();
+		
+		Notice notice = new Notice();
+		notice.setnNo("100020");
+		notice.setnContent("<p>목객체를 이용한 공지사항 수정</p>");
+		notice.setnTitle("[수정] 공지사항입니다1");
+		
+		this.mockMvc.perform(post("/bdmin/notice/noticemodifyimpl")
+				.sessionAttr("bdmin", bdmin)
+				.param("nNo", notice.getnNo())
+				.param("nTitle", notice.getnTitle())
+				.param("nContent", notice.getnContent()))
+		.andDo(print());
+	}
+	
 }
