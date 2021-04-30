@@ -48,10 +48,10 @@ public class VoteServiceImpl implements VoteService {
 	@Override
 	public int authToVote(String tell, HttpSession session) {
 		String method = "POST";
-		String url = "/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages";
+		String url = "/sms/v2/services//messages";
 		String timestamp = Long.toString(System.currentTimeMillis());
-		String accessKey = "oLDcvFTXukjoZRHKLNyO";
-		String secretKey = "b0dMePC64t6D3UvMI87611xIp38vrBdby8TAujf4";
+		String accessKey = "";
+		String secretKey = "";
 		
 		String signature = makeSignature(url, timestamp, method, accessKey, secretKey);
 		HttpHeaders header = new HttpHeaders();
@@ -68,7 +68,7 @@ public class VoteServiceImpl implements VoteService {
 		JSONArray messages = new JSONArray();
 		try {
 			params.put("type", "SMS");
-			params.put("from", "01028906219");
+			params.put("from", "");
 			params.put("content", "[ABOO:아파트를 부탁해] 본인 확인을 위해 인증번호 [" + certNum + "]를 입력해주세요.");
 			params2.put("to", tell);
 			messages.put(params2);
@@ -77,7 +77,7 @@ public class VoteServiceImpl implements VoteService {
 			
 			RequestEntity<String> request = 
 					RequestEntity
-					.post("https://sens.apigw.ntruss.com/sms/v2/services/ncp:sms:kr:265114542753:aboo/messages")
+					.post("https://sens.apigw.ntruss.com/sms/v2/services//messages")
 					.headers(header)
 					.body(body);
 			
