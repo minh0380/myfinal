@@ -68,7 +68,7 @@ public class VoteServiceImpl implements VoteService {
 		JSONArray messages = new JSONArray();
 		try {
 			params.put("type", "SMS");
-			params.put("from", "");
+			params.put("from", "01012341234");
 			params.put("content", "[ABOO:아파트를 부탁해] 본인 확인을 위해 인증번호 [" + certNum + "]를 입력해주세요.");
 			params2.put("to", tell);
 			messages.put(params2);
