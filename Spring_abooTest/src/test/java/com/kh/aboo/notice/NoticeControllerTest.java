@@ -1,5 +1,6 @@
 package com.kh.aboo.notice;
 
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 
@@ -64,6 +65,16 @@ public class NoticeControllerTest {
 				.param("nNo", notice.getnNo())
 				.param("nTitle", notice.getnTitle())
 				.param("nContent", notice.getnContent()))
+		.andDo(print());
+	}
+	
+	//공지사항 삭제
+	@Test
+	public void noticeDelete() throws Exception {
+		Bdmin bdmin = new Bdmin();
+		
+		this.mockMvc.perform(get("/bdmin/notice/noticedelete?nNo=100020")
+				.sessionAttr("bdmin", bdmin))
 		.andDo(print());
 	}
 	
