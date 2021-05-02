@@ -78,4 +78,11 @@ public class NoticeControllerTest {
 		.andDo(print());
 	}
 	
+	//로그인 안했을 때
+	@Test
+	public void noticeList() throws Exception {
+		this.mockMvc.perform(get("/bdmin/notice/noticelist"))
+		.andDo(print());
+	}
+	
 }
