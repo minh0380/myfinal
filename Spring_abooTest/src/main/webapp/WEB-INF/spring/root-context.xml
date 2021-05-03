@@ -13,7 +13,7 @@
 		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
 		<property name="url" value="jdbc:oracle:thin:@aboodb_medium?TNS_ADMIN=E:/CODE/wallet/Wallet_abooDB"/>
 		<property name="username" value="admin"/>
-		<property name="password" value="Aboo91939699"/>
+		<property name="password" value=""/>
 		<!-- <property name="maxWait" value="10000"/> -->
 	</bean>
 	

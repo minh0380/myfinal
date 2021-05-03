@@ -202,7 +202,7 @@
   <script src="../../../../resources/js/generation/scrollax.min.js"></script>
   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script> -->
   <!-- <script src="../../../../resources/js/generation/google-map.js"></script> -->
-  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d4b060ce6efffd8047e3830ad6fad0e8&libraries=services,clusterer,drawing"></script>
+  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=&libraries=services,clusterer,drawing"></script>
   <script src="../../../../resources/js/generation/main.js"></script>
   
   <script type="text/javascript">
